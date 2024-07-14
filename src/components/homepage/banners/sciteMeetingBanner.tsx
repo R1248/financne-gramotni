@@ -1,6 +1,6 @@
 import { type FC } from "react";
 import Image from "next/image";
-import businessman1 from "../../../public/businessman1.png";
+import businessman1 from "../../../../public/businessman1.png";
 
 const SciteMeetingBanner: FC = () => {
   return (

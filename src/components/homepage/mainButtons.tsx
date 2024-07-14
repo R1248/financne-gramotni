@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import Image from "next/image";
-import theoryImage from "../../public/theory-image.png";
-import productsImage from "../../public/products-image.png";
+import theoryImage from "../../../public/theory-image.png";
+import productsImage from "../../../public/products-image.png";
 
 const TheoryButton: FC = () => {
   return (
