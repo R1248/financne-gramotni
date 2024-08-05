@@ -269,7 +269,8 @@ export const Questions = {
         "banka si účtuje poplatek za vedení účtu",
         "banka může účtovat záporný úrok, než si klienta prověří",
       ],
-      answer: "",
+      answer:
+        "některé banky úročí peníze, které jsou fiksované v odchozích platebních příkazech, tyto úroky pak strhnou další měsíc",
     },
     {
       question: "Od kolika let můžu mít spořící účet?",
@@ -847,7 +848,334 @@ export const Questions = {
       answer: "Nízké",
     },
   ],
-  pensionSaving: [],
+  pensionSaving: [
+    {
+      question: "Kde můžu sjednat doplňkové penzijní spoření v ČR?",
+      options: [
+        "Pouze u národní banky, jedná se o státní produkt",
+        "U komerčních bank",
+        "U pojišťoven",
+        "U nebankovních finančních institucí",
+      ],
+      answer: "U komerčních bank",
+    },
+    {
+      question: "Co zpravidla zvyšuje atraktivitu penzijního spoření?",
+      options: [
+        "Možnost výběru peněz kdykoliv",
+        "Vysoké procentuální zhodnocení",
+        "Státní příspěvek",
+        "Možnost spoření v cizí měně",
+      ],
+      answer: "Státní příspěvek",
+    },
+    {
+      question: "Patří penzijní spoření mezi investování nebo spoření?",
+      options: [
+        "Spoření",
+        "Investování",
+        "Spekulace",
+        "Kombinace spoření a investování",
+      ],
+      answer: "Kombinace spoření a investování",
+    },
+    {
+      question: "Mohu u penzijního spoření dosáhnout záporného zhodnocení?",
+      options: ["Ano", "Ne"],
+      answer: "Ano",
+    },
+    {
+      question: "Jaká je likvidita penzijního spoření?",
+      options: ["Okamžitá", "Vysoká", "Střední", "Nízka"],
+      answer: "Nízká",
+    },
+    {
+      question:
+        "Kolik je k roku 2024 sjednaných doplňkových penzijních spoření?",
+      options: ["900 000", "1 700 000", "2 500 000", "3 300 000"],
+      answer: "1 700 000",
+    },
+    {
+      question: "V jakém roce vzniklo doplňkové penzijní spoření v ČR?",
+      options: ["1948", "1989", "1993", "2013"],
+      answer: "2013",
+    },
+    {
+      question: "Jaký produkt existoval před doplňkovým penzijním spořením?",
+      options: [
+        "Žádný, doplňkové penzijní spoření nemá předchůdce",
+        "Penzijní připojištění",
+        "Dlouhodobý investiční produkt",
+        "Starobní důchod",
+      ],
+      answer: "Penzijní připojištění",
+    },
+    {
+      question: "Kolik starých penzijních připojištění ještě stále běží?",
+      options: ["0", "1 000 000", "2 500 000", "4 000 000"],
+      answer: "2 500 000",
+    },
+    {
+      question: "Je doplňkové penzijní spoření podporováno státem?",
+      options: ["Ano", "Ne"],
+      answer: "Ano",
+    },
+    {
+      question: "Jaká je nejnižší částka, kterou mohu spořit?",
+      options: [
+        "Žádná, mohu spořit kolik chci",
+        "100 Kč",
+        "500 Kč",
+        "1 000 Kč",
+      ],
+      answer: "100 Kč",
+    },
+    {
+      question: "Od jaké částky stát přispívá na penzijní spoření?",
+      options: ["100 Kč", "500 Kč", "1 000 Kč", "2 000 Kč"],
+      answer: "500 Kč",
+    },
+    {
+      question: "Jak vysoký je státní příspěvek na penzijní spoření?",
+      options: [
+        "5 % z vkládané částky",
+        "10 % z vkládané částky",
+        "20 % z vkládané částky",
+        "30 % z vkládané částky",
+      ],
+      answer: "20 % z vkládané částky",
+    },
+    {
+      question: "Do jaké maximální částky stát přispívá na penzijní spoření?",
+      options: ["1 700 Kč", "5 000 Kč", "10 000 Kč", "20 000 Kč"],
+      answer: "1 700 Kč",
+    },
+    {
+      question:
+        "Jak vysoký je nejvyšší možný státní příspěvek na penzijní spoření?",
+      options: ["340 Kč", "500 Kč", "1 000 Kč", "2 000 Kč"],
+      answer: "340 Kč",
+    },
+    {
+      question: "Do jaké částky je doplňkové penzijní spoření pojištěno?",
+      options: [
+        "Doplňkové penzijní spoření se nepojišťuje",
+        "50 000 €",
+        "100 000 €",
+        "200 000 €",
+      ],
+      answer: "Doplňkové penzijní spoření se nepojišťuje",
+    },
+    {
+      question: "Můžu sjednat doplňkové penzijní spoření i pro dítě?",
+      options: [
+        "Ano, od narození",
+        "Ano, od patnácti let",
+        "Ano, dítě si samo může sjednat spoření od patnácti let",
+        "Ne, stavební spoření je dostupné pouze pro dospělé",
+      ],
+      answer: "Ano, od narození",
+    },
+    {
+      question:
+        "Mohu peníze z doplňkového penzijního spoření kdykoliv vybrat bez postihu?",
+      options: ["Ano", "Ne"],
+      answer: "Ne",
+    },
+    {
+      question:
+        "Co se stane, pokud si klient vybere peníze dříve, než po 2 letech?",
+      options: [
+        "Klient musí zdanit zisk daní z příjmu 15 %",
+        "Klient zaplatí odstupný poplatek ve výši 10 % z vybrané částky a přijde o státní příspěvek",
+        "Peníze propadnou ve prospěch penzijní společnosti",
+        "Klient musí zaplatit fixní pokutu 10 000 Kč",
+      ],
+      answer: "Peníze propadnou ve prospěch penzijní společnosti",
+    },
+    {
+      question:
+        "Jaký je požadavek, aby klient mohl vybrat peníze z penzijního spoření bez postihu?",
+      options: [
+        "Klient musí mít naspořeno alespoň 100 000 Kč",
+        "Klient musí dovršit 60 let a spořit minimálně 10 let",
+        "Klient musí spořit minimálně 10 let",
+        "Klient musí dovršit 60 let",
+      ],
+      answer: "Klient musí dovršit 60 let a spořit minimálně 10 let",
+    },
+    {
+      question:
+        "Co se stane, pokud klient vybere peníze z doplňkového penzijního spoření předčasně ale po 2 letech?",
+      options: [
+        "Přijde o státní příspěvek a zaplatí daň z příjmu 15 %",
+        "Přijde o státní příspěvek a zaplatí daň z příjmu na výnosech a posledních 10 let přípěvků od zaměstnavatele",
+        "Přijde o státní příspěvek, peníze od zaměstnavatele i připsané úroky",
+        "Přijde pouze o státní příspěvek",
+      ],
+      answer:
+        "Přijde o státní příspěvek a zaplatí daň z příjmu na výnosech a posledních 10 let přípěvků od zaměstnavatele",
+    },
+    {
+      question:
+        "Pokud se klient stane invalidním třetího stupně, může penzijní spoření vybrat?",
+      options: [
+        "Ne, klient musí počkat do svých 60 let",
+        "Ano, pokud spoří alespoň 3 roky, bude mu společnost vyplácet postupně peníze",
+        "Ano, klient může vybrat celou částku",
+        "Ano, klient může vybrat částku za podmínky, že zdaní zisk daní z příjmu 15%",
+      ],
+      answer:
+        "Ano, pokud spoří alespoň 3 roky, bude mu společnost vyplácet postupně peníze",
+    },
+    {
+      question: "Pokud klient dovrší 60 let a spoří alespoň 10 let: ",
+      options: [
+        "Dostane automaticky částku na účet",
+        "Může si nechat částku vyplácet ve formě renty nebo ji vybrat celou",
+        "Musí počkat dalších 5 let, než může částku vybrat",
+        "Musí zaplatit výstupní poplatek za zprávu fondu, která je rovná 1 % z naspořené částky",
+      ],
+      answer:
+        "Může si nechat částku vyplácet ve formě renty nebo ji vybrat celou",
+    },
+    {
+      question:
+        "Pokud po splnění všech podmínek klient vybere celou částku najednou: ",
+      options: [
+        "Částka je oproštěna jakýchkoliv dalších daní a srážek",
+        "Klient musí zdanit výnos daní z příjmu 15 %, příspěvky od zaměstnavatele jsou od daně osvobozeny",
+        "Klient musí zdanit příspěvky zaměstnavatele daní z příjmu 15 %",
+        "Klient musí zdanit výnos a příspěvky zaměstnavatele daní z příjmu 15 %",
+      ],
+      answer:
+        "Klient musí zdanit výnos a příspěvky zaměstnavatele daní z příjmu 15 %",
+    },
+    {
+      question: "Pokud klient zvolí rentu, která je kratší než 10 let: ",
+      options: [
+        "Klient nemusí nic platit, stát ani penzijní společnost mu nic vzít nesmí",
+        "Klient musí zdanit výnos daní z příjmu 15 %, příspěvky od zaměstnavatele jsou od daně osvobozeny",
+        "Klient musí zdanit příspěvky zaměstnavatele daní z příjmu 15 %",
+        "Klient musí zdanit výnos a příspěvky zaměstnavatele daní z příjmu 15 %",
+      ],
+      answer:
+        "Klient musí zdanit výnos daní z příjmu 15 %, příspěvky od zaměstnavatele jsou od daně osvobozeny",
+    },
+    {
+      question: "Pokud klient zvolí rentu, která je delší než 10 let: ",
+      options: [
+        "Klient nemusí nic platit, stát ani penzijní společnost mu nic vzít nesmí",
+        "Klient musí zdanit výnos daní z příjmu 15 %, příspěvky od zaměstnavatele jsou od daně osvobozeny",
+        "Klient musí zdanit příspěvky zaměstnavatele daní z příjmu 15 %",
+        "Klient musí zdanit výnos a příspěvky zaměstnavatele daní z příjmu 15 %",
+      ],
+      answer:
+        "Klient nemusí nic platit, stát ani penzijní společnost mu nic vzít nesmí",
+    },
+    {
+      question:
+        "Pokud se klient rozhodne si doplňkové penzijní spoření sjednat, na jakou rezervu je vhodné ho využít?",
+      options: [
+        "Na krátkodobou",
+        "Na střednědobou",
+        "Na střednědobou nebo dlouhodobou",
+        "Na dlouhodobou",
+      ],
+      answer: "",
+    },
+    {
+      question:
+        "Může si klient zvolit, jak rizikově bude penzijní společnost vložené peníze investovat?",
+      options: [
+        "Ano, banky zpravidla nabízejí více možností",
+        "Ano, každá banka má jednu vlastní rizikovost",
+        "Ne, penzijní společnost má povinnost investovat peníze do nejméně rizikových aktiv",
+        "Ne, penzijní společnost předává peníze do státního fondu",
+      ],
+      answer: "Ano, banky zpravidla nabízejí více možností",
+    },
+    {
+      question: "Je doplňkové penzijní spoření daňově odpočitatelné?",
+      options: ["Ano", "Ne"],
+      answer: "Ano",
+    },
+    {
+      question:
+        "Jak funguje daňové odpočtení u doplňkového penzijního spoření?",
+      options: [
+        "Klient může od základu daně odepsat až 1 000 Kč měsíčně, které přesahují 1 700 Kč",
+        "Klient může od základu daně odepsat až 2 000 Kč měsíčně, které přesahují 1 700 Kč",
+        "Klient může od základu daně odepsat až 4 000 Kč měsíčně, které přesahují 1 700 Kč",
+        "Klient může od základu daně odepsat až 8 000 Kč měsíčně, které přesahují 1 700 Kč",
+      ],
+      answer:
+        "Klient může od základu daně odepsat až 4 000 Kč měsíčně, které přesahují 1 700 Kč",
+    },
+    {
+      question:
+        "Kolik klient ročně uspoří, pokud využije maximálního státního příspěvku a maximální daňové odečitatelnosti?",
+      options: [
+        "4 080 Kč na příspěvcích a 7 200 Kč na daních",
+        "4 080 Kč na příspěvcích a 48 000 Kč na daních",
+        "20 400 Kč na příspěvcích a 7 200 Kč na daních",
+        "20 400 Kč na příspěvcích a 48 000 Kč na daních",
+      ],
+      answer: "4 080 Kč na příspěvcích a 7 200 Kč na daních",
+    },
+    {
+      question: "V porovnání se spořícím účtem má doplňkové penzijní spoření: ",
+      options: [
+        "Extrémně nízkou likviditu, vyšší výnos a vyšší rizikovost",
+        "Extrémně nízkou, nižší výnos a nižší rizikovost",
+        "Extrémně vysokou likviditu, vyšší výnos a nižší rizikovost",
+        "Extrémně vysookou likviditu, nižší výnos a vyšší rizikovost",
+      ],
+      answer: "Extrémně nízkou likviditu, vyšší výnos a vyšší rizikovost",
+    },
+    {
+      question:
+        "V porovnání se stavebním spořením má doplňkové penzijní spoření: ",
+      options: [
+        "Nižší likviditu, nižší výnos a nižší rizikovost",
+        "Nižší likviditu, větší výnos a vyšší rizikovost",
+        "Vyšší likviditu, nižší výnos a nižší rizikovost",
+        "Vyšší likviditu, větší výnos a vyšší rizikovost",
+      ],
+      answer: "Nižší likviditu, větší výnos a vyšší rizikovost",
+    },
+    {
+      question: "Může penzijní spoření překonat inflaci?",
+      options: [
+        "Ano, penzijní spoření zpravidla přesahuje inflaci",
+        "Ano, pokud je zvolen rizikovější fond",
+        "Ne, penzijní spoření přesahuje inflaci jen velmi výjimečně",
+        "Ne, penzijní spoření je nižší než inflace",
+      ],
+      answer: "Ano, pokud je zvolen rizikovější fond",
+    },
+    {
+      question: "Prostředky na doplňkovém penzijním spoření jsou úročeny: ",
+      options: [
+        "Jednoduchým úročením",
+        "Složeným úročením",
+        "Harmonickým úročením",
+        "Kvadratickým úročením",
+      ],
+      answer: "Složeným úročením",
+    },
+    {
+      question:
+        "Marek má 25 let a sjednal si doplňkové penzijní spoření. Vkládá 1 700 Kč měsíčně a od zaměstnavatele dostává 500 Kč měsíčně. Zvolil variantu s očekávaným úrokem 4 % ročně. Kolik bude mít naspořeno v šedesáti letech?",
+      options: [
+        "Asi 1 400 000 Kč",
+        "Asi 2 300 000 Kč",
+        "Asi 3 200 000 Kč",
+        "Asi 4 300 000 Kč",
+      ],
+      answer: "Asi 2 300 000 Kč",
+    },
+  ],
   investmentFunds: [
     {
       question: "Jaký je rozdíl mezi spořením a investováním?",
@@ -1172,7 +1500,8 @@ export const Questions = {
         "Způsob rozložení portfolia do 3 pomyslných kyblíků dle výnosu",
         "Způsob rozložení portfolia do 3 pomyslných kyblíků dle způsobu správy",
       ],
-      answer: "",
+      answer:
+        "Způsob rozložení portfolia do 3 pomyslných kyblíků dle rizikovosti",
     },
     {
       question: "Co je to tzv. teritoriálně zaměřená investiční strategie?",
@@ -1357,7 +1686,101 @@ export const Questions = {
         "Shromažďuje prostředky nebo jiná aktiva od omezeného počtu investorů",
     },
   ],
-  basics: [],
+  basics: [
+    {
+      question: "Co jsou to peníze?",
+      options: [
+        "Pouze mince a bankovky",
+        "Dokument potvrzující majetkové právo",
+        "Měna, která je zákonným platidlem",
+        "Prostředek směny, uchovatel hodnoty a účetní jednotka",
+      ],
+      answer: "Prostředek směny, uchovatel hodnoty a účetní jednotka",
+    },
+    {
+      question: "Co je to banka?",
+      options: [
+        "Instituce, která poskytuje finanční služby",
+        "Vládní instituce, která přerozděluje peníze lidem",
+        "Místo, kde se skladují fyzické peníze a zlato",
+        "Systém pro sledování výdajů jednotlivců",
+      ],
+      answer: "Instituce, která poskytuje finanční služby",
+    },
+    {
+      question: "Co je to výnos?",
+      options: [
+        "Rozdíl mezi náklady a získanými penězi",
+        "Celková částka peněz na bankovním účtu",
+        "Náklady spojené s provozováním podniku",
+        "Peníze, které člověk může získat od banky",
+      ],
+      answer: "Rozdíl mezi náklady a získanými penězi",
+    },
+    {
+      question: "Co je to riziko?",
+      options: [
+        "Možnost, že nastane nechtěná nebo nepředvídatelná událost s pozitivním dopadem na peníze",
+        "Možnost, že nastane nechtěná nebo nepředvídatelná událost s negativním dopadem na peníze",
+        "Možnost, že na základě pozitivních událostí získám peníze",
+        "Množství peněz, které je potřeba investovat",
+      ],
+      answer:
+        "Možnost, že nastane nechtěná nebo nepředvídatelná událost s negativním dopadem na peníze",
+    },
+    {
+      question: "Co je to likvidita?",
+      options: [
+        "Schopnost rychle přeměnit aktiva na hotovost",
+        "Úroveň úrokové sazby u investice",
+        "Riziko spojené s investováním do akcií",
+        "Množství peněz, které je třeba investovat",
+      ],
+      answer: "Schopnost rychle přeměnit aktiva na hotovost",
+    },
+    {
+      question: "Co jsou to daně?",
+      options: [
+        "Trest za neplacení úroků soukromým osobám nebo firmám",
+        "Povinné platby za poskytované služby (např. elektřina, voda, plyn)",
+        "Povinné platby státu nebo místním orgánům na financování veřejných služeb",
+        "Trest za trestnou činnost a porušení zákonů státu",
+      ],
+      answer:
+        "Povinné platby státu nebo místním orgánům na financování veřejných služeb",
+    },
+    {
+      question: "co je to inflace?",
+      options: [
+        "Pokles cen zboží a služeb v ekonomice, který snižuje kupní sílu peněz",
+        "Růst cen zboží a služeb v ekonomice, který snižuje kupní sílu peněz",
+        "Pokles cen zboží a služeb v ekonomice, který zvyšuje kupní sílu peněz",
+        "Růst cen zboží a služeb v ekonomice, který zvyšuje kupní sílu peněz",
+      ],
+      answer:
+        "Růst cen zboží a služeb v ekonomice, který snižuje kupní sílu peněz",
+    },
+    {
+      question: "Kolik ze základu 2000 Kč je 15%?",
+      options: ["150 Kč", "200 Kč", "250 Kč", "300 Kč"],
+      answer: "300 Kč",
+    },
+    {
+      question: "Jaký obor se zabývá studiem peněz a jejich pohybu?",
+      options: ["Matematika", "Politologie", "Ekonomie", "Sociologie"],
+      answer: "Ekonomie",
+    },
+    {
+      question: "Co je to HDP?",
+      options: [
+        "Harmonizovaný důchodový plán",
+        "Historický daňový plán",
+        "Hrubý domácí produkt",
+        "Hlavní dividendový příjem",
+      ],
+      answer: "Hrubý domácí produkt",
+    },
+  ],
   alternativeInvestment: [],
   financeMaths: [
     {
@@ -1596,7 +2019,7 @@ export const Questions = {
       answer: "Spoření s průběžným vkladem",
     },
     {
-      question: "",
+      question: "Jaký je vzorec pro výpočet součtu geometrické posloupnosti?",
       options: ["", "", "", ""],
       answer: "",
     },
@@ -1915,6 +2338,362 @@ export const Questions = {
         "Češi (podobně jako občané ostatních postsovětských zemí) mají k riziku značnou averzi",
     },
   ],
-  budgeting: [],
-  stockMarket: [],
+  budgeting: [
+    {
+      question: "Co nejlépe vystihuje budgeting?",
+      options: [
+        "Dovednost dělat důležitá podnikatelská rozhodnutí",
+        "Dovednost orientace na finančních trzích",
+        "Dovednost tvorby osobního rozpočtu",
+        "Dovednost porozumění teoretické ekonomii",
+      ],
+      answer: "Dovednost tvorby osobního rozpočtu",
+    },
+    {
+      question: "Jaká by měla být základní struktura osobního rozpočtu?",
+      options: [
+        "Dělení podle možného výnosu na spořící a aktivní rezervu",
+        "Dělení podle množství peněz na malou, střední a velkou peněžní rezervu",
+        "Dělení podle rizika na bezrizikové, středně rizikové, značně rizikové (a gamble) rezervu",
+        "Dělení podle likvidity na krátkodobou, střednědobou a dlouhodobou rezervu",
+      ],
+      answer:
+        "Dělení podle likvidity na krátkodobou, střednědobou a dlouhodobou rezervu",
+    },
+    {
+      question: "Co nejlépe charakterizuje prostředky krátkodobé rezervy",
+      options: [
+        "Prostředky s vysokou či okamžitou likviditou a nízkým rizikem",
+        "Investice do dlouhodobých aktiv, jako jsou nemovitosti",
+        "Půjčka s krátkou dobou splatnosti",
+        "Peněžní prostředky určené na důchodové spoření",
+      ],
+      answer: "Prostředky s vysokou či okamžitou likviditou a nízkým rizikem",
+    },
+    {
+      question: "Na co se krátkodobá rezerva zpravidla používá?",
+      options: [
+        "Odkládáná peněs s vysokou likviditou pro případ velkých nečekaných nákladů",
+        "Na koupi nového auta, rekonstrukci domácnosti či jiné středně rozsáhlé platby",
+        "Na nižší nečekané výdaje, okamžité platby a pokrytí krátkého výpadku příjmů",
+        "Na odkládání přebytečných finančních prostředků s vyšší likviditou na penzi",
+      ],
+      answer:
+        "Na nižší nečekané výdaje, okamžité platby a pokrytí krátkého výpadku příjmů",
+    },
+    {
+      question: "V jakých aktivech by měla být uložena krátkodobá rezerva?",
+      options: [
+        "Termínované vklady, stavební spoření, hotovost",
+        "Akcie, dluhopisy, nemovitosti",
+        "Kryptoměny, akcie, dluhopisy",
+        "Spořící účty, běžné účty, hotovost",
+      ],
+      answer: "Spořící účty, běžné účty, hotovost",
+    },
+    {
+      question: "Jak vysoká by měla být krátkodobá rezerva",
+      options: [
+        "Alespoň 10 000 Kč",
+        "Alespoň 50 000 Kč",
+        "1 -2 měsíční výdaje",
+        "3 - 6 měsíčních výdajů",
+      ],
+      answer: "3 - 6 měsíčních výdajů",
+    },
+    {
+      question: "Co nejlépe charakterizuje prostředky střednědobé rezervy",
+      options: [
+        "Prostředky s nízkou likviditou a vysokou volatilitou",
+        "Prostředky s vysokou likviditou a volatilitou",
+        "Prostředky se střední likviditou a volatilitou",
+        "Prostředky s vysokou likviditou a nízkou volatilitou ",
+      ],
+      answer: "Prostředky se střední likviditou a volatilitou",
+    },
+    {
+      question: "Na co se střednědobá rezerva zpravidla používá?",
+      options: [
+        "Odkládáná peněs s vysokou likviditou pro případ velkých nečekaných nákladů",
+        "Na koupi nového auta, rekonstrukci domácnosti či jiné středně rozsáhlé platby",
+        "Na nižší nečekané výdaje, okamžité platby a pokrytí krátkého výpadku příjmů",
+        "Na odkládání přebytečných finančních prostředků s vyšší likviditou na penzi",
+      ],
+      answer:
+        "Na koupi nového auta, rekonstrukci domácnosti či jiné středně rozsáhlé platby",
+    },
+    {
+      question: "V jakých aktivech by měla být uložena střednědobá rezerva?",
+      options: [
+        "Termínované vklady, stavební spoření, hotovost",
+        "Méně rizikové akciové fondy, dluhopisové fondy",
+        "Kryptoměny, akcie, dluhopisy",
+        "Spořící účty, běžné účty, hotovost",
+      ],
+      answer: "Méně rizikové akciové fondy, dluhopisové fondy",
+    },
+    {
+      question: "Jak vysoká by měla být střednědobá rezerva",
+      options: [
+        "Střednědobá rezerva by měla tvořit hlavní položku osobních aktiv",
+        "Úměrně krátkodobé finanční rezervě, ne však zbytečně moc",
+        "3 - 6 měsíčnch výdajů",
+        "6 - 12 měsíčních výdajů",
+      ],
+      answer: "Úměrně krátkodobé finanční rezervě, ne však zbytečně moc",
+    },
+    {
+      question: "Co nejlépe charakterizuje prostředky dlouhodobé rezervy",
+      options: [
+        "Prostředky s nízkou likviditou a vysokou volatilitou",
+        "Prostředky s vysokou likviditou a volatilitou",
+        "Prostředky se střední likviditou a volatilitou",
+        "Prostředky s vysokou likviditou a nízkou volatilitou ",
+      ],
+      answer: "Prostředky s nízkou likviditou a vysokou volatilitou",
+    },
+    {
+      question: "Na co se dlouhodobá rezerva zpravidla používá?",
+      options: [
+        "Odkládáná peněs s vysokou likviditou pro případ velkých nečekaných nákladů",
+        "Na koupi nového auta, rekonstrukci domácnosti či jiné středně rozsáhlé platby",
+        "Na velké projekty jako koupě nemovitosti a k zajištění životního standardu v penzi",
+        "Na odkládání přebytečných finančních prostředků s vyšší likviditou na penzi",
+      ],
+      answer:
+        "Na velké projekty jako koupě nemovitosti a k zajištění životního standardu v penzi",
+    },
+    {
+      question: "V jakých aktivech by měla být uložena dlouhodobá rezerva?",
+      options: [
+        "Termínované vklady, stavební spoření, hotovost",
+        "Méně rizikové akciové fondy, dluhopisové fondy",
+        "Akciové fondy a indexy, korporátní dluhopisy",
+        "Spořící účty, běžné účty, hotovost",
+      ],
+      answer: "Akciové fondy a indexy, korporátní dluhopisy",
+    },
+    {
+      question: "Jak vysoká by měla být dlouhodobá rezerva",
+      options: [
+        "Do 1 000 000 Kč, další prostředky je lepší uchovávat ve střednědobé a krátkodobé rezervě",
+        "Co nejvyšší za předpokladu, že je střednědobá a krátkodobá rezerva zajištěna",
+        "12 - 24 měsíčnch výdajů",
+        "24 - 48 měsíčních výdajů",
+      ],
+      answer:
+        "Co nejvyšší za předpokladu, že je střednědobá a krátkodobá rezerva zajištěna",
+    },
+    {
+      question:
+        "Jak v případě aktuálního finančního deficitu zlepšit svou finanční situaci?",
+      options: [
+        "Spotřebitelským úvěrem u banky",
+        "Začít s investicemi do akcií a nemovitostních fondů",
+        "Pokusit se zvýšit příjmy a snížit výdaje",
+        "Založit finanční produkty jako stavební spoření nebo termínovaný vklad",
+      ],
+      answer: "Pokusit se zvýšit příjmy a snížit výdaje",
+    },
+    {
+      question: "Který výdaj z výběru neřadíme mezi fixní výdaje?",
+      options: [
+        "Nájem",
+        "Splátka hypotéky",
+        "Předplatné oblíbené služby",
+        "Jídlo v restauraci",
+      ],
+      answer: "Jídlo v restauraci",
+    },
+    {
+      question:
+        "Jaká je vhodná dlouhodobá strategie pro osobu, která obvykle všechny peníze z výplaty utratí a neušetří?",
+      options: [
+        "Využívání bankovních produktů jako jsou spotřebitelský úvěr, získané finance investovat",
+        "Zvýšit příjmy a udržet si životní styl",
+        "Odkládání části peněz na spořící účet a investování malých částek do dlouhodobých aktiv",
+        "Založení penzijního spoření a nechat si od zaměstnavatele posílat část peněz tam",
+      ],
+      answer:
+        "Odkládání části peněz na spořící účet a investování malých částek do dlouhodobých aktiv",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+  ],
+  stockMarket: [
+    {
+      question: "Co jsou to burzy?",
+      options: [
+        "Finanční instituce podobné bankám, které uchovávají cenné papíry",
+        "Instituce vlastněné státem pro obchodování s finančními aktivy",
+        "Instituce, které ",
+        "Organizované trhy, kde se obchoduje s cennými papíry, komoditami a dalšími finančními nástroji",
+      ],
+      answer:
+        "Organizované trhy, kde se obchoduje s cennými papíry, komoditami a dalšími finančními nástroji",
+    },
+    {
+      question: "Proč existují burzy?",
+      options: ["Pro kontrolu cenové hladiny v ekonomice", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+    {
+      question: "",
+      options: ["", "", "", ""],
+      answer: "",
+    },
+  ],
 };
