@@ -1082,7 +1082,7 @@ export const Questions = {
         "Na střednědobou nebo dlouhodobou",
         "Na dlouhodobou",
       ],
-      answer: "",
+      answer: "Na dlouhodobou",
     },
     {
       question:
@@ -2517,183 +2517,324 @@ export const Questions = {
       answer:
         "Odkládání části peněz na spořící účet a investování malých částek do dlouhodobých aktiv",
     },
-    {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
-    },
-    {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
-    },
-    {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
-    },
-    {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
-    },
   ],
-  stockMarket: [
+  financeMarkets: [
     {
       question: "Co jsou to burzy?",
       options: [
         "Finanční instituce podobné bankám, které uchovávají cenné papíry",
         "Instituce vlastněné státem pro obchodování s finančními aktivy",
-        "Instituce, které ",
-        "Organizované trhy, kde se obchoduje s cennými papíry, komoditami a dalšími finančními nástroji",
+        "Instituce, které přerozdělují majetek ve společnosti ve prospěch bohatých",
+        "Tržní instituce, kde se obchoduje s cennými papíry, komoditami a dalšími finančními nástroji",
       ],
       answer:
         "Organizované trhy, kde se obchoduje s cennými papíry, komoditami a dalšími finančními nástroji",
     },
     {
       question: "Proč existují burzy?",
-      options: ["Pro kontrolu cenové hladiny v ekonomice", "", "", ""],
-      answer: "",
+      options: [
+        "Pro kontrolu cenové hladiny v ekonomice",
+        "Pro efektivní obchodování s finančními nástroji odpovídající nabídce a poptávce",
+        "Pro umožnění bankám a bohatým lidem bohatnout na úrkor ostatních",
+        "Pro řízení měnové politiky země",
+      ],
+      answer:
+        "Pro efektivní obchodování s finančními nástroji odpovídající nabídce a poptávce",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Jaké z následujících aktiv běžně neobchodujeme na burze?",
+      options: ["Akcie", "Dluhopisy", "Komodity", "Nemovitosti"],
+      answer: "Nemovitosti",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Co je to investiční portfolio?",
+      options: [
+        "Tržní hodnota všech akcií v ekonomice",
+        "Sestava investičních aktiv, které investor vlastní",
+        "Dokument obsahující investiční strategie společnosti",
+        "Přehled veškerého majetku investora",
+      ],
+      answer: "Sestava investičních aktiv, které investor vlastní",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Co je to dluhopis?",
+      options: [
+        "Forma akcie, která zajišťuje podíl na zisku společnosti",
+        "Krátkodobý finanční nástroj s vysokým rizikem",
+        "Půjčka, kterou si investor může vzít od emitenta",
+        "Cenný papír, který představuje půjčku poskytnutou investorem emitentovi",
+      ],
+      answer:
+        "Cenný papír, který představuje půjčku poskytnutou investorem emitentovi",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "Emitentem dluhopisu může být za předpokladu splnění všech podmínek",
+      options: [
+        "Jakákoliv právnická nebo fyzická osoba",
+        "Pouze obchodní společnost",
+        "Pouze územní samosprávný celek (kraj, obec, stát)",
+        "Pouze banka či jiná finanční instituce",
+      ],
+      answer: "Jakákoliv právnická nebo fyzická osoba",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Co je to akcie?",
+      options: [
+        "Cenný papír, který představuje půjčku poskytnutou investorem emitentovi",
+        "Bezrizikový finanční nástroj s proměnlivým úrokem",
+        "Cenný papír, který představuje podíl na majetku a zisku emitenta",
+        "Forma korporátního dluhopisu s pevnou úrokovou sazbou",
+      ],
+      answer:
+        "Cenný papír, který představuje podíl na majetku a zisku emitenta",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Proč společnost vydává akcie?",
+      options: [
+        "Aby mohla regulovat svou provozní činnost",
+        "Aby snížila své daňové zatížení",
+        "Aby snížila svůj dluh",
+        "Aby získala kapitál na financování projektů a rozvoje",
+      ],
+      answer: "Aby získala kapitál na financování projektů a rozvoje",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        'Je toto tvrzení pravdivé? "Když si koupím akcii na burze, podporuji přímo finančně firmu, která ji vydala"',
+      options: [
+        "Ano, protože každý nákup akcií poskytuje firmě nový kapitál",
+        "Ne, protože akcie se zpravidla obchodují s jinými investory",
+      ],
+      answer: "Ne, protože akcie se zpravidla obchodují s jinými investory",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "Jak se nazývá projevení zájmu investora o nově emitované akcie?",
+      options: [
+        "Upisování",
+        "Opce",
+        "Emise",
+        "Obchodování na sekundárním trhu",
+      ],
+      answer: "Upisování",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Kdo získává peníze při upisování akcií?",
+      options: ["Investor", "Emitent", "Stát", "Banka"],
+      answer: "Emitent",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Co je to komodita?",
+      options: [
+        "Měnový poukázka opravňující ke směně za jinou měnu v předem daném kurzu",
+        "Fyzické suroviny nebo produkty, které jsou obchodovány na trzích, jako jsou zlato, ropa, pšenice",
+        "Podíl na hmotném majetku společnosti (nemovitosti, výrobní prostředky...)",
+        "Podíl na nehmotném majetku společnosti (značka, know-how...)",
+      ],
+      answer:
+        "Fyzické suroviny nebo produkty, které jsou obchodovány na trzích, jako jsou zlato, ropa, pšenice",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Jaká je nejstarší burza na světě?",
+      options: [
+        "New York Stock Exchange (NYSE)",
+        "London Stock Exchange (LSE)",
+        "Amsterdam Stock Exchange",
+        "Frankfurt Stock Exchange",
+      ],
+      answer: "Amsterdam Stock Exchange",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "V jakém roce vznikla první burza?",
+      options: ["1602", "1702", "1802", "1902"],
+      answer: "1602",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "Jaká je největší burza na světě dle objemu obchodovaného kapitálu?",
+      options: [
+        "New York Stock Exchange (NYSE)",
+        "London Stock Exchange (LSE)",
+        "Tokyo Stock Exchange (TSE)",
+        "Shanghai Stock Exchange",
+      ],
+      answer: "New York Stock Exchange (NYSE)",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Čím se řídí ceny finančních instrumentů na burze?",
+      options: [
+        "Státní regulací",
+        "Dohodou mezi velkými investory",
+        "Nabídkou a poptávkou",
+        "Dle obratu eminenta",
+      ],
+      answer: "Nabídkou a poptávkou",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "Jaká z následujících věcí neovlivňuje cenu finančního instrumentu?",
+      options: [
+        "Nálada investorů",
+        "Makroekonomické a mikroekonomické faktory",
+        "Geopolitika",
+        "Historie ceny produktu v jiném odvětví",
+      ],
+      answer: "Historie ceny produktu v jiném odvětví",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Může na burzách jako NYSE obchodovat kdokoliv?",
+      options: ["Ano", "Ne"],
+      answer: "Ne",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "Kde může obchodovat běžný člověk s akciemi či jinými cennými aktivy?",
+      options: [
+        "Pouze prostřednictvím banky, ostatní služby jsou nedůvěryhodné",
+        'Prostřednictvím banky či "brokera"',
+        "Běžný investor si musí obstarat licenci pro obchodování s cennými papíry",
+        "Běžný investor nemá přístup k obchodování s cennými papíry",
+      ],
+      answer: 'Prostřednictvím banky či "brokera"',
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "Burzovní obchody dělíme i z hlediska délky vypořádání obchodů. Spotové obchody jsou:",
+      options: [
+        "Vypořádány v řádu dnů",
+        "Vypořádány v řádu týdnů",
+        "Vypořádány v řádu měsíců",
+        "Vypořádání v řádu let",
+      ],
+      answer: "Vypořádány v řádu dnů",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "V souvislosti s tvorbou investičního portfolia neplatí tato zásada:",
+      options: [
+        "Vhodně provedená diverzifikace snižuje systematické riziko portfolia",
+        "Čím bude menší vzájemná závislost mezi změnami výnosnosti jednotlivých investičních nástrojů, tím větší omezení rizikovosti diverzifikace přinese",
+        "Rizikovost portfolia klesá s počtem do něj zařazených druhů investičních instrumentů, a to bez ohledu na to, o jak rizikové nástroje se jedná",
+        "Rizikovost portfolia lze snížit buď zařazením méně rizikových investičních nástrojů, nebo vyšší vahou, jež jim bude v portfoliu přidělena.",
+      ],
+      answer:
+        "Rizikovost portfolia klesá s počtem do něj zařazených druhů investičních instrumentů, a to bez ohledu na to, o jak rizikové nástroje se jedná",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "Jaký z následujících faktorů nepatří do tzv. investičního trojúhelníku?",
+      options: ["Riziko", "Likvidita", "Udržitelnost", "Výnos"],
+      answer: "Udržitelnost",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Co je to konjunktura?",
+      options: [
+        "Období ekonomického poklesu",
+        "Období ekonomického růstu a prosperity",
+        "Fáze obchodního cyklu charakterizovaná vysokou nezaměstnaností",
+        "Období stagnace ekonomiky",
+      ],
+      answer: "Období ekonomického růstu a prosperity",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Co je to recese?",
+      options: [
+        "Období ekonomického poklesu trvající alespoň dvě po sobě jdoucí čtvrtletí",
+        "Období extrémního ekonomického růstu",
+        "Fáze obchodního cyklu charakterizovaná vysokou nezaměstnaností",
+        "Období stabilní ekonomiky bez růstu nebo poklesu",
+      ],
+      answer:
+        "Období ekonomického poklesu trvající alespoň dvě po sobě jdoucí čtvrtletí",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Pokud trh stoupá, mluvíme o:",
+      options: ["Medvědím trhu", "Jelením trhu", "Býčím trhu", "Tygřím trhu"],
+      answer: "Býčím trhu",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Pokud trh klesá, mluvíme o:",
+      options: ["Medvědím trhu", "Jelením trhu", "Býčím trhu", "Tygřím trhu"],
+      answer: "Medvědím trhu",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Jak moc ceny na trhu závisí na náladě investorů?",
+      options: [
+        "Nálada investorů má malý vliv na ceny na trhu",
+        "Nálada investorů ovlivňuje pouze krátkodobé výkyvy cen",
+        "Nálada investorů může významně ovlivnit ceny na trhu",
+        "Nálada investorů nemá žádný vliv na ceny na trhu",
+      ],
+      answer: "Nálada investorů může významně ovlivnit ceny na trhu",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Jaké emoce ovlivňují investory na burze?",
+      options: [
+        "Strach a chamtivost",
+        "Lhostejnost a zájem",
+        "Radost a smutek",
+        "Zodpovědnost a apatie",
+      ],
+      answer: "Strach a chamtivost",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question: "Kolik procent investorů na finančních trzích prodělává?",
+      options: ["10 - 30 %", "30 - 50 %", "50 - 70 %", "70 - 90 %"],
+      answer: "70 - 90 %",
     },
     {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
+      question:
+        "Jaké riziko riziko je třeba zvážit při investování na amerických burzách oproti tuzemským?",
+      options: [
+        "Riziko likvidity - na amerických burzách je menší objem obchodů než na tuzemských",
+        "Riziko krachu americké ekonomiky - ekonomika USA je nestabilní a může se snadno zhroutit",
+        "Měnové riziko - na americké burze se obchoduje v dolarech, který mění hodnotu vůči koruně",
+        "Riziko vysokých poplatků - obchodování na amerických burzách je výrazně dražší než na tuzemských",
+      ],
+      answer:
+        "Měnové riziko - na americké burze se obchoduje v dolarech, který mění hodnotu vůči koruně",
+    },
+    {
+      question: "Má měnové riziko na investici pozitivní nebo negativní vliv?",
+      options: [
+        "Měnové riziko má vždy negativní vliv",
+        "Měnové riziko má vždy pozitivní vliv",
+        "Jak kdy, kurz měny se může pohybovat oběma směry",
+        "Měnové riziko na investici nemá vliv",
+      ],
+      answer: "Jak kdy, kurz měny se může pohybovat oběma směry",
+    },
+    {
+      question:
+        "Má měnové riziko větší u stabilních měnových párů vliv na krátkodobého nebo dlouhodobého investora?",
+      options: [
+        "Na krátkodobého investora",
+        "Na dlouhodobého investora",
+        "Je to jedno, měnové riziko je vždy stejné",
+        "Měnové riziko nemá vliv na investora",
+      ],
+      answer: "Na krátkodobého investora",
+    },
+    {
+      question: "Co je to kapitalizace trhu?",
+      options: [
+        "Počet investorů investující do daného trhu",
+        "Celkové množství peněz investovaných do určitého aktiva",
+        "Celkový zisk společnosti za fiskální rok",
+        "Výše dividend vyplácených akcionářům",
+      ],
+      answer: "Celkové množství peněz investovaných do určitého aktiva",
+    },
+    {
+      question: "Co je to index investičních aktiv?",
+      options: [
+        "Souhrn vybraných investičních aktiv",
+        "Měřítko výkonnosti investičního portfolia",
+        "Měřítko rizikovosti investičního portfolia",
+        "Průměrná cena jednotlivých investičních aktiv na trhu",
+      ],
+      answer: "Souhrn vybraných investičních aktiv",
     },
   ],
 };

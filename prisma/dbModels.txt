@@ -1,0 +1,26 @@
+{
+    userId: "ef1we1fw9e4fw",
+    type: "buildingSaving",
+    ageCreated: 20.25,
+    interestRate: 0.02,
+    volatility: 0,
+    investedAmount: 10000,
+},
+{
+    userId: "ef1we1fw9e4fw",
+    type: "pensionSaving",
+    ageCreated: 27.5,
+    interestRate: 0.03,
+    volatility: -0.2,
+    investedAmount: 10000,
+},
+{
+    userId: "ef1we1fw9e4fw",
+    type: "fund",
+    ageCreated: 31,
+    interestRate: 0.02,
+    volatility: 0.6,
+    investedAmount: 10000,
+},
+
+na začátku každého období se v MVP vygeneruje výkonnost akciového trhu, která bude ovlivňovat fondy (bylo by nelogické, kdyby fondy rostly různě)

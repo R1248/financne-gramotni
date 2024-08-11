@@ -47,7 +47,10 @@ model User {
     name          String?
     email         String?   @unique
     emailVerified DateTime?
-    image         String?
+    money         Int       @default(20000)
+    age           Int       @default(18)
+    products      Int       @default(0)
+    theory        Int       @default(0)
     accounts      Account[]
     sessions      Session[]
 }
