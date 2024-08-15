@@ -54,7 +54,12 @@ const Portfolio = () => {
   };
 
   return (
-    <div style={{ width: "70%", margin: "auto" }}>
+    <div
+      style={{
+        width: "70%",
+        margin: "auto",
+      }}
+    >
       <Doughnut data={data} options={options} />
     </div>
   );

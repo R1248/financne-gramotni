@@ -49,10 +49,24 @@ model User {
     emailVerified DateTime?
     money         Int       @default(20000)
     age           Int       @default(18)
-    products      Int       @default(0)
-    theory        Int       @default(0)
+    productsScore Int       @default(0)
+    theoryScore   Int       @default(0)
+    products      Product[]
     accounts      Account[]
     sessions      Session[]
+}
+
+model Product {
+    id          String @id @default(cuid())
+    name        String
+    type        String
+    cash        Int
+    interest    Float
+    description String
+    ageCreated  Float
+    volatility  Int
+    user        User   @relation(fields: [userId], references: [id])
+    userId      String
 }
 
 model VerificationToken {
