@@ -7,31 +7,39 @@ import products from "../../public/products.png";
 
 type LaptopImageProps = {
   buttonImage: string;
+  setRouter: (router: string) => void;
 };
 
-const LaptopImage: FC<LaptopImageProps> = ({ buttonImage }) => {
+const LaptopImage: FC<LaptopImageProps> = ({ buttonImage, setRouter }) => {
   let image;
   let text;
+  let router;
 
   switch (buttonImage) {
     case "marxMises":
       image = marxMises;
       text = "Teorie";
+      router = "theory";
       break;
     case "stockMarket":
       image = stockMarket;
       text = "Finanční trhy";
+      router = "stockMarket";
       break;
     case "products":
       image = products;
       text = "Navštívit banky";
+      router = "banks";
       break;
     default: {
       throw new Error("Not implemented yet");
     }
   }
   return (
-    <div className="relative flex flex-col items-center">
+    <button
+      className="relative flex flex-col items-center"
+      onClick={() => setRouter(router)}
+    >
       <Image alt="laptop" src={laptop} className="w-64" />
       <Image
         alt={buttonImage}
@@ -39,7 +47,7 @@ const LaptopImage: FC<LaptopImageProps> = ({ buttonImage }) => {
         className="absolute left-[44px] top-[27px] w-[167px] transition-transform hover:cursor-pointer hover:opacity-90"
       />
       <p className="absolute top-[155px] text-xl">{text}</p>
-    </div>
+    </button>
   );
 };
 

@@ -48,7 +48,7 @@ model User {
     email         String?   @unique
     emailVerified DateTime?
     money         Int       @default(20000)
-    age           Int       @default(18)
+    age           Float     @default(18)
     productsScore Int       @default(0)
     theoryScore   Int       @default(0)
     products      Product[]

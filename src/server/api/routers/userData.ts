@@ -27,4 +27,16 @@ export const userDataRouter = createTRPCRouter({
       },
     });
   }),
+
+  changeAge: protectedProcedure
+  .mutation(async ({ctx}) => {
+    return ctx.db.user.update({
+      where: {
+        id: ctx.session.user.id,
+      },
+      data: {
+        age: { increment: 0.25 },
+      },
+    });
+  }),
 });

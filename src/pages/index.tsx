@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import EntryPage from "~/components/entryPage";
-import Homepage from "~/components/homepage";
+import Router from "~/components/router";
 import { UserDataProvider } from "~/contexts/dataContexts";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
       <main className="min-w-screen flex h-full min-h-screen flex-col justify-stretch bg-[#264474] px-10 pb-5">
         {sessionData ? (
           <UserDataProvider>
-            <Homepage />
+            <Router />
           </UserDataProvider>
         ) : (
           <EntryPage />
