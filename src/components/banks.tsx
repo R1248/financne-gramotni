@@ -141,13 +141,9 @@ const BankPage: FC<BankPageProps> = ({ setBanksRouter, selectedBank }) => {
       bank = banks[2]!;
       bg = "bg-[#1D3B3C]";
       break;
-    case "bank4":
+    default:
       bank = banks[3]!;
       bg = "bg-[#FAFAFA]";
-      break;
-    default:
-      bank = banks[0]!;
-      bg = "bg-[#11082F]";
   }
 
   return (

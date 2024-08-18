@@ -61,7 +61,9 @@ model Product {
     name        String
     type        String
     cash        Int
+    bank        String
     interest    Float
+    withdrawFee Int
     description String
     ageCreated  Float
     volatility  Int
