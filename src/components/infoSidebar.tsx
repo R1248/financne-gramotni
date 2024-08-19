@@ -2,6 +2,7 @@ import { type FC, useContext } from "react";
 import { UserDataContext } from "~/contexts/dataContexts";
 import { api } from "~/utils/api";
 import Portfolio from "~/components/portfolio";
+import { TbListDetails } from "react-icons/tb";
 
 const InfoSidebar: FC = () => {
   const userData = useContext(UserDataContext);
@@ -58,7 +59,12 @@ const InfoSidebar: FC = () => {
         </div>
       </div>
       <div className="mx-3 mb-5 mt-auto flex flex-grow flex-col border border-solid border-black p-3">
-        <h1 className="text-2xl">Portfolio</h1>
+        <div className="flex h-9 w-full flex-row">
+          <h1 className="text-2xl">Portfolio</h1>
+          <button className="mb-2 ml-auto mr-2 text-2xl hover:text-gray-500">
+            <TbListDetails />
+          </button>
+        </div>
         <Portfolio />
       </div>
     </div>

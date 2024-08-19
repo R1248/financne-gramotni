@@ -3,6 +3,7 @@ export const ProsperitaCreditProducts = {
     {
       name: "Běžný účet",
       type: "currentAccount",
+      volatility: 0,
       interest: 0,
       description:
         "Běžný účet od Prosperita Credit nabízí bezplatné vedení účtu a jako bonus vám vrátíme 1% z Vašich plateb kartou zpět na účet.",
@@ -12,6 +13,7 @@ export const ProsperitaCreditProducts = {
     {
       name: "Spořící účet",
       type: "savingAccount",
+      volatility: 0,
       interest: 0.02,
       description:
         "Zhodnoťte své peníze na spořícím účtu od Prosperita Credit s atraktivním úrokem 2%.",
@@ -21,6 +23,7 @@ export const ProsperitaCreditProducts = {
     {
       name: "Stavební spoření",
       type: "buildingSavings",
+      volatility: 0,
       interest: 0.02,
       description:
         "Stavební spoření od Prosperita Credit vám nabízí garantovaný úrok 2% a státní podporu 5% z vkladu až do výše 20 000 Kč ročně.",
@@ -30,6 +33,7 @@ export const ProsperitaCreditProducts = {
     {
       name: "Penzijní spoření Stabilita plus",
       type: "pensionSavings",
+      volatility: 0.005,
       interest: 0.01,
       description:
         "Penzijní spoření Stabilita plus od Prosperita Credit vám nabízí zhodnocení přibližně 1 % bez zbytečných rizik a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně",
@@ -37,6 +41,7 @@ export const ProsperitaCreditProducts = {
     {
       name: "Penzijní spoření Vyvážený výnos",
       type: "pensionSavings",
+      volatility: 0.01,
       interest: 0.015,
       description:
         "Vyvážený výnos od Prosperita Credit vám nabízí zhodnocení kolem 1,5% a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně.",
@@ -44,6 +49,7 @@ export const ProsperitaCreditProducts = {
     {
       name: "Penzijní spoření Dynamický růst",
       type: "pensionSavings",
+      volatility: 0.03,
       interest: 0.025,
       description:
         "Spoření Dynamický růst kombinuje středně riziková aktiva s potenciálem růstu. Průměrné zhodnocení 2,5% a státní podpora 20% z vkladu až do výše 1 700 Kč měsíčně.",
@@ -51,6 +57,7 @@ export const ProsperitaCreditProducts = {
     {
       name: "Penzijní spoření Progresivní růst",
       type: "pensionSavings",
+      volatility: 0.055,
       interest: 0.04,
       description:
         "Spoření Progresivní růst je určeno pro dosažení maximálního zhodnocení. Přibližné zhodnocení 4% a státní podpora 20% z vkladu až do výše 1 700 Kč měsíčně.",
@@ -61,6 +68,7 @@ export const ProsperitaCreditProducts = {
       name: "Termínovaný vklad",
       type: "termDeposit",
       minimumDeposit: 5000,
+      volatility: 0,
       interest: [0.023, 0.026, 0.029, 0.032, 0.035],
       duration: [3, 6, 12, 24, 60],
       description:
@@ -115,6 +123,7 @@ export const SoldiusBankProducts = {
     {
       name: "Běžný účet",
       type: "currentAccount",
+      volatility: 0,
       interest: 0,
       description:
         "Běžný účet je základním kamenem vašich financí. Sjednejte si ho již dnes u Soldius Bank.",
@@ -125,6 +134,7 @@ export const SoldiusBankProducts = {
       name: "Spořící účet standard",
       type: "savingAccount",
       interest: 0.014,
+      volatility: 0,
       description:
         "S účtem standard u nás získáte úrok 1,4% až do výše 500 000 Kč.",
     },
@@ -132,6 +142,7 @@ export const SoldiusBankProducts = {
       name: "Spořící účet plus",
       type: "savingAccount",
       interest: 0.016,
+      volatility: 0,
       description:
         "S účtem plus u nás získáte úrok 1,6% až do výše 1 500 000 Kč za 100 Kč měsíčně.",
     },
@@ -140,6 +151,7 @@ export const SoldiusBankProducts = {
     {
       name: "Stavební spoření",
       type: "buildingSavings",
+      volatility: 0,
       interest: 0.017,
       description:
         "Stavební spoření u nás vám nabízí garantovaný úrok 1,7% a státní podporu 5% z vkladu až do výše 20 000 Kč ročně.",
@@ -149,6 +161,7 @@ export const SoldiusBankProducts = {
     {
       name: "Penzijní spoření Stabilita",
       type: "pensionSavings",
+      volatility: -0.035,
       interest: 0.022,
       description:
         "Penzijní spoření Stabilita vám nabízí zhodnocení přibližně 2,2 % penzijním fondem stabilních aktiv a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně",
@@ -156,6 +169,7 @@ export const SoldiusBankProducts = {
     {
       name: "Penzijní spoření Růst",
       type: "pensionSavings",
+      volatility: 0.052,
       interest: 0.033,
       description:
         "Penzijní spoření Růst vám nabízí zhodnocení kolem 3,3% penzijním fondem smíšených aktiv a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně.",
@@ -166,6 +180,7 @@ export const SoldiusBankProducts = {
       name: "Termínovaný vklad",
       type: "termDeposit",
       minimumDeposit: 50000,
+      volatility: 0,
       interest: [0.02, 0.023, 0.026, 0.03, 0.034],
       duration: [3, 6, 12, 24, 60],
       description:
@@ -243,6 +258,7 @@ export const QuantumAGProducts = {
     {
       name: "Běžný účet",
       type: "currentAccount",
+      volatility: 0,
       interest: 0.01,
       description:
         "Quantum A. G. nabízí mimořádný úrok 1% na běžném účtu až do 250 000 Kč.",
@@ -252,6 +268,7 @@ export const QuantumAGProducts = {
     {
       name: "Spořící účet",
       type: "savingAccount",
+      volatility: 0,
       interest: 0.026,
       description:
         "U nás vaše peníze nezahálejí, zhodnotíme je s úrokem 2,6% na spořícím účtu.",
@@ -262,6 +279,7 @@ export const QuantumAGProducts = {
     {
       name: "Penzijní spoření Quantum stability",
       type: "pensionSavings",
+      volatility: 0.047,
       interest: 0.03,
       description:
         "Penzijní spoření Quantum stability nabízí zhodnocení přibližně 3 % investicí do kombinace dluhopisů a akcií a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně",
@@ -269,6 +287,7 @@ export const QuantumAGProducts = {
     {
       name: "Penzijní spoření Quantum growth",
       type: "pensionSavings",
+      volatility: 0.074,
       interest: 0.045,
       description:
         "Penzijní spoření Quantum growth nabízí zhodnocení kolem 4,5% investicí do akcií a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně.",
@@ -277,7 +296,9 @@ export const QuantumAGProducts = {
   termDeposits: [
     {
       name: "Termínovaný vklad",
+      type: "termDeposit",
       minimumDeposit: 5000,
+      volatility: 0,
       interest: [0.029, 0.032, 0.035, 0.038],
       duration: [3, 6, 12, 24],
       description:
@@ -363,6 +384,7 @@ export const BankaNovumProducts = {
     {
       name: "Běžný účet",
       type: "currentAccount",
+      volatility: 0,
       interest: 0,
       description:
         "Sjednejte si účet u Banky Novum a my vám dáme 500 Kč na vyzkoušení účtu.",
@@ -372,6 +394,7 @@ export const BankaNovumProducts = {
     {
       name: "Spořící účet",
       type: "savingAccount",
+      volatility: 0,
       interest: 0.01,
       description:
         "Založte si spořící účet u Banky Novum se základním úrokem 1% s mo6nost9 získání bonusového úroku 0,75% za využití běžného účtu pro pravidelné příjmy.",
@@ -381,6 +404,7 @@ export const BankaNovumProducts = {
     {
       name: "Stavební spoření",
       type: "buildingSavings",
+      volatility: 0,
       interest: 0.019,
       description:
         "Stavební spoření u Banky Novum vám nabízí garantovaný úrok 1,9% a státní podporu 5% z vkladu až do výše 20 000 Kč ročně. Za založení vám dáme 2 000 Kč do začátku.",
@@ -390,6 +414,7 @@ export const BankaNovumProducts = {
     {
       name: "Penzijní spoření Garant",
       type: "pensionSavings",
+      volatility: -0.002,
       interest: 0.005,
       description:
         "Penzijní spoření Garant nabízí zhodnocení přibližně 0,5 % se 100% garancí a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně",
@@ -397,6 +422,7 @@ export const BankaNovumProducts = {
     {
       name: "Penzijní spoření Stabilita",
       type: "pensionSavings",
+      volatility: -0.012,
       interest: 0.015,
       description:
         "Penzijní spoření Stabilita nabízí zhodnocení kolem 1,5% investicí do aktiv peněžního trhu a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně.",
@@ -404,6 +430,7 @@ export const BankaNovumProducts = {
     {
       name: "Penzijní spoření Vyvážený růst",
       type: "pensionSavings",
+      volatility: -0.03,
       interest: 0.03,
       description:
         "S penzií spořením Vyvážený růst získáte zhodnocení kolem 3% díky dluhopisovému fondu a státní podporu 20% z vkladu až do výše 1 700 Kč měsíčně.",
@@ -414,6 +441,7 @@ export const BankaNovumProducts = {
       name: "Termínovaný vklad",
       type: "termDeposit",
       minimumDeposit: 10000,
+      volatility: 0,
       interest: [0.026, 0.028, 0.03, 0.031, 0.032, 0.033],
       duration: [3, 6, 12, 24, 60, 120],
       description:

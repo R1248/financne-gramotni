@@ -57,18 +57,21 @@ model User {
 }
 
 model Product {
-    id          String @id @default(cuid())
-    name        String
-    type        String
-    cash        Int
-    bank        String
-    interest    Float
-    withdrawFee Int
-    description String
-    ageCreated  Float
-    volatility  Int
-    user        User   @relation(fields: [userId], references: [id])
-    userId      String
+    id                       String  @id @default(cuid())
+    name                     String
+    type                     String
+    money                    Int
+    bank                     String
+    duration                 Int?
+    interest                 Float
+    withdrawFee              Int
+    description              String
+    ageCreated               Float
+    volatility               Int
+    standingOrderPossible    Boolean
+    cashManipulationPossible Boolean
+    user                     User    @relation(fields: [userId], references: [id])
+    userId                   String
 }
 
 model VerificationToken {

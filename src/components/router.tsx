@@ -2,7 +2,7 @@ import { useState, type FC } from "react";
 import InfoSidebar from "./infoSidebar";
 import HomePage from "./homePage";
 import Headbar from "./headbar";
-import Banks from "./banks";
+import Banks from "./bankProducts/banks";
 
 const Router: FC = () => {
   const [router, setRouter] = useState("home");

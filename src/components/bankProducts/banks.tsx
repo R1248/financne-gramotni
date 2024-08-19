@@ -1,37 +1,45 @@
 import { useState, type FC } from "react";
 import Image from "next/image";
-import bankLogo1 from "../../public/bank_logo_1.png";
-import bankLogo2 from "../../public/bank_logo_2.png";
-import bankLogo3 from "../../public/bank_logo_3.png";
-import bankLogo4 from "../../public/bank_logo_4.png";
+import bankLogo1 from "../../../public/bank_logo_1.png";
+import bankLogo2 from "../../../public/bank_logo_2.png";
+import bankLogo3 from "../../../public/bank_logo_3.png";
+import bankLogo4 from "../../../public/bank_logo_4.png";
 import { TiArrowBack } from "react-icons/ti";
-import { ProductPage, ProductsMenu } from "./product";
+import {
+  CurrentAccountPage,
+  SavingAccountPage,
+  BuildingSavingPage,
+  PensionSavingPage,
+  TermDepositPage,
+  FundPage,
+  ProductsMenu,
+} from "./product";
 
 const banks = [
   {
     image: bankLogo1,
-    name: "bank1",
+    name: "Prosperita Credit",
     alt: "bankLogo1",
     description:
       "Přinášíme inovativní finanční řešení pro moderní život. Investujte s námi do vaší budoucnosti.",
   },
   {
     image: bankLogo2,
-    name: "bank2",
+    name: "Soldius Bank",
     alt: "bankLogo2",
     description:
       "Vytváříme stabilní základy pro vaši budoucnost. Spojte se s námi a využijte finanční příležitosti.",
   },
   {
     image: bankLogo3,
-    name: "bank3",
+    name: "Quantum A. G.",
     alt: "bankLogo3",
     description:
       "Bankovní partner pro každý okamžik života. Společně tvoříme finanční cestu k vašim cílům",
   },
   {
     image: bankLogo4,
-    name: "bank4",
+    name: "Banka Novum",
     alt: "bankLogo4",
     description:
       "S námi máte finance pod kontrolou. Spolehněte se na partnera, který rozumí vašim potřebám.",
@@ -129,15 +137,15 @@ const BankPage: FC<BankPageProps> = ({ setBanksRouter, selectedBank }) => {
   let bg: string;
 
   switch (selectedBank) {
-    case "bank1":
+    case "Prosperita Credit":
       bank = banks[0]!;
       bg = "bg-[#11082F]";
       break;
-    case "bank2":
+    case "Soldius Bank":
       bank = banks[1]!;
       bg = "bg-[#161A1E]";
       break;
-    case "bank3":
+    case "Quantum A. G.":
       bank = banks[2]!;
       bg = "bg-[#1D3B3C]";
       break;
@@ -160,40 +168,37 @@ const BankPage: FC<BankPageProps> = ({ setBanksRouter, selectedBank }) => {
             />
           ),
           "Běžný účet": (
-            <ProductPage
+            <CurrentAccountPage
               setBankPageRouter={setBankPageRouter}
-              name="Běžný účet"
+              bank={bank.name}
             />
           ),
           "Spořící účet": (
-            <ProductPage
+            <SavingAccountPage
               setBankPageRouter={setBankPageRouter}
-              name="Spořící účet"
+              bank={bank.name}
             />
           ),
           "Stavební spoření": (
-            <ProductPage
+            <BuildingSavingPage
               setBankPageRouter={setBankPageRouter}
-              name="Stavební spoření"
+              bank={bank.name}
             />
           ),
           "Penzijní spoření": (
-            <ProductPage
+            <PensionSavingPage
               setBankPageRouter={setBankPageRouter}
-              name="Penzijní spoření"
+              bank={bank.name}
             />
           ),
           "Termínované vklady": (
-            <ProductPage
+            <TermDepositPage
               setBankPageRouter={setBankPageRouter}
-              name="Termínované vklady"
+              bank={bank.name}
             />
           ),
           "Investiční fondy": (
-            <ProductPage
-              setBankPageRouter={setBankPageRouter}
-              name="Investiční fondy"
-            />
+            <FundPage setBankPageRouter={setBankPageRouter} bank={bank.name} />
           ),
         }[bankPageRouter]
       }
