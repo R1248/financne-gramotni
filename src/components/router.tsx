@@ -3,6 +3,7 @@ import InfoSidebar from "./infoSidebar";
 import HomePage from "./homePage";
 import Headbar from "./headbar";
 import Banks from "./bankProducts/banks";
+import PortfolioPage from "./portfolioPage";
 
 const Router: FC = () => {
   const [router, setRouter] = useState("home");
@@ -11,11 +12,12 @@ const Router: FC = () => {
       <Headbar />
       <hr className="w-full bg-white" />
       <div className="my-3 flex w-full flex-grow">
-        <InfoSidebar />
+        <InfoSidebar setRouter={setRouter} />
         {
           {
             home: <HomePage setRouter={setRouter} />,
             banks: <Banks setRouter={setRouter} />,
+            portfolio: <PortfolioPage setRouter={setRouter} />,
           }[router]
         }
       </div>

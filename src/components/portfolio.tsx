@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -7,53 +6,26 @@ import {
   Legend,
   type ChartOptions,
 } from "chart.js";
-import { UserDataContext } from "~/contexts/dataContexts";
-import { api } from "~/utils/api";
+import { type FC } from "react";
 
 // Register the required Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Portfolio = () => {
-  const userData = useContext(UserDataContext);
-  const {
-    data: products,
-    isLoading,
-    isError,
-  } = api.products.getAllProducts.useQuery();
+type PortfolioProps = {
+  freeMoney: number;
+  buildingSavings: number;
+  termDeposits: number;
+  pensionSaving: number;
+  funds: number;
+};
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error</div>;
-  }
-
-  let freeMoney = 0;
-  let buildingSavings = 0;
-  let termDeposits = 0;
-  let pensionSaving = 0;
-  let funds = 0;
-
-  products?.forEach((product) => {
-    switch (product.type) {
-      case "currentAccount" || "savingAccount":
-        freeMoney += product.money;
-        break;
-      case "buildingSaving":
-        buildingSavings += product.money;
-        break;
-      case "termDeposit":
-        termDeposits += product.money;
-        break;
-      case "pensionSaving":
-        pensionSaving += product.money;
-        break;
-      case "fund":
-        funds += product.money;
-        break;
-    }
-  });
-
+const Portfolio: FC<PortfolioProps> = ({
+  freeMoney,
+  buildingSavings,
+  termDeposits,
+  pensionSaving,
+  funds,
+}) => {
   const data = {
     labels: [
       "Volné peníze",
@@ -65,13 +37,7 @@ const Portfolio = () => {
     datasets: [
       {
         label: " Hodnota",
-        data: [
-          userData.money + freeMoney,
-          buildingSavings,
-          termDeposits,
-          pensionSaving,
-          funds,
-        ],
+        data: [freeMoney, buildingSavings, termDeposits, pensionSaving, funds],
         backgroundColor: [
           "#facc15", // Volné peníze
           "#60a5fa", // Stavební spoření

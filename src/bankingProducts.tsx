@@ -65,12 +65,52 @@ export const ProsperitaCreditProducts = {
   ],
   termDeposits: [
     {
-      name: "Termínovaný vklad",
+      name: "Termínovaný vklad 3 měsíce",
       type: "termDeposit",
       minimumDeposit: 5000,
       volatility: 0,
-      interest: [0.023, 0.026, 0.029, 0.032, 0.035],
-      duration: [3, 6, 12, 24, 60],
+      interest: 0.023,
+      duration: 3,
+      description:
+        "Sjednejte si termínovaný vklad od Prosperita Credit a získejte atraktivní úrok až do 2,3% podle délky vkladu a zvýhodněnou sazbou do 1 500 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 6 měsíců",
+      type: "termDeposit",
+      minimumDeposit: 5000,
+      volatility: 0,
+      interest: 0.026,
+      duration: 6,
+      description:
+        "Sjednejte si termínovaný vklad od Prosperita Credit a získejte atraktivní úrok až do 2,6% podle délky vkladu a zvýhodněnou sazbou do 1 500 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 1 rok",
+      type: "termDeposit",
+      minimumDeposit: 5000,
+      volatility: 0,
+      interest: 0.029,
+      duration: 12,
+      description:
+        "Sjednejte si termínovaný vklad od Prosperita Credit a získejte atraktivní úrok až do 2,9% podle délky vkladu a zvýhodněnou sazbou do 1 500 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 2 roky",
+      type: "termDeposit",
+      minimumDeposit: 5000,
+      volatility: 0,
+      interest: 0.032,
+      duration: 24,
+      description:
+        "Sjednejte si termínovaný vklad od Prosperita Credit a získejte atraktivní úrok až do 3,2% podle délky vkladu a zvýhodněnou sazbou do 1 500 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 5 let",
+      type: "termDeposit",
+      minimumDeposit: 5000,
+      volatility: 0,
+      interest: 0.035,
+      duration: 60,
       description:
         "Sjednejte si termínovaný vklad od Prosperita Credit a získejte atraktivní úrok až do 3,5% podle délky vkladu a zvýhodněnou sazbou do 1 500 000 Kč.",
     },
@@ -177,12 +217,52 @@ export const SoldiusBankProducts = {
   ],
   termDeposits: [
     {
-      name: "Termínovaný vklad",
+      name: "Termínovaný vklad 3 měsíce",
       type: "termDeposit",
       minimumDeposit: 50000,
       volatility: 0,
-      interest: [0.02, 0.023, 0.026, 0.03, 0.034],
-      duration: [3, 6, 12, 24, 60],
+      interest: 0.02,
+      duration: 3,
+      description:
+        "Sjednejte si termínovaný vklad od Soldius Bank a získejte atraktivní úrok až do 2,0% podle délky vkladu se zvýhodněnou sazbou až do 20 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 6 měsíců",
+      type: "termDeposit",
+      minimumDeposit: 50000,
+      volatility: 0,
+      interest: 0.023,
+      duration: 6,
+      description:
+        "Sjednejte si termínovaný vklad od Soldius Bank a získejte atraktivní úrok až do 2,3% podle délky vkladu se zvýhodněnou sazbou až do 20 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 1 rok",
+      type: "termDeposit",
+      minimumDeposit: 50000,
+      volatility: 0,
+      interest: 0.026,
+      duration: 12,
+      description:
+        "Sjednejte si termínovaný vklad od Soldius Bank a získejte atraktivní úrok až do 2,6% podle délky vkladu se zvýhodněnou sazbou až do 20 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 2 roky",
+      type: "termDeposit",
+      minimumDeposit: 50000,
+      volatility: 0,
+      interest: 0.03,
+      duration: 24,
+      description:
+        "Sjednejte si termínovaný vklad od Soldius Bank a získejte atraktivní úrok až do 3,0% podle délky vkladu se zvýhodněnou sazbou až do 20 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 5 let",
+      type: "termDeposit",
+      minimumDeposit: 50000,
+      volatility: 0,
+      interest: 0.034,
+      duration: 60,
       description:
         "Sjednejte si termínovaný vklad od Soldius Bank a získejte atraktivní úrok až do 3,4% podle délky vkladu se zvýhodněnou sazbou až do 20 000 000 Kč.",
     },
@@ -295,12 +375,42 @@ export const QuantumAGProducts = {
   ],
   termDeposits: [
     {
-      name: "Termínovaný vklad",
+      name: "Termínovaný vklad 3 měsíce",
       type: "termDeposit",
       minimumDeposit: 5000,
       volatility: 0,
-      interest: [0.029, 0.032, 0.035, 0.038],
-      duration: [3, 6, 12, 24],
+      interest: 0.029,
+      duration: 3,
+      description:
+        "S termínovaným vkladem od Quantum A. G. získáte atraktivní úrok až do 2,9% podle délky vkladu a zvýhodněnou sazbou do 2 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 6 měsíců",
+      type: "termDeposit",
+      minimumDeposit: 5000,
+      volatility: 0,
+      interest: 0.032,
+      duration: 6,
+      description:
+        "S termínovaným vkladem od Quantum A. G. získáte atraktivní úrok až do 3,2% podle délky vkladu a zvýhodněnou sazbou do 2 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 1 rok",
+      type: "termDeposit",
+      minimumDeposit: 5000,
+      volatility: 0,
+      interest: 0.035,
+      duration: 12,
+      description:
+        "S termínovaným vkladem od Quantum A. G. získáte atraktivní úrok až do 3,5% podle délky vkladu a zvýhodněnou sazbou do 2 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 2 roky",
+      type: "termDeposit",
+      minimumDeposit: 5000,
+      volatility: 0,
+      interest: 0.038,
+      duration: 24,
       description:
         "S termínovaným vkladem od Quantum A. G. získáte atraktivní úrok až do 3,8% podle délky vkladu a zvýhodněnou sazbou do 2 000 000 Kč.",
     },
@@ -397,7 +507,7 @@ export const BankaNovumProducts = {
       volatility: 0,
       interest: 0.01,
       description:
-        "Založte si spořící účet u Banky Novum se základním úrokem 1% s mo6nost9 získání bonusového úroku 0,75% za využití běžného účtu pro pravidelné příjmy.",
+        "Založte si spořící účet u Banky Novum se základním úrokem 1% s možností získání bonusového úroku 0,75% za využití běžného účtu pro pravidelné příjmy.",
     },
   ],
   buildingSavings: [
@@ -438,14 +548,64 @@ export const BankaNovumProducts = {
   ],
   termDeposits: [
     {
-      name: "Termínovaný vklad",
+      name: "Termínovaný vklad 3 měsíce",
       type: "termDeposit",
       minimumDeposit: 10000,
       volatility: 0,
-      interest: [0.026, 0.028, 0.03, 0.031, 0.032, 0.033],
-      duration: [3, 6, 12, 24, 60, 120],
+      interest: 0.026,
+      duration: 3,
       description:
-        "Termínovaný vklad od banky Novum zajišťuje úrok až 3.3% dle délky vkladu do maximální částky 5 000 000 Kč",
+        "Termínovaný vklad od banky Novum zajišťuje úrok až 2.6% dle délky vkladu do maximální částky 5 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 6 měsíců",
+      type: "termDeposit",
+      minimumDeposit: 10000,
+      volatility: 0,
+      interest: 0.028,
+      duration: 6,
+      description:
+        "Termínovaný vklad od banky Novum zajišťuje úrok až 2.8% dle délky vkladu do maximální částky 5 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 1 rok",
+      type: "termDeposit",
+      minimumDeposit: 10000,
+      volatility: 0,
+      interest: 0.03,
+      duration: 12,
+      description:
+        "Termínovaný vklad od banky Novum zajišťuje úrok až 3.0% dle délky vkladu do maximální částky 5 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 2 roky",
+      type: "termDeposit",
+      minimumDeposit: 10000,
+      volatility: 0,
+      interest: 0.031,
+      duration: 24,
+      description:
+        "Termínovaný vklad od banky Novum zajišťuje úrok až 3.1% dle délky vkladu do maximální částky 5 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 5 let",
+      type: "termDeposit",
+      minimumDeposit: 10000,
+      volatility: 0,
+      interest: 0.032,
+      duration: 60,
+      description:
+        "Termínovaný vklad od banky Novum zajišťuje úrok až 3.2% dle délky vkladu do maximální částky 5 000 000 Kč.",
+    },
+    {
+      name: "Termínovaný vklad 10 let",
+      type: "termDeposit",
+      minimumDeposit: 10000,
+      volatility: 0,
+      interest: 0.033,
+      duration: 120,
+      description:
+        "Termínovaný vklad od banky Novum zajišťuje úrok až 3.3% dle délky vkladu do maximální částky 5 000 000 Kč.",
     },
   ],
   investmentFunds: [
