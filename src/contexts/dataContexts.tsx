@@ -51,3 +51,28 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export { ProductsContext, ProductsProvider };
+
+const CurrentAccountsContext = createContext([] as Product[]);
+
+const CurrentAccountsProvider = ({ children }: { children: ReactNode }) => {
+  const {
+    data: currentAccounts,
+    isLoading,
+    isError,
+  } = api.products.getAllCurrentAccounts.useQuery();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+  return (
+    <CurrentAccountsContext.Provider value={currentAccounts!}>
+      {children}
+    </CurrentAccountsContext.Provider>
+  );
+};
+
+export { CurrentAccountsContext, CurrentAccountsProvider };

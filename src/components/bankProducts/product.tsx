@@ -9,7 +9,10 @@ import {
   SoldiusBankProducts,
 } from "../../bankingProducts";
 import { api } from "~/utils/api";
-import { UserDataContext } from "~/contexts/dataContexts";
+import {
+  CurrentAccountsContext,
+  UserDataContext,
+} from "~/contexts/dataContexts";
 import lockImage from "../../../public/lock.png";
 
 type ProductComponentProps = {
@@ -23,7 +26,6 @@ export const ProductCard: FC<ProductComponentProps> = ({
   setBankPageRouter,
   disabled,
 }) => {
-  console.log(disabled);
   return (
     <button
       className="m-4 h-48 w-48 overflow-hidden rounded-lg border border-solid border-black"
@@ -186,11 +188,11 @@ export const CurrentAccountPage: FC<ProductPageProps> = ({
 
   const createCurrentAccountHandler = () => {
     const data = {
+      money,
+      bank,
       name: currentAccount.name,
       type: "currentAccount",
       interest: currentAccount.interest,
-      money: money,
-      bank: bank,
       description: currentAccount.description,
       ageCreated: userData.age,
       volatility: 0,
@@ -223,7 +225,7 @@ export const CurrentAccountPage: FC<ProductPageProps> = ({
       </button>
       <div className="relative mt-16 h-[70%] w-3/4 rounded-lg border border-solid border-black p-4">
         <h1 className="text-2xl">{currentAccount?.name}</h1>
-        <p className="mt-2 w-96">{currentAccount?.description}</p>
+        <p className="mt-2 w-[600px]">{currentAccount?.description}</p>
         <p className="mt-2 text-lg">Úrok: {currentAccount?.interest}</p>
         <CashSlider
           onValueChange={setMoney}
@@ -273,11 +275,11 @@ export const SavingAccountPage: FC<ProductPageProps> = ({
 
   const createSavingAccountHandler = () => {
     const data = {
+      money,
+      bank,
       name: selectedProduct!.name,
       type: "savingAccount",
       interest: selectedProduct!.interest,
-      money: money,
-      bank: bank,
       description: selectedProduct!.description,
       ageCreated: userData.age,
       volatility: 0,
@@ -313,7 +315,7 @@ export const SavingAccountPage: FC<ProductPageProps> = ({
       ) : savingAccounts.length === 1 ? (
         <div className="relative mt-16 h-[70%] w-3/4 rounded-lg border border-solid border-black p-4">
           <h1 className="text-2xl">{savingAccounts[0]?.name}</h1>
-          <p className="mt-2 w-96">{savingAccounts[0]?.description}</p>
+          <p className="mt-2 w-[600px]">{savingAccounts[0]?.description}</p>
           <p className="mt-2 text-lg">Úrok: {savingAccounts[0]?.interest}</p>
           <CashSlider
             onValueChange={setMoney}
@@ -351,7 +353,7 @@ export const SavingAccountPage: FC<ProductPageProps> = ({
             </div>
           </div>
           <h1 className="ml-4 mt-4 text-2xl">{selectedProduct?.name}</h1>
-          <p className="ml-4 mt-2 w-96">{selectedProduct?.description}</p>
+          <p className="ml-4 mt-2 w-[600px]">{selectedProduct?.description}</p>
           <CashSlider
             onValueChange={setMoney}
             min={0}
@@ -396,26 +398,15 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
 
   const { mutate: createBuildingSaving } =
     api.products.createProduct.useMutation();
-  const { mutate: createStandingOrder } =
-    api.products.createStandingOrder.useMutation();
-  const {
-    data: currentAccounts,
-    isLoading,
-    isError,
-  } = api.products.getAllCurrentAccounts.useQuery();
+  const { mutate: editStandingOrder } =
+    api.products.editStandingOrder.useMutation();
+  const currentAccounts = useContext(CurrentAccountsContext);
 
   const [currentAccountId, setCurrentAccountId] = useState(
-    currentAccounts?.[0]?.id,
+    currentAccounts[0]?.id,
   );
 
   const utils = api.useUtils();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error</div>;
-  }
 
   console.log(currentAccounts);
 
@@ -424,7 +415,7 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
       name: selectedProduct!.name,
       type: "buildingSaving",
       interest: selectedProduct!.interest,
-      money: 0,
+      money: 3 * money,
       bank: bank,
       duration: 72,
       description: selectedProduct!.description,
@@ -434,7 +425,7 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
       standingOrdersRec: money,
       sendingAccountId: currentAccountId!,
     };
-    createStandingOrder({ amount: money, productId: currentAccountId! });
+    editStandingOrder({ amount: money, productId: currentAccountId! });
     createBuildingSaving(data, {
       onSuccess: () => {
         void utils.products.getAllProducts.invalidate();
@@ -455,7 +446,7 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
       ) : buildingSavings.length === 1 ? (
         <div className="relative mt-16 h-[70%] w-3/4 rounded-lg border border-solid border-black p-4">
           <h1 className="text-2xl">{buildingSavings[0]?.name}</h1>
-          <p className="mt-2 w-96">{buildingSavings[0]?.description}</p>
+          <p className="mt-2 w-[600px]">{buildingSavings[0]?.description}</p>
           <p className="mt-2 text-lg">Úrok: {buildingSavings[0]?.interest}</p>
           <CashSlider
             onValueChange={setMoney}
@@ -513,7 +504,7 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
             </div>
           </div>
           <h1 className="ml-4 mt-4 text-2xl">{selectedProduct?.name}</h1>
-          <p className="ml-4 mt-2 w-96">{selectedProduct?.description}</p>
+          <p className="ml-4 mt-2 w-[600px]">{selectedProduct?.description}</p>
           <CashSlider
             onValueChange={setMoney}
             min={100}
@@ -578,33 +569,22 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
 
   const { mutate: createPensionSaving } =
     api.products.createProduct.useMutation();
-  const { mutate: createStandingOrder } =
-    api.products.createStandingOrder.useMutation();
-  const {
-    data: currentAccounts,
-    isLoading,
-    isError,
-  } = api.products.getAllCurrentAccounts.useQuery();
+  const { mutate: editStandingOrder } =
+    api.products.editStandingOrder.useMutation();
+  const currentAccounts = useContext(CurrentAccountsContext);
 
   const [currentAccountId, setCurrentAccountId] = useState(
-    currentAccounts?.[0]?.id,
+    currentAccounts[0]?.id,
   );
 
   const utils = api.useUtils();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error</div>;
-  }
 
   const createPensionSavingHandler = () => {
     const data = {
       name: selectedProduct!.name,
       type: "pensionSaving",
       interest: selectedProduct!.interest,
-      money: 0,
+      money: 3 * money,
       bank: bank,
       duration: 0,
       description: selectedProduct!.description,
@@ -614,7 +594,7 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
       standingOrdersRec: money,
       sendingAccountId: currentAccountId!,
     };
-    createStandingOrder({ amount: money, productId: currentAccountId! });
+    editStandingOrder({ amount: money, productId: currentAccountId! });
     createPensionSaving(data, {
       onSuccess: () => {
         void utils.products.getAllProducts.invalidate();
@@ -635,7 +615,7 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
       ) : pensionSavings.length === 1 ? (
         <div className="relative mt-16 h-[70%] w-3/4 rounded-lg border border-solid border-black p-4">
           <h1 className="text-2xl">{pensionSavings[0]?.name}</h1>
-          <p className="mt-2 w-96">{pensionSavings[0]?.description}</p>
+          <p className="mt-2 w-[600px]">{pensionSavings[0]?.description}</p>
           <p className="mt-2 text-lg">Úrok: {pensionSavings[0]?.interest}</p>
           <CashSlider
             onValueChange={setMoney}
@@ -693,7 +673,7 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
             </div>
           </div>
           <h1 className="text-2xl">{selectedProduct?.name}</h1>
-          <p className="mt-2 w-96">{selectedProduct?.description}</p>
+          <p className="mt-2 w-[600px]">{selectedProduct?.description}</p>
           <CashSlider
             onValueChange={setMoney}
             min={100}
@@ -753,30 +733,19 @@ export const TermDepositPage: FC<ProductPageProps> = ({
   }
 
   const userData = useContext(UserDataContext);
+  const currentAccounts = useContext(CurrentAccountsContext);
   const [selectedProduct, setSelectedProduct] = useState(termDeposits[0]);
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(termDeposits[0]!.minimumDeposit);
 
   const { mutate: createTermDeposit } =
     api.products.createProduct.useMutation();
   const { mutate: currentAccountTransaction } =
     api.products.currentAccountTransaction.useMutation();
-  const {
-    data: currentAccounts,
-    isLoading,
-    isError,
-  } = api.products.getAllCurrentAccounts.useQuery();
   const [currentAccountId, setCurrentAccountId] = useState(
-    currentAccounts?.[0]?.id,
+    currentAccounts[0]?.id,
   );
 
   const utils = api.useUtils();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error</div>;
-  }
 
   const createTermDepositHandler = () => {
     const data = {
@@ -831,7 +800,7 @@ export const TermDepositPage: FC<ProductPageProps> = ({
           </div>
         </div>
         <h1 className="text-2xl">{selectedProduct?.name}</h1>
-        <p className="mt-2 w-96">{selectedProduct?.description}</p>
+        <p className="mt-2 w-[600px]">{selectedProduct?.description}</p>
         <p className="mt-2 text-lg">Úrok: {selectedProduct?.interest}</p>
         <p className="mt-2 text-lg">
           Doba trvání: {selectedProduct?.duration} měsíců
@@ -898,25 +867,14 @@ export const FundPage: FC<ProductPageProps> = ({ setBankPageRouter, bank }) => {
   const { mutate: createFund } = api.products.createProduct.useMutation();
   const { mutate: currentAccountTransaction } =
     api.products.currentAccountTransaction.useMutation();
-  const { mutate: createStandingOrder } =
-    api.products.createStandingOrder.useMutation();
-  const {
-    data: currentAccounts,
-    isLoading,
-    isError,
-  } = api.products.getAllCurrentAccounts.useQuery();
+  const { mutate: editStandingOrder } =
+    api.products.editStandingOrder.useMutation();
+  const currentAccounts = useContext(CurrentAccountsContext);
   const [currentAccountId, setCurrentAccountId] = useState(
-    currentAccounts?.[0]?.id,
+    currentAccounts[0]?.id,
   );
 
   const utils = api.useUtils();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (isError) {
-    return <div>Error</div>;
-  }
 
   const createTermDepositHandler = () => {
     const data = {
@@ -938,7 +896,7 @@ export const FundPage: FC<ProductPageProps> = ({ setBankPageRouter, bank }) => {
         void utils.products.getAllProducts.invalidate();
       },
     });
-    createStandingOrder({
+    editStandingOrder({
       amount: standingMoney,
       productId: currentAccountId!,
     });
@@ -973,7 +931,7 @@ export const FundPage: FC<ProductPageProps> = ({ setBankPageRouter, bank }) => {
           </div>
         </div>
         <h1 className="text-2xl">{selectedProduct?.name}</h1>
-        <p className="mt-2 w-96">{selectedProduct?.description}</p>
+        <p className="mt-2 w-[600px]">{selectedProduct?.description}</p>
         <p className="mt-2 text-lg">
           Očekávaný výnos {selectedProduct?.interest}
         </p>

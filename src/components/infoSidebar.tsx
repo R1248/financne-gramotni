@@ -11,6 +11,9 @@ type InfoSidebarProps = {
 const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
   const userData = useContext(UserDataContext);
   const { mutate: changeAge } = api.userData.changeAge.useMutation();
+  const { mutate: transaction } = api.products.transaction.useMutation();
+  const { mutate: editStandingOrder } =
+    api.products.editStandingOrder.useMutation();
   const products = useContext(ProductsContext);
 
   let freeMoney = 0;
@@ -57,10 +60,49 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
         void utils.userData.getUserData.invalidate();
       },
     });
+    products.map((product) => {
+      const i = Math.pow(1 + product.interest, 1 / 12);
+      let amount;
+      if (i === 1) {
+        amount = product.money - product.standingOrdersSent * 3;
+      } else {
+        amount =
+          product.money * Math.pow(i, 3) +
+          product.standingOrdersRec * i * ((Math.pow(i, 3) - 1) / (i - 1)) -
+          (product.standingOrdersSent * i * (Math.pow(i, 3) - 1)) / (i - 1);
+      }
+      amount = Math.round(amount);
+      transaction(
+        {
+          amount: amount,
+          productId: product.id,
+        },
+        {
+          onSuccess: () => {
+            void utils.products.getAllProducts.invalidate();
+            console.log("Age valuation completed");
+          },
+        },
+      );
+      if (product.duration) {
+        if (product.ageCreated + product.duration === userData.age) {
+          if (product.standingOrdersRec > 0) {
+            editStandingOrder({
+              amount: product.standingOrdersRec,
+              productId: product.sendingAccountId,
+            });
+          }
+          transaction({
+            amount: product.standingOrdersRec,
+            productId: product.sendingAccountId,
+          });
+        }
+      }
+    });
   };
 
   return (
-    <div className="mr-3 flex w-96 flex-col rounded-2xl bg-white">
+    <div className="mr-3 flex w-96 min-w-[24rem] flex-col rounded-2xl bg-white">
       <h1 className="my-3 ml-3 text-3xl">{userData.name}</h1>
       <div className="mx-3 mb-3 flex flex-col border border-solid border-black p-3">
         <div className="mb-3 flex h-12 flex-col border border-solid border-black">

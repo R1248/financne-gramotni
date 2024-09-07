@@ -2,7 +2,11 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import EntryPage from "~/components/entryPage";
 import Router from "~/components/router";
-import { ProductsProvider, UserDataProvider } from "~/contexts/dataContexts";
+import {
+  CurrentAccountsProvider,
+  ProductsProvider,
+  UserDataProvider,
+} from "~/contexts/dataContexts";
 
 export default function Home() {
   const { data: sessionData } = useSession();
@@ -17,7 +21,9 @@ export default function Home() {
         {sessionData ? (
           <UserDataProvider>
             <ProductsProvider>
-              <Router />
+              <CurrentAccountsProvider>
+                <Router />
+              </CurrentAccountsProvider>
             </ProductsProvider>
           </UserDataProvider>
         ) : (

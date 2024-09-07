@@ -4,6 +4,7 @@ import HomePage from "./homePage";
 import Headbar from "./headbar";
 import Banks from "./bankProducts/banks";
 import PortfolioPage from "./portfolioPage";
+import TheoryPage from "./theory/theoryPage";
 
 const Router: FC = () => {
   const [router, setRouter] = useState("home");
@@ -18,6 +19,7 @@ const Router: FC = () => {
             home: <HomePage setRouter={setRouter} />,
             banks: <Banks setRouter={setRouter} />,
             portfolio: <PortfolioPage setRouter={setRouter} />,
+            theory: <TheoryPage setRouter={setRouter} />,
           }[router]
         }
       </div>

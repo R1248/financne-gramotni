@@ -1,102 +1,104 @@
 export const Questions = {
   savingAccount: [
     {
-      question: "platím zpravidla za vedení spořícího účtu poplatky?",
-      options: ["ano", "ne"],
-      answer: "ne",
+      question: "Platím zpravidla za vedení spořícího účtu poplatky?",
+      options: ["Ano", "Ne"],
+      answer: "Ne",
     },
     {
-      question: "mohu si zpravidla kdykoliv vybrat peníze ze spořícího účtu?",
-      options: ["ano", "ne"],
-      answer: "ano",
+      question: "mohu si zpravidla kdykoliv vybrat peníze ze spořicího účtu?",
+      options: ["Ano", "Ne"],
+      answer: "Ano",
     },
     {
-      question: "mohu si zpravidla kdykoliv vložit peníze na spořící účet?",
-      options: ["ano", "ne"],
-      answer: "ano",
+      question: "Mohu si zpravidla kdykoliv vložit peníze na spořící účet?",
+      options: ["Ano", "Ne"],
+      answer: "Ano",
     },
     {
-      question: "kolik % Čechů má spořák",
+      question: "Kolik % Čechů má spořící účet",
       options: ["20%", "40%", "60%", "80%"],
       answer: "60%",
     },
     {
-      question: "co jsou tzv. úroková pásma?",
+      question: "Co jsou tzv. úroková pásma?",
       options: [
-        "úrokové sazby, které se mění v závislosti na výši vkladu",
-        "úrokové sazby, které se mění v závislosti na době vkladu",
-        "úrokové sazby, které se mění v závislosti na výši úrokové míry",
-        "úrokové sazby, které se mění v závislosti na výši inflace",
+        "Úrokové sazby, které se mění v závislosti na výši vkladu",
+        "Úrokové sazby, které se mění v závislosti na době vkladu",
+        "Úrokové sazby, které se mění v závislosti na výši úrokové míry",
+        "Úrokové sazby, které se mění v závislosti na výši inflace",
       ],
-      answer: "úrokové sazby, které se mění v závislosti na výši vkladu",
+      answer: "Úrokové sazby, které se mění v závislosti na výši vkladu",
     },
     {
-      question: "můžu ze spořáku přímo platit v obchodě?",
-      options: ["ano", "ne"],
-      answer: "ne",
+      question: "Můžu ze spořícího účtu přímo platit, například v obchodě?",
+      options: ["Ano", "Ne"],
+      answer: "Ne",
     },
     {
-      question: "co dělá primárně banka s penězi z účtů?",
+      question: "Co dělá primárně banka s penězi z účtů?",
       options: [
-        "půjčuje je lidem",
-        "investuje je na trzích",
-        "vkládá je ČNB",
-        "utratí je",
+        "Půjčuje je dalším lidem",
+        "Investuje je na trzích",
+        "Ukládá je u ČNB",
+        "Utratí je",
       ],
-      answer: "vkládá je ČNB",
+      answer: "Ukládá je u ČNB",
     },
     {
-      question: "co je to dvoutýdenní repo sazba?",
+      question: "Co je to dvoutýdenní repo sazba?",
       options: [
-        "Úrkoková sazba, za kterou si centrální banka od komerčních bank půjčuje peníze",
-        "Úrkoková sazba, za kterou si komerční banky půjčují peníze od centrální banky",
-        "Úrkoková sazba, za kterou si komerční banky půjčují peníze od sebe",
-        "Úrkoková sazba, za kterou si klienti půjčují peníze od centrální banky",
+        "Úroková sazba, za kterou si centrální banka od komerčních bank půjčuje peníze",
+        "Úroková sazba, za kterou si komerční banky půjčují peníze od centrální banky",
+        "Úroková sazba, za kterou si komerční banky půjčují peníze od sebe",
+        "Úroková sazba, za kterou si klienti půjčují peníze od centrální banky",
       ],
       answer:
-        "Úrkoková sazba, za kterou si centrální banka od komerčních bank půjčuje peníze",
+        "Úroková sazba, za kterou si centrální banka od komerčních bank půjčuje peníze",
     },
     {
-      question: "jakou likviditu lze očekávat od spořících účtů?",
-      options: ["okamžitou", "vysokou", "střední", "nízkou"],
-      answer: "vysokou",
+      question: "Jakou likviditu lze očekávat od spořících účtů?",
+      options: ["Okamžitou", "Vysokou", "Střední", "Nízkou"],
+      answer: "Vysokou",
     },
     {
-      question: "jaký výnos lze očekávat od spořících účtů při 3% inflaci?",
+      question:
+        "Jaký přibližný výnos lze očekávat od spořících účtů při 3% inflaci?",
       options: ["1-2%", "2-3%", "3-4%", "4-5%"],
       answer: "1-2%",
     },
     {
-      question: "je repo sazba větší než úroková míra na spořícím účtu?",
-      options: ["ano", "ne"],
-      answer: "ano",
+      question: "Je repo sazba větší než úroková míra na spořícím účtu?",
+      options: ["Ano", "Ne"],
+      answer: "Ano",
     },
     {
       question:
-        "v roce 2024 byla v prvním čtvrtletí inflace 3%, i tak byly výnosy z úroků na spořících účtech větší než inflace (4-5%). Jak je to možné?",
+        "V roce 2024 byla v prvním čtvrtletí inflace 3%, i tak byly výnosy z úroků na spořicích účtech větší než inflace (4-5%). Jak je to možné?",
       options: [
-        "inflace byla v předchozích dvou letech velmi vysoká, úroky na spořícím účtu reagují se zpožděním",
-        "banky potřebovaly získat klienty, takže nabídly vyšší úrokové sazby",
-        "úroky na spořícím účtu jsou běžně vyšší než inflace",
-        "spořící účty jsou závislé na jiných faktorech než inflace",
+        "Inflace byla v předchozích dvou letech velmi vysoká, úroky na spořicím účtu reagují se zpožděním",
+        "Banky potřebovaly získat klienty, takže nabídly vyšší úrokové sazby",
+        "Úroky na spořicím účtu jsou běžně vyšší než inflace",
+        "Spořící účty jsou závislé na jiných faktorech než inflace",
       ],
       answer:
-        "inflace byla v předchozích dvou letech velmi vysoká, úroky na spořícím účtu reagují se zpožděním",
+        "Inflace byla v předchozích dvou letech velmi vysoká, úroky na spořicím účtu reagují se zpožděním",
     },
     {
-      question: "do jaké částky je pojištěný vklad na spořících účtech",
+      question:
+        "Do jaké částky je pojištěný vklad na spořicích a běžných účtech u jedné banky",
       options: ["1 000 000 Kč", "50 000 €", "2 000 000 Kč", "100 000 €"],
       answer: "100 000 €",
     },
     {
       question: "Snižuje se úrok na spořících účtech s vloženou částkou?",
       options: [
-        "ano, přímo úměrně vložené částce",
-        "ano, úměrně smluvně daným úrokovým pásmům",
-        "ne, úrok je vždy stejný",
-        "ne, úrok se zvyšuje s vloženou částkou",
+        "Ano, přímo úměrně vložené částce",
+        "Ano, úměrně smluvně daným úrokovým pásmům",
+        "Ne, úrok je vždy stejný",
+        "Ne, úrok se zvyšuje s vloženou částkou",
       ],
-      answer: "ano, úměrně smluvně daným úrokovým pásmům",
+      answer: "Ano, úměrně smluvně daným úrokovým pásmům",
     },
     {
       question:
@@ -112,21 +114,21 @@ export const Questions = {
     },
     {
       question: "Je zpravidla povinný minimální vklad na spořící účet?",
-      options: ["ano", "ne"],
-      answer: "ne",
+      options: ["Ano", "Ne"],
+      answer: "Ne",
     },
     {
-      question: "Pro tvorbu jaké rezervy je spořící účet vhodný?",
+      question: "Pro tvorbu jakého typu rezervy je spořící účet vhodný?",
       options: [
-        "rezervy na nečekané krátkodobé výdaje",
-        "dlouhodobé finanční rezervy",
-        "rezervy na důchod",
-        "rezervy na investice",
+        "Rezervy na nečekané krátkodobé výdaje",
+        "Dlouhodobé finanční rezervy",
+        "Rezervy na důchod",
+        "Rezervy na investice",
       ],
-      answer: "rezervy na nečekané krátkodobé výdaje",
+      answer: "Rezervy na nečekané krátkodobé výdaje",
     },
     {
-      question: "na co se zpravidla využívá krátkodobá rezerva?",
+      question: "Na co se zpravidla využívá krátkodobá rezerva?",
       options: [
         "Drobnější opravy domu či auta, náhrada domácích spotřebičů",
         "Nákup nemovitosti",
@@ -136,7 +138,8 @@ export const Questions = {
       answer: "Drobnější opravy domu či auta, náhrada domácích spotřebičů",
     },
     {
-      question: "Jaký je zpravidla doporučený objem krátkodobé rezervy?",
+      question:
+        "Jaký je zpravidla doporučený objem krátkodobé rezervy v závislosti na výdajích daného člověka?",
       options: [
         "1-2 měsíčních výdajů",
         "3-6 měsíčních výdajů",
@@ -147,9 +150,9 @@ export const Questions = {
     },
     {
       question:
-        "Jak dobře můžu dostat peníze ze spořáku na běžný účet ve stejné bance?",
-      options: ["okamžitě", "do 1 dne", "do 3 dnů", "do 1 týdne"],
-      answer: "okamžitě",
+        "Za jak dlouhou dobu je možné získat peníze ze spořícího účtu v podobě hotovosti ?",
+      options: ["Okamžitě", "Do 1 dne", "Do 3 dnů", "Do 1 týdne"],
+      answer: "Okamžitě",
     },
     {
       question:
@@ -164,7 +167,7 @@ export const Questions = {
     },
     {
       question:
-        "Poradce doporučí klientovi, aby pohotová finanční rezerva, zůstatek na běžném či spořicím účtu, kterým může klient krýt výpadek příjmů, byla alespoň:",
+        "Finanční poradce doporučí klientovi, aby pohotová finanční rezerva, zůstatek na běžném či spořicím účtu, kterým může klient krýt výpadek příjmů, byla alespoň:",
       options: [
         "Přibližně 6× průměrného příjmu",
         "Přibližně 12× průměrného příjmu",
@@ -176,101 +179,101 @@ export const Questions = {
     {
       question: "Jaký je rozdíl mezi spořením a investováním?",
       options: [
-        "Při investic vystavuji peníze riziku ztráty, u spoření ne",
-        "spoření a investování mají stejný význam",
-        "investování je jen pro bohaté, spoření pro běžné lidi",
-        "spoření je více ovlivněno krizemi finančního trhu",
+        "Při investování vystavuji peníze riziku ztráty, u spoření ne",
+        "Spoření a investování mají stejný význam",
+        "Investování je jen pro bohaté, spoření pro běžné lidi",
+        "Spoření je více ovlivněno krizemi finančního trhu",
       ],
-      answer: "Při investic vystavuji peníze riziku ztráty, u spoření ne",
+      answer: "Při investování vystavuji peníze riziku ztráty, u spoření ne",
     },
     {
       question:
         "Tomáš uložil na spořící účet 4 000 000 korun, proč to není nejlepší rozhodnutí?",
       options: [
-        "zhodnocení vysoké částky je mizerné, vklad je pojištěný jen do 100 000 €",
-        "spořící účet není bezpečný",
-        "více peněz na účtu znamená vyšší poplatky",
-        "peníze ze spořícího účtu je těžké vybrat",
+        "Zhodnocení vysoké částky je mizerné, vklad je pojištěný jen do 100 000 €",
+        "Spořící účet není bezpečný",
+        "Více peněz na účtu znamená vyšší poplatky",
+        "Peníze ze spořícího účtu je těžké vybrat",
       ],
       answer:
-        "zhodnocení vysoké částky je mizerné, vklad je pojištěný jen do 100 000 €",
+        "Zhodnocení vysoké částky je mizerné, vklad je pojištěný jen do 100 000 €",
     },
     {
       question: "Jak může vypadat podmíněný úrok na spořícím účtu?",
       options: [
-        "takovou možnost banky nenabízí",
-        "klient musí několikrát za měsíc použít kartu běžnoho účtu stejné banky",
-        "klient musí mít na účtu minimální zůstatek",
-        "klient musí vložit minimální částku",
+        "Takovou možnost banky nenabízí",
+        "Klient musí několikrát za měsíc použít kartu běžného účtu stejné banky",
+        "Klient musí mít na účtu minimální zůstatek",
+        "Klient musí vložit minimální částku",
       ],
       answer:
-        "klient musí několikrát za měsíc použít kartu běžného účtu stejné banky",
+        "Klient musí několikrát za měsíc použít kartu běžného účtu stejné banky",
     },
     {
       question: "Peníze se na spořícím účtu zpravidla neúročí: ",
-      options: ["denně", "týdně", "měsíčně", "čtvrtletně"],
-      answer: "týdně",
+      options: ["Denně", "Týdně", "Měsíčně", "Čtvrtletně"],
+      answer: "Týdně",
     },
     {
-      question: "jak se dá vyhnout snižování úroky vlivem úrokových pásem?",
+      question: "Jak se dá vyhnout snižování úroky vlivem úrokových pásem?",
       options: [
-        "vkládat peníze postupně",
-        "vkládat peníze najednou",
-        "rozložit peníze na účty u více bank",
-        "snižování úroků se nelze vyhnout",
+        "Vkládat peníze postupně",
+        "Vkládat peníze najednou",
+        "Rozložit peníze na účty u více bank",
+        "Snižování úroků se nelze vyhnout",
       ],
-      answer: "rozložit peníze na účty u více bank",
+      answer: "Rozložit peníze na účty u více bank",
     },
     {
-      question: "můžu vybrat peníze ze spořícího účtu z bankomatu?",
+      question: "Můžu vybrat peníze ze spořícího účtu z bankomatu?",
       options: [
-        "ano, ale jen z bankomatu stejné banky",
-        "ano, z libovolného bankomatu, když zaplatím poplatek",
-        "ano, ale jen na pobočce",
-        "ne, musím si je poslat na běžný účet",
+        "Ano, ale jen z bankomatu stejné banky",
+        "Ano, z libovolného bankomatu, když zaplatím poplatek",
+        "Ano, ale jen na pobočce",
+        "Ne, musím si je poslat na běžný účet",
       ],
-      answer: "ne, musím si je poslat na běžný účet",
+      answer: "Ne, musím si je poslat na běžný účet",
     },
     {
       question: "Můžu mít na spořícím účtu peníze v cizí měně?",
       options: [
-        "ano, ale jen v měnách stanovených bankou",
-        "ano, v jakékoli měně",
-        "ano, ale jen v eurech",
-        "ne, jen v korunách",
+        "Ano, ale jen v měnách stanovených bankou",
+        "Ano, v jakékoli měně",
+        "Ano, ale jen v eurech",
+        "Ne, jen v korunách",
       ],
-      answer: "ano, ale jen v měnách stanovených bankou",
+      answer: "Ano, ale jen v měnách stanovených bankou",
     },
     {
       question: "Jaké tvrzení o spoření v cizí měně je nepravdivé?",
       options: [
-        "úroky jsou zpravidla výrazně nižší",
-        "při platbě cizí měnou se může stát, že zaplatím více",
-        "nejčastější cizí měnou v ČR je dolar",
-        "spořící účty v cizí měně nabízí méně bank",
+        "Úroky jsou zpravidla výrazně nižší",
+        "Při platbě cizí měnou se může stát, že zaplatím více",
+        "Nejčastější cizí měnou v ČR je dolar",
+        "Spořící účty v cizí měně nabízí méně bank",
       ],
-      answer: "nejčastější cizí měnou v ČR je dolar",
+      answer: "Nejčastější cizí měnou v ČR je dolar",
     },
     {
-      question: "spořící účet se úročí zpravidla:",
+      question: "Spořící účet se úročí zpravidla:",
       options: [
-        "jednoduchým úročením",
-        "spojitým úročením",
-        "složeným úročením",
-        "harmonickým úročením",
+        "Jednoduchým úročením",
+        "Spojitým úročením",
+        "Složeným úročením",
+        "Harmonickým úročením",
       ],
-      answer: "složeným úročením",
+      answer: "Složeným úročením",
     },
     {
-      question: "co je to mínusový úrok na spořícím účtu?",
+      question: "Co je to mínusový úrok na spořícím účtu?",
       options: [
-        "některé banky úročí peníze, které jsou fiksované v odchozích platebních příkazech, tyto úroky pak strhnou další měsíc",
-        "u vysokých částek banky dávají zpravidla mínusový úrok",
-        "banka si účtuje poplatek za vedení účtu",
-        "banka může účtovat záporný úrok, než si klienta prověří",
+        "Některé banky úročí peníze, které jsou fixované v odchozích platebních příkazech, tyto úroky pak strhnou další měsíc",
+        "U vysokých částek banky dávají zpravidla mínusový úrok",
+        "Banka si účtuje poplatek za vedení účtu",
+        "Banka může účtovat záporný úrok, než si klienta prověří",
       ],
       answer:
-        "některé banky úročí peníze, které jsou fiksované v odchozích platebních příkazech, tyto úroky pak strhnou další měsíc",
+        "Některé banky úročí peníze, které jsou fixované v odchozích platebních příkazech, tyto úroky pak strhnou další měsíc",
     },
     {
       question: "Od kolika let můžu mít spořící účet?",
@@ -280,24 +283,25 @@ export const Questions = {
   ],
   buildigSaving: [
     {
-      question: "Překoná stavební spoření zpravidla inflaci?",
-      options: ["ano", "ne"],
-      answer: "ne",
+      question:
+        "Překoná zhodnocení na stavebním spoření zpravidla inflaci (bez státní podpory)?",
+      options: ["Ano", "Ne"],
+      answer: "Ne",
     },
     {
       question: "Jakou lze us stavebního spoření očekávat likviditu?",
-      options: ["okamžitou", "vysokou", "střední", "nízkou"],
-      answer: "nízkou",
+      options: ["Okamžitou", "Vysokou", "Střední", "Nízkou"],
+      answer: "Nízkou",
     },
     {
       question: "Jaký z následujících produktů je nejméně rizikový",
       options: [
-        "nemovitostní fond",
-        "stavební spoření",
-        "korporátní dluhopisový fond",
-        "akciový fond",
+        "Nemovitostní fond",
+        "Stavební spoření",
+        "Korporátní dluhopisový fond",
+        "Akciový fond",
       ],
-      answer: "stavební spoření",
+      answer: "Stavební spoření",
     },
     {
       question: "Do jaké částky je pojištěný vklad na stavebním spoření?",
@@ -307,48 +311,48 @@ export const Questions = {
     {
       question: "Na co můžu použít peníze ze stavebního pojištění?",
       options: [
-        "pouze na koupi nemovitosti",
-        "na cokoliv, co si přeji",
-        "pouze na rekonstrukci nemovitosti",
-        "na koupi nebo rekonstrukci nemovitosti",
+        "Pouze na koupi nemovitosti",
+        "Na cokoliv, co si přeji",
+        "Pouze na rekonstrukci nemovitosti",
+        "Na koupi nebo rekonstrukci nemovitosti",
       ],
-      answer: "na cokoliv, co si přeji",
+      answer: "Na cokoliv, co si přeji",
     },
     {
-      question: "jaké jsou výhody stavebního spoření?",
+      question: "Jaké jsou výhody stavebního spoření?",
       options: [
-        "nízké riziko, státní podpora, možnost využití na cokoliv, daňová odečitatelnost",
-        "nízké riziko, státní podpora, možnost využití na cokoliv, vysoký výnos",
-        "daňová odečitatelnost, státní podpora, možnost využití na cokoliv, vysoký výnos",
-        "nízké riziko, vysoký výnos, daňová odečitatelnost",
+        "Nízké riziko, státní podpora, možnost využití na cokoliv, daňová odečitatelnost",
+        "Nízké riziko, státní podpora, možnost využití na cokoliv, vysoký výnos",
+        "Daňová odečitatelnost, státní podpora, možnost využití na cokoliv, vysoký výnos",
+        "Nízké riziko, vysoký výnos, daňová odečitatelnost",
       ],
       answer:
-        "nízké riziko, státní podpora, možnost využití na cokoliv, daňová odečitatelnost",
+        "Nízké riziko, státní podpora, možnost využití na cokoliv, daňová odečitatelnost",
     },
     {
-      question: "je stavební spoření časově vázané?",
-      options: ["ano", "ne, mohu si kdykoliv vybrat peníze bez postihu"],
-      answer: "ano",
+      question: "Je stavební spoření časově vázané?",
+      options: ["Ano", "Ne, mohu si kdykoliv vybrat peníze bez postihu"],
+      answer: "Ano",
     },
     {
-      question: "jaká je zpravidla vázací doba stavebního spoření?",
-      options: ["4 rkoy", "6 let", "8 let", "10 let"],
+      question: "Jaká je zpravidla vázací doba stavebního spoření?",
+      options: ["4 roky", "6 let", "8 let", "10 let"],
       answer: "6 let",
     },
     {
       question:
         "Co se stane, když si peníze ze stavebního spoření vyberu dříve?",
       options: [
-        "ztratím státní podporu",
-        "musím zaplatit daň",
-        "musím zaplatit pokutu",
-        "nic, peníze si můžu kdykoliv vybrat",
+        "Ztratím státní podporu",
+        "Musím zaplatit daň",
+        "Musím zaplatit pokutu",
+        "Nic, peníze si můžu kdykoliv vybrat",
       ],
-      answer: "ztratím státní podporu",
+      answer: "Ztratím státní podporu",
     },
     {
       question: "Jak vysoký je maximální státní příspěvek na stavební spoření?",
-      options: ["1000 Kč", "2000 Kč", "3000 Kč", "4000 Kč"],
+      options: ["1000 Kč", "2000 Kč", "3500 Kč", "4000 Kč"],
       answer: "1000 Kč",
     },
     {
@@ -382,12 +386,12 @@ export const Questions = {
     {
       question: "Proč stát oficiálně primárně přispívá na stavební spoření?",
       options: [
-        "aby podpořil mladé lidi ve vlastnictví nemovitosti a spoření",
-        "aby podpořil stavební průmysl",
-        "aby podpořil banky",
-        "aby podpořil nemovitostní fondy",
+        "Aby podpořil mladé lidi ve vlastnictví nemovitosti a spoření",
+        "Aby podpořil stavební průmysl",
+        "Aby podpořil banky",
+        "Aby podpořil nemovitostní fondy",
       ],
-      answer: "aby podpořil mladé lidi ve vlastnictví nemovitosti",
+      answer: "Aby podpořil mladé lidi ve vlastnictví nemovitosti",
     },
     {
       question: "Stát snižuje příspěvek na stavební spoření, protože:",
@@ -419,34 +423,34 @@ export const Questions = {
     {
       question: "Musím na stavební spoření posílat peníze pravidelně?",
       options: [
-        "ano, každý měsíc musím poslat stejnou částku",
-        "ano, každý měsíc musím poslat alespoň minimální částku",
-        "ne, mohu posílat peníze kdykoliv uznám za vhodné",
-        "záleží na bance, některé mají povinnost měsíčního vkladu, jiné ne",
+        "Ano, každý měsíc musím poslat stejnou částku",
+        "Ano, každý měsíc musím poslat alespoň minimální částku",
+        "Ne, mohu posílat peníze kdykoliv uznám za vhodné",
+        "Záleží na bance, některé mají povinnost měsíčního vkladu, jiné ne",
       ],
       answer:
-        "záleží na bance, některé mají povinnost měsíčního vkladu, jiné ne",
+        "Záleží na bance, některé mají povinnost měsíčního vkladu, jiné ne",
     },
     {
       question: "Má stavební spoření úroková pásma?",
       options: [
-        "ano, ale úrok klesá pomaleji, než u spořícího účtu",
-        "ne, úrok zůstává stejný",
-        "ano, jako spořící účet",
-        "ano, ale úrok klesá rychleji, než u spořícího účtu",
+        "Ano, ale úrok klesá pomaleji, než u spořícího účtu",
+        "Ne, úrok zůstává stejný",
+        "Ano, jako spořící účet",
+        "Ano, ale úrok klesá rychleji, než u spořícího účtu",
       ],
-      answer: "ne, úrok zůstává stejný",
+      answer: "Ne, úrok zůstává stejný",
     },
     {
       question: "Co je to druhá fáze stavebního spoření?",
       options: [
-        "fáze, kdy klient splácí státní podporu zpět státu",
-        "fáze, kdy klient využívá návazný produkt nemovitostního fondu",
-        "fáze úvěru, kdy si klient může půjčit peníze na nemovitost či rekonstrukci za výhodnějších podmínek",
-        "fáze žádosti o státní příspěvek na koupi či rekonstrukci nemovitosti",
+        "Fáze, kdy klient splácí státní podporu zpět státu",
+        "Fáze, kdy klient využívá návazný produkt nemovitostního fondu",
+        "Fáze úvěru, kdy si klient může půjčit peníze na nemovitost či rekonstrukci za výhodnějších podmínek",
+        "Fáze žádosti o státní příspěvek na koupi či rekonstrukci nemovitosti",
       ],
       answer:
-        "fáze úvěru, kdy si klient může půjčit peníze na nemovitost či rekonstrukci za výhodnějších podmínek",
+        "Fáze úvěru, kdy si klient může půjčit peníze na nemovitost či rekonstrukci za výhodnějších podmínek",
     },
     {
       question: "Musí klient využít druhou fázi stavebního spoření?",
@@ -456,33 +460,33 @@ export const Questions = {
     {
       question: "V úverové fázi stavebního spoření rozlišujeme:",
       options: [
-        "řádný a překlenovací úvěr",
-        "spotřebitelský a hypoteční úvěr",
-        "bankovní a nebankovní úvěr",
-        "rekonstrukční a stavební úvěr",
+        "Řádný a překlenovací úvěr",
+        "Spotřebitelský a hypoteční úvěr",
+        "Bankovní a nebankovní úvěr",
+        "Rekonstrukční a stavební úvěr",
       ],
-      answer: "řádný a překlenovací úvěr",
+      answer: "Řádný a překlenovací úvěr",
     },
     {
       question: "Co je to řádný úvěr stavebního spoření?",
       options: [
-        "úvěr, který si klient bere až po ukončení stavebního spoření",
-        "úvěr, který nepřesahuje částku naspořenou klientem",
-        "úvěr, který je vázán minimálně na 10 let",
-        "úvěr, který má úrokovou sazbu nižší než 5%",
+        "Úvěr, který si klient bere až po ukončení stavebního spoření",
+        "Úvěr, který nepřesahuje částku naspořenou klientem",
+        "Úvěr, který je vázán minimálně na 10 let",
+        "Úvěr, který má úrokovou sazbu nižší než 5%",
       ],
-      answer: "úvěr, který si klient bere až po ukončení stavebního spoření",
+      answer: "Úvěr, který si klient bere až po ukončení stavebního spoření",
     },
     {
       question: "Co je to překlenovací úvěr stavebního spoření?",
       options: [
-        "úvěr, který si klient bere před ukončením stavebního spoření a doplácí jím zbývající částku",
-        "úvěr, který přesahuje částku naspořenou klientem",
-        "úvěr, který je vázán na méně než 10 let",
-        "úvěr, který má úrokovou sazbu vyšší než 5%",
+        "Úvěr, který si klient bere před ukončením stavebního spoření a doplácí jím zbývající částku",
+        "Úvěr, který přesahuje částku naspořenou klientem",
+        "Úvěr, který je vázán na méně než 10 let",
+        "Úvěr, který má úrokovou sazbu vyšší než 5%",
       ],
       answer:
-        "úvěr, který si klient bere před ukončením stavebního spoření a doplácí jím zbývající částku",
+        "Úvěr, který si klient bere před ukončením stavebního spoření a doplácí jím zbývající částku",
     },
     {
       question:
@@ -512,7 +516,7 @@ export const Questions = {
         "Individuální spoření na nemovitost nebylo v socialistickém systému podporováno",
     },
     {
-      question: "Kolik je sjednaných stavebních spořění v ČR?",
+      question: "Kolik je sjednaných stavebních spoření v ČR?",
       options: [
         "Asi 1 milion",
         "Asi 2 miliony",
@@ -522,7 +526,7 @@ export const Questions = {
       answer: "Asi 3 miliony",
     },
     {
-      question: "Jak jsou daněny výnosy ze stavebního spoření?",
+      question: "Jak jsou zdaněny výnosy ze stavebního spoření?",
       options: [
         "Výnosy jsou osvobozeny od daně",
         "5% daň z výnosů",
@@ -545,12 +549,12 @@ export const Questions = {
     {
       question: "Dostávám státní podporu i v úrokové fázi stavebního spoření?",
       options: [
-        "ano, ale sníženou na polovinu",
-        "ano, v plné výši",
-        "ne",
-        "záleží na bance",
+        "Ano, ale sníženou na polovinu",
+        "Ano, v plné výši",
+        "Ne",
+        "Záleží na bance",
       ],
-      answer: "ne",
+      answer: "Ne",
     },
     {
       question:
@@ -717,13 +721,13 @@ export const Questions = {
         "Jednorázový vklad má zpravidla vyšší likviditu, revolvingový nižší",
       ],
       answer:
-        "Jednorázový vkla se vybere po skončení vázací lhůty, revolvingový se po stanovené lhůtě obnoví, pokud ho klient nevybere",
+        "Jednorázový vklad se vybere po skončení vázací lhůty, revolvingový se po stanovené lhůtě obnoví, pokud ho klient nevybere",
     },
     {
       question:
         "Jaký je rozdíl mezi fixním a variabilním úročením termínovaného vkladu?",
       options: [
-        "Fixní úrok je základí úrok, variabilní je bonusový",
+        "Fixní úrok je základní úrok, variabilní je bonusový",
         "Fixní úrok je základní úrok, variabilní je úrok z výnosu",
         "Fixní úrok je likvidní, variabilní je spořící",
         "Fixní úrok je po celou dobu neměnný, variabilní se mění s aktuální situací na trhu",
@@ -1009,12 +1013,12 @@ export const Questions = {
         "Co se stane, pokud klient vybere peníze z doplňkového penzijního spoření předčasně ale po 2 letech?",
       options: [
         "Přijde o státní příspěvek a zaplatí daň z příjmu 15 %",
-        "Přijde o státní příspěvek a zaplatí daň z příjmu na výnosech a posledních 10 let přípěvků od zaměstnavatele",
+        "Přijde o státní příspěvek a zaplatí daň z příjmu na výnosech a posledních 10 let příspěvků od zaměstnavatele",
         "Přijde o státní příspěvek, peníze od zaměstnavatele i připsané úroky",
         "Přijde pouze o státní příspěvek",
       ],
       answer:
-        "Přijde o státní příspěvek a zaplatí daň z příjmu na výnosech a posledních 10 let přípěvků od zaměstnavatele",
+        "Přijde o státní příspěvek a zaplatí daň z příjmu na výnosech a posledních 10 let příspěvků od zaměstnavatele",
     },
     {
       question:
@@ -1129,7 +1133,7 @@ export const Questions = {
         "Extrémně nízkou likviditu, vyšší výnos a vyšší rizikovost",
         "Extrémně nízkou, nižší výnos a nižší rizikovost",
         "Extrémně vysokou likviditu, vyšší výnos a nižší rizikovost",
-        "Extrémně vysookou likviditu, nižší výnos a vyšší rizikovost",
+        "Extrémně vysokou likviditu, nižší výnos a vyšší rizikovost",
       ],
       answer: "Extrémně nízkou likviditu, vyšší výnos a vyšší rizikovost",
     },
@@ -1147,7 +1151,7 @@ export const Questions = {
     {
       question: "Může penzijní spoření překonat inflaci?",
       options: [
-        "Ano, penzijní spoření zpravidla přesahuje inflaci",
+        "Ano, penzijní spoření zpravidla překonává inflaci",
         "Ano, pokud je zvolen rizikovější fond",
         "Ne, penzijní spoření přesahuje inflaci jen velmi výjimečně",
         "Ne, penzijní spoření je nižší než inflace",
@@ -1180,15 +1184,15 @@ export const Questions = {
     {
       question: "Jaký je rozdíl mezi spořením a investováním?",
       options: [
-        "spoření a investování mají stejný význam",
-        "investování je jen pro bohaté, spoření pro běžné lidi",
-        "spoření je více ovlivněno krizemi finančního trhu",
+        "Spoření a investování mají stejný význam",
+        "Investování je jen pro bohaté, spoření pro běžné lidi",
+        "Spoření je více ovlivněno krizemi finančního trhu",
         "Při investic vystavuji peníze riziku ztráty, u spoření ne",
       ],
       answer: "Při investic vystavuji peníze riziku ztráty, u spoření ne",
     },
     {
-      question: "Fondy kolektivního investování rozumíme:",
+      question: "Fondy kolektivního investování rozumíme: ",
       options: [
         "Neregulované majetkové fondy",
         "Přísně regulované a dozorované fondy určené pro širokou veřejnost",
@@ -1210,7 +1214,7 @@ export const Questions = {
         "Fond kolektivního investování sdružuje peníze od investorů a investuje je do různých aktiv",
     },
     {
-      question: "Jaké z následujících tvrzení o vstupních poplacích neplatí?",
+      question: "Jaké z následujících tvrzení o vstupních poplatcích neplatí?",
       options: [
         "Je hrazen investorem nakupujícím podílové listy či akcie fondu.",
         "Nesmí být účtován distributorem fondu vyšší než připouští statut fondu.",
@@ -1244,8 +1248,8 @@ export const Questions = {
     {
       question: "Co je to pasivní správa fondu?",
       options: [
-        "Forma sprývy fondu, kdy správce nakupujepouze stabilní aktiva",
-        "Forma sprývy fondu, kdy je fond spravován na základě algoritmu",
+        "Forma správy fondu, kdy správce nakupuje pouze stabilní aktiva",
+        "Forma správy fondu, kdy je fond spravován na základě algoritmu",
         "Forma správy fondu, kdy správce nemusí informovat investory o změnách v portfoliu",
         "Forma správy fondu, kdy správce zpravidla nemění složení portfolia",
       ],
@@ -1277,13 +1281,13 @@ export const Questions = {
     {
       question: "Ukazatel SRRI vyjadřuje:",
       options: [
-        "Odpověď A Na stupnici 1 - 10 likviditu fondu vycházející z historické volatility fondu",
-        "Odpověď B Na stupnici 1 - 10 rizikovost fondu vycházející z jeho historické volatility.",
-        "Odpověď C Na stupnici 1 - 7 rizikovost fondu vycházející z jeho zařazení do definovaných sedmi tříd aktiv.",
-        "Odpověď D Na stupnici 1 - 7 rizikovost fondu vycházející z jeho historické volatility.",
+        "Na stupnici 1 - 10 likviditu fondu vycházející z historické volatility fondu",
+        "Na stupnici 1 - 10 rizikovost fondu vycházející z jeho historické volatility.",
+        "Na stupnici 1 - 7 rizikovost fondu vycházející z jeho zařazení do definovaných sedmi tříd aktiv.",
+        "Na stupnici 1 - 7 rizikovost fondu vycházející z jeho historické volatility.",
       ],
       answer:
-        "Odpověď D Na stupnici 1 - 7 rizikovost fondu vycházející z jeho historické volatility.",
+        "Na stupnici 1 - 7 rizikovost fondu vycházející z jeho historické volatility.",
     },
     {
       question:
@@ -1347,12 +1351,12 @@ export const Questions = {
       question:
         "Na tvorbu jaké finanční rezervy je vhodný fond kolektivního investování?",
       options: [
-        "krátkodovou",
-        "střednědobou",
-        "dlouhodobou",
-        "na okamžité utrácení",
+        "Krátkodobé",
+        "Střednědobé",
+        "Dlouhodobé",
+        "Na okamžité utrácení",
       ],
-      answer: "dlouhodobou",
+      answer: "Dlouhodobé",
     },
     {
       question:
@@ -1432,34 +1436,34 @@ export const Questions = {
         "Dluhopisů s kreditním ratingem ve spekulativní části ratingové stupnice.",
     },
     {
-      question: "Jaký fond z výběru bude mít nevětší volatilitu?",
+      question: "Jaký fond z výběru bude mít největší volatilitu?",
       options: [
-        "fond peněžního trhu",
-        "akciový fond",
-        "fond drahých kovů",
-        "dluhopisový fond",
+        "Fond peněžního trhu",
+        "Akciový fond",
+        "Fond drahých kovů",
+        "Dluhopisový fond",
       ],
-      answer: "akciový fond",
+      answer: "Akciový fond",
     },
     {
-      question: "Jaký fond z výběru bude mít nevětší riziko?",
+      question: "Jaký fond z výběru bude mít největší riziko?",
       options: [
-        "fond peněžního trhu",
-        "akciový fond",
-        "fond Bitcoin ETF",
-        "dluhopisový fond",
+        "Fond peněžního trhu",
+        "Akciový fond",
+        "Fond Bitcoin ETF",
+        "Dluhopisový fond",
       ],
-      answer: "fond Bitcoin ETF",
+      answer: "Fond Bitcoin ETF",
     },
     {
       question: "Jaký fond z výběru bude mít pravděpodobně nejvyšší výnos?",
       options: [
-        "nemovitostní fond",
-        "dluhopisový fond",
-        "fond peněžního trhu",
-        "fond dražých kovů",
+        "Nemovitostní fond",
+        "Dluhopisový fond",
+        "Fond peněžního trhu",
+        "Fond drahých kovů",
       ],
-      answer: "nemovitostní fond",
+      answer: "Nemovitostní fond",
     },
     {
       question: "Jaký fond z výběru bude mít zpravidla nejvyšší poplatky?",
@@ -1595,12 +1599,12 @@ export const Questions = {
     },
     {
       question:
-        "Do jaké celkové částky odprodejů investičních aktiv nemusí poplatník danit?",
+        "Do jaké celkové částky odprodejů investičních aktiv během kalendářního roku nemusí poplatník danit?",
       options: ["100 000 Kč", "200 000 Kč", "500 000 Kč", "1 000 000 Kč"],
       answer: "100 000 Kč",
     },
     {
-      question: "Co je to tzv. tříletý test?",
+      question: "Co je to tzv. časový test?",
       options: [
         "Povinnost doložit při nákupu fondu, že investor má dostatečné finanční prostředky minimálně na tři roky nákupů dopředu",
         "Pravidlo, dle kterého je vhodnější investovat do fondu, který má minimálně tříletou historii",
@@ -1623,7 +1627,7 @@ export const Questions = {
     },
     {
       question:
-        "Jaká z následujících osob či institucí provádí investiční rozhodnutí v rámcích fondu?",
+        "Jaká z následujících osob či institucí provádí investiční rozhodnutí v rámci fondu?",
       options: [
         "Manažer fondu",
         "Správce fondu",
@@ -1645,7 +1649,7 @@ export const Questions = {
     },
     {
       question:
-        "Mezi základní součásti řídicího a kontrolního systému obhospodařovatele investičního fondu nepatří:",
+        "Mezi základní součásti řídícího a kontrolního systému obhospodařovatele investičního fondu nepatří:",
       options: [
         "Strategické a operativní řízení",
         "Systém řízení rizik",
@@ -1750,7 +1754,7 @@ export const Questions = {
         "Povinné platby státu nebo místním orgánům na financování veřejných služeb",
     },
     {
-      question: "co je to inflace?",
+      question: "Co je to inflace?",
       options: [
         "Pokles cen zboží a služeb v ekonomice, který snižuje kupní sílu peněz",
         "Růst cen zboží a služeb v ekonomice, který snižuje kupní sílu peněz",
@@ -1832,7 +1836,7 @@ export const Questions = {
       options: [
         "Pouze na množství peněz, které jsem půjčil",
         "Na úrokové míře, úročené částce, způsobu úročení a čase",
-        "Na počtu vkladů, výšce vkladu a likviditě vkladu",
+        "Na počtu vkladů, výši vkladu a likviditě vkladu",
         "Na výšce úrokové sazby a měně, ve které je vklad uložen",
       ],
       answer: "Na úrokové míře, úročené částce, způsobu úročení a čase",
@@ -1875,7 +1879,7 @@ export const Questions = {
       options: [
         "Investiční fond",
         "Spořící účet s průběžným úročením",
-        "Stavební spoření s nízkorizikoovým výnosem",
+        "Stavební spoření s nízkorizikovým výnosem",
         "Termínovaný vklad s průběžnou platbou úroků na běžný účet",
       ],
       answer: "Termínovaný vklad s průběžnou platbou úroků na běžný účet",
@@ -1954,7 +1958,7 @@ export const Questions = {
         "Druhá možnost je o 9 % výhodnější, než první",
         "Druhá možnost je o 10 % výhodnější než první",
         "Druhá možnost je o 22 % výhodnější, než první",
-        "Druhá možnost je o 31 % výdhonější, než první",
+        "Druhá možnost je o 31 % výhodnější, než první",
       ],
       answer: "Druhá možnost je o 31 % výhodnější, než první",
     },
@@ -1966,11 +1970,11 @@ export const Questions = {
     },
     {
       question:
-        "Akcie roste v průměru o 10% ročně. Jak vysoký je její průměrný pětiletů růst?",
+        "Akcie roste v průměru o 10% ročně. Jak vysoký je její průměrný pětiletý růst?",
       options: [
         "0,1 × 5 = 50 %",
         "1,1^5 - 1 = 61 %",
-        "1,1 × 0,5  = 55 %",
+        "1,1 × 0,5 = 55 %",
         "1,1^5 = 161 %",
       ],
       answer: "1,1^5 - 1 = 61 %",
@@ -2018,21 +2022,6 @@ export const Questions = {
       ],
       answer: "Spoření s průběžným vkladem",
     },
-    {
-      question: "Jaký je vzorec pro výpočet součtu geometrické posloupnosti?",
-      options: ["", "", "", ""],
-      answer: "",
-    },
-    {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
-    },
-    {
-      question: "",
-      options: ["", "", "", ""],
-      answer: "",
-    },
   ],
   financeLiteracy: [
     {
@@ -2048,8 +2037,8 @@ export const Questions = {
     {
       question:
         "Jaká z následujících částí se běžně neuvádí jako součást finanční gramotnosti?",
-      options: ["peněžní", "investiční", "cenová", "rozpočtová"],
-      answer: "investiční",
+      options: ["Peněžní", "Investiční", "Cenová", "Rozpočtová"],
+      answer: "Investiční",
     },
     {
       question: "Proč existují peníze?",
@@ -2063,7 +2052,7 @@ export const Questions = {
     },
     {
       question:
-        "Jaká z hodnot je nejvíc spojená s vlastnictvním peněz z pohledu finanční gramotnosti?",
+        "Jaká z hodnot je nejvíc spojená s vlastnictvím peněz z pohledu finanční gramotnosti?",
       options: ["Nezávislost", "Moc", "Rovnost", "Bezpečí"],
       answer: "Nezávislost",
     },
@@ -2130,9 +2119,9 @@ export const Questions = {
       question: "Jaký je rozdíl mezi spořením a investováním?",
       options: [
         "Při investic vystavuji peníze riziku ztráty, u spoření ne",
-        "spoření a investování mají stejný význam",
-        "investování je jen pro bohaté, spoření pro běžné lidi",
-        "spoření je více ovlivněno krizemi finančního trhu",
+        "Spoření a investování mají stejný význam",
+        "Investování je jen pro bohaté, spoření pro běžné lidi",
+        "Spoření je více ovlivněno krizemi finančního trhu",
       ],
       answer: "Při investic vystavuji peníze riziku ztráty, u spoření ne",
     },
@@ -2142,7 +2131,7 @@ export const Questions = {
       answer: "Obvykle ne",
     },
     {
-      question: "Co jsou to nízké a vysoké časoové preference?",
+      question: "Co jsou to nízké a vysoké časové preference?",
       options: [
         "Preferování dlouhých a krátkých časových horizontů při investování",
         "Rozdíl mezi časem stráveným prací a volným časem",
@@ -2178,8 +2167,8 @@ export const Questions = {
       options: [
         "Člověk má tendenci odkládat rozhodnutí",
         "Člověk je smrtelný a čelí tedy omezenému času, upřednostňuje tedy okamžitou spotřebu",
-        "Člověk je víceméně racionální a vždy upřednostní budoucí spotřebu",
-        "Člověk má mensší motivaci k okamžité spotřebě než k budoucí spotřebě",
+        "Člověk je víceméně racionální a vždy upřednostňuje budoucí spotřebu",
+        "Člověk má menší motivaci k okamžité spotřebě než k budoucí spotřebě",
       ],
       answer:
         "Člověk je smrtelný a čelí tedy omezenému času, upřednostňuje tedy okamžitou spotřebu",
@@ -2189,7 +2178,7 @@ export const Questions = {
         "Jak obecně souvisí míra zdanění a inflace s časovými preferencemi?",
       options: [
         "Vyšší zdanění a vyšší inflace přispívá k vysokým časovým preferencím",
-        "Vyšší zdaneění a nižší inflace přispívá k vysokým časovým preferencím",
+        "Vyšší zdanění a nižší inflace přispívá k vysokým časovým preferencím",
         "Nižší zdanění a vyšší inflace přispívá k vysokým časovým preferencím",
         "Nižší zdanění a nižší inflace přispívá k vysokým časovým preferencím",
       ],
@@ -2212,7 +2201,7 @@ export const Questions = {
       options: [
         "Protože práce mají stejnou časovou hodnotu, ale zaměstnavatel vždy určitou část této hodnoty zadrží pro sebe",
         "Platové třídy jsou nastavené vládou a zaměstnavatelé se musí řídit těmito pravidly",
-        "Náročnější záměstnání je vždy lépe placené",
+        "Náročnější zaměstnání je vždy lépe placené",
         "Protože nabídka a poptávka na trhu práce určují cenu práce",
       ],
       answer: "Protože nabídka a poptávka na trhu práce určují cenu práce",
@@ -2256,7 +2245,7 @@ export const Questions = {
     },
     {
       question:
-        "Jaká z následujícíh pozic má zpravidla nejnižší průměrný plat?",
+        "Jaká z následujících pozic má zpravidla nejnižší průměrný plat?",
       options: [
         "Daňový poradce",
         "Středoškolský pedagog",
@@ -2298,11 +2287,11 @@ export const Questions = {
       options: [
         "Den, od kterého pracující člověk po dosažení určitého věku není zatížen daněmi",
         "Den, kdy zaměstnanci neplatí sociální a zdravotní pojištění",
-        "Ukazatel, který určuje, jak dlouho z roku pracujeme pro stát, tedy daňovou zátež",
+        "Ukazatel, který určuje, jak dlouho z roku pracujeme pro stát, tedy daňovou zátěž",
         "Dny daňové svobody jsou ty dny, kdy podnikatel nemusí danit zisk",
       ],
       answer:
-        "Ukazatel, který určuje, jak dlouho z roku pracujeme pro stát, tedy daňovou zátež",
+        "Ukazatel, který určuje, jak dlouho z roku pracujeme pro stát, tedy daňovou zátěž",
     },
     {
       question: "Kdy je v České republice den daňové svobody (K roku 2024)?",
@@ -2373,7 +2362,7 @@ export const Questions = {
     {
       question: "Na co se krátkodobá rezerva zpravidla používá?",
       options: [
-        "Odkládáná peněs s vysokou likviditou pro případ velkých nečekaných nákladů",
+        "Odkládání peněz s vysokou likviditou pro případ velkých nečekaných nákladů",
         "Na koupi nového auta, rekonstrukci domácnosti či jiné středně rozsáhlé platby",
         "Na nižší nečekané výdaje, okamžité platby a pokrytí krátkého výpadku příjmů",
         "Na odkládání přebytečných finančních prostředků s vyšší likviditou na penzi",
@@ -2414,7 +2403,7 @@ export const Questions = {
     {
       question: "Na co se střednědobá rezerva zpravidla používá?",
       options: [
-        "Odkládáná peněs s vysokou likviditou pro případ velkých nečekaných nákladů",
+        "Odkládání peněz s vysokou likviditou pro případ velkých nečekaných nákladů",
         "Na koupi nového auta, rekonstrukci domácnosti či jiné středně rozsáhlé platby",
         "Na nižší nečekané výdaje, okamžité platby a pokrytí krátkého výpadku příjmů",
         "Na odkládání přebytečných finančních prostředků s vyšší likviditou na penzi",
@@ -2437,7 +2426,7 @@ export const Questions = {
       options: [
         "Střednědobá rezerva by měla tvořit hlavní položku osobních aktiv",
         "Úměrně krátkodobé finanční rezervě, ne však zbytečně moc",
-        "3 - 6 měsíčnch výdajů",
+        "3 - 6 měsíčních výdajů",
         "6 - 12 měsíčních výdajů",
       ],
       answer: "Úměrně krátkodobé finanční rezervě, ne však zbytečně moc",
@@ -2455,7 +2444,7 @@ export const Questions = {
     {
       question: "Na co se dlouhodobá rezerva zpravidla používá?",
       options: [
-        "Odkládáná peněs s vysokou likviditou pro případ velkých nečekaných nákladů",
+        "Odkládání penězŠ s vysokou likviditou pro případ velkých nečekaných nákladů",
         "Na koupi nového auta, rekonstrukci domácnosti či jiné středně rozsáhlé platby",
         "Na velké projekty jako koupě nemovitosti a k zajištění životního standardu v penzi",
         "Na odkládání přebytečných finančních prostředků s vyšší likviditou na penzi",
@@ -2478,7 +2467,7 @@ export const Questions = {
       options: [
         "Do 1 000 000 Kč, další prostředky je lepší uchovávat ve střednědobé a krátkodobé rezervě",
         "Co nejvyšší za předpokladu, že je střednědobá a krátkodobá rezerva zajištěna",
-        "12 - 24 měsíčnch výdajů",
+        "12 - 24 měsíčních výdajů",
         "24 - 48 měsíčních výdajů",
       ],
       answer:
@@ -2667,7 +2656,7 @@ export const Questions = {
         "Státní regulací",
         "Dohodou mezi velkými investory",
         "Nabídkou a poptávkou",
-        "Dle obratu eminenta",
+        "Dle obratu emitenta",
       ],
       answer: "Nabídkou a poptávkou",
     },
@@ -2683,7 +2672,7 @@ export const Questions = {
       answer: "Historie ceny produktu v jiném odvětví",
     },
     {
-      question: "Může na burzách jako NYSE obchodovat kdokoliv?",
+      question: "Může na burzách jako je například NYSE obchodovat kdokoliv?",
       options: ["Ano", "Ne"],
       answer: "Ne",
     },
@@ -2769,7 +2758,7 @@ export const Questions = {
       answer: "Nálada investorů může významně ovlivnit ceny na trhu",
     },
     {
-      question: "Jaké emoce ovlivňují investory na burze?",
+      question: "Jaké emoce nejvíce ovlivňují investory na burze?",
       options: [
         "Strach a chamtivost",
         "Lhostejnost a zájem",
@@ -2788,7 +2777,7 @@ export const Questions = {
         "Jaké riziko riziko je třeba zvážit při investování na amerických burzách oproti tuzemským?",
       options: [
         "Riziko likvidity - na amerických burzách je menší objem obchodů než na tuzemských",
-        "Riziko krachu americké ekonomiky - ekonomika USA je nestabilní a může se snadno zhroutit",
+        "Riziko krachu americké ekonomiky - ekonomika USA je předlužení a nestabilní a může se snadno zhroutit",
         "Měnové riziko - na americké burze se obchoduje v dolarech, který mění hodnotu vůči koruně",
         "Riziko vysokých poplatků - obchodování na amerických burzách je výrazně dražší než na tuzemských",
       ],

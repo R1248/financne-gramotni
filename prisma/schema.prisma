@@ -43,15 +43,16 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid())
+    id            String       @id @default(cuid())
     name          String?
-    email         String?   @unique
+    email         String?      @unique
     emailVerified DateTime?
     image         String?
-    money         Int       @default(20000)
-    age           Float     @default(18)
-    productsScore Int       @default(0)
-    theoryScore   Int       @default(0)
+    money         Int          @default(20000)
+    age           Float        @default(18)
+    productsScore Int          @default(0)
+    theoryScore   Int          @default(0)
+    worldState    WorldState[]
     products      Product[]
     accounts      Account[]
     sessions      Session[]
@@ -73,6 +74,12 @@ model Product {
     sendingAccountId   String
     user               User   @relation(fields: [userId], references: [id])
     userId             String
+}
+
+model WorldState {
+    id     String @id @default(cuid())
+    user   User   @relation(fields: [userId], references: [id])
+    userId String
 }
 
 model VerificationToken {

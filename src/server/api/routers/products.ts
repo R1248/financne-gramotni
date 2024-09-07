@@ -51,7 +51,7 @@ export const productsRouter = createTRPCRouter({
       });
     }),
 
-  createStandingOrder: protectedProcedure
+  editStandingOrder: protectedProcedure
     .input(
       z.object({
         amount: z.number(),        // Amount to be added to standingOrdersSent
@@ -92,6 +92,33 @@ export const productsRouter = createTRPCRouter({
     );
   }),
 
+  transaction: protectedProcedure.input(
+    z.object({
+      amount: z.number(),
+      productId: z.string(),
+    })
+  ).mutation(async ({ ctx, input }) => {
+    const product = await ctx.db.product.findUnique({
+      where: { id: input.productId },
+    });
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
+
+    // Update the product's money field
+    const updatedProduct = await ctx.db.product.update({
+      where: { id: input.productId },
+      data: {
+        money:
+          input.amount, 
+
+      },
+    });
+
+    return updatedProduct;
+    }),
+
   currentAccountTransaction: protectedProcedure.input(
     z.object({
       amount: z.number(),
@@ -118,5 +145,15 @@ export const productsRouter = createTRPCRouter({
     });
 
     return updatedProduct;
+  }),
+
+  closeProduct: protectedProcedure.input(
+    z.object({
+      productId: z.string(),
+    }),
+  ).mutation(async ({ ctx, input }) => {
+    await ctx.db.product.delete({
+      where: { id: input.productId },
+    });
   }),
 });
