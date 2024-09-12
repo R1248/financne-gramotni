@@ -1,7 +1,7 @@
-import { type FC, useContext } from "react";
+import { type FC, useContext, useEffect, useState } from "react";
 import { ProductsContext, UserDataContext } from "~/contexts/dataContexts";
 import { api } from "~/utils/api";
-import Portfolio from "~/components/portfolio";
+import Portfolio from "~/components/portfolio/portfolio";
 import { FcOpenedFolder } from "react-icons/fc";
 
 type InfoSidebarProps = {
@@ -12,9 +12,32 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
   const userData = useContext(UserDataContext);
   const { mutate: changeAge } = api.userData.changeAge.useMutation();
   const { mutate: transaction } = api.products.transaction.useMutation();
-  const { mutate: editStandingOrder } =
-    api.products.editStandingOrder.useMutation();
+  const { mutate: userTransaction } = api.userData.transaction.useMutation();
+  const { mutate: updateStandingOrder } =
+    api.userData.updateStandingOrder.useMutation();
+  const { mutate: deleteProduct } = api.products.deleteProduct.useMutation();
   const products = useContext(ProductsContext);
+
+  const [filledDivs, setFilledDivs] = useState<number>(0);
+  const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    const quarter = userData.age % 1;
+
+    if (quarter === 0) {
+      setShowAll(true); // Temporarily show all divs
+      setTimeout(() => {
+        setFilledDivs(0); // Remove the fill after a brief delay
+        setShowAll(false);
+      }, 500); // 500ms delay
+    } else if (quarter === 0.25) {
+      setFilledDivs(1); // Fill 1 div
+    } else if (quarter === 0.5) {
+      setFilledDivs(2); // Fill 2 divs
+    } else if (quarter === 0.75) {
+      setFilledDivs(3); // Fill 3 divs
+    }
+  }, [userData.age]);
 
   let freeMoney = 0;
   let buildingSavings = 0;
@@ -60,9 +83,29 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
         void utils.userData.getUserData.invalidate();
       },
     });
+    userTransaction({
+      sum: -3 * userData.standingOrdersSent,
+    });
+    const randomShock =
+      Math.sqrt(-2.0 * Math.log(Math.random())) *
+      Math.cos(2.0 * Math.PI * Math.random());
     products.map((product) => {
-      const i = Math.pow(1 + product.interest, 1 / 12);
+      const i = Math.pow(
+        1 + (product.interest + product.volatility * randomShock),
+        1 / 12,
+      );
       let amount;
+      let governmentSupport = 0;
+      if (product.type === "pensionSaving") {
+        product.standingOrdersRec * 12 * 0.2 > 340
+          ? (governmentSupport = 340)
+          : (governmentSupport = product.standingOrdersRec * 12 * 0.2);
+      }
+      if (product.type === "buildingSaving") {
+        product.standingOrdersRec * 12 * 0.05 > 1000
+          ? (governmentSupport = 1000)
+          : (governmentSupport = product.standingOrdersRec * 12 * 0.05);
+      }
       if (i === 1) {
         amount = product.money - product.standingOrdersSent * 3;
       } else {
@@ -70,6 +113,9 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
           product.money * Math.pow(i, 3) +
           product.standingOrdersRec * i * ((Math.pow(i, 3) - 1) / (i - 1)) -
           (product.standingOrdersSent * i * (Math.pow(i, 3) - 1)) / (i - 1);
+        if (userData.age % 1 === 0.75) {
+          amount += governmentSupport;
+        }
       }
       amount = Math.round(amount);
       transaction(
@@ -85,17 +131,33 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
         },
       );
       if (product.duration) {
-        if (product.ageCreated + product.duration === userData.age) {
-          if (product.standingOrdersRec > 0) {
-            editStandingOrder({
-              amount: product.standingOrdersRec,
-              productId: product.sendingAccountId,
-            });
-          }
-          transaction({
-            amount: product.standingOrdersRec,
-            productId: product.sendingAccountId,
+        if (
+          product.ageCreated + product.duration / 12 - 0.25 ===
+          userData.age
+        ) {
+          userTransaction(
+            {
+              sum: amount,
+            },
+            {
+              onSuccess: () => {
+                void utils.userData.getUserData.invalidate();
+              },
+            },
+          );
+          updateStandingOrder({
+            amount: -product.standingOrdersRec,
           });
+          deleteProduct(
+            {
+              productId: product.id,
+            },
+            {
+              onSuccess: () => {
+                void utils.products.getAllProducts.invalidate();
+              },
+            },
+          );
         }
       }
     });
@@ -111,8 +173,20 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
             <p className="ml-auto mr-2 text-2xl">{allMoney} Kč</p>
           </div>
           <div className="flex h-2 w-full border-t border-solid border-black">
-            <div className="h-full w-2/5 bg-yellow-500"></div>
-            <div className="h-full w-3/5 bg-blue-700"></div>
+            <div
+              className="h-full bg-yellow-500"
+              style={{
+                width: `${(100 * (userData.money + freeMoney)) / allMoney}%`,
+              }}
+            ></div>
+            <div
+              className="h-full bg-blue-700"
+              style={{
+                width: `${
+                  100 - (100 * (userData.money + freeMoney)) / allMoney
+                }%`,
+              }}
+            ></div>
           </div>
         </div>
         <div className="mb-3 flex h-12 flex-col border border-solid border-black">
@@ -127,10 +201,26 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
             </button>
           </div>
           <div className="flex h-2 w-full border-t border-solid border-black">
-            <div className="h-full w-1/4 border-r border-solid border-black bg-blue-700"></div>
-            <div className="h-full w-1/4 border-r border-solid border-black bg-blue-700"></div>
-            <div className="h-full w-1/4 border-r border-solid border-black bg-blue-700"></div>
-            <div className="h-full w-1/4"></div>
+            <div
+              className={`h-full w-1/4 border-r border-solid border-black ${
+                filledDivs >= 1 || showAll ? "bg-blue-700" : ""
+              }`}
+            ></div>
+            <div
+              className={`h-full w-1/4 border-r border-solid border-black ${
+                filledDivs >= 2 || showAll ? "bg-blue-700" : ""
+              }`}
+            ></div>
+            <div
+              className={`h-full w-1/4 border-r border-solid border-black ${
+                filledDivs >= 3 || showAll ? "bg-blue-700" : ""
+              }`}
+            ></div>
+            <div
+              className={`h-full w-1/4 border-solid border-black ${
+                showAll ? "bg-blue-700" : ""
+              }`}
+            ></div>
           </div>
         </div>
         <div className="flex h-12 flex-col border border-solid border-black">

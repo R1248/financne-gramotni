@@ -3,8 +3,10 @@ import InfoSidebar from "./infoSidebar";
 import HomePage from "./homePage";
 import Headbar from "./headbar";
 import Banks from "./bankProducts/banks";
-import PortfolioPage from "./portfolioPage";
+import PortfolioPage from "./portfolio/portfolioPage";
 import TheoryPage from "./theory/theoryPage";
+import FMMenu from "./financeMarkets/fmMenu";
+import PFPage from "./personalFinance/pfPage";
 
 const Router: FC = () => {
   const [router, setRouter] = useState("home");
@@ -17,9 +19,11 @@ const Router: FC = () => {
         {
           {
             home: <HomePage setRouter={setRouter} />,
+            personalFinance: <PFPage setRouter={setRouter} />,
             banks: <Banks setRouter={setRouter} />,
             portfolio: <PortfolioPage setRouter={setRouter} />,
             theory: <TheoryPage setRouter={setRouter} />,
+            markets: <FMMenu setRouter={setRouter} />,
           }[router]
         }
       </div>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import marxMises from "../../public/marx_mises.png";
 import stockMarket from "../../public/stock_market.png";
 import products from "../../public/products.png";
+import personalFinance from "../../public/personalFinance.png";
 
 type LaptopImageProps = {
   buttonImage: string;
@@ -21,15 +22,20 @@ const LaptopImage: FC<LaptopImageProps> = ({ buttonImage, setRouter }) => {
       text = "Teorie";
       router = "theory";
       break;
-    case "stockMarket":
+    case "markets":
       image = stockMarket;
       text = "Finanční trhy";
-      router = "stockMarket";
+      router = "markets";
       break;
     case "products":
       image = products;
       text = "Navštívit banky";
       router = "banks";
+      break;
+    case "personalFinance":
+      image = personalFinance;
+      text = "Osobní finance";
+      router = "personalFinance";
       break;
     default: {
       throw new Error("Not implemented yet");

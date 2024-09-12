@@ -59,7 +59,7 @@ const PreGameMenu: FC<PreGameMenuProps> = ({ setTheoryRouter, name }) => {
   return (
     <div className="relative h-full w-full px-48 py-24">
       <button
-        className="absolute right-7 top-7 rounded border border-solid border-black p-1"
+        className="absolute right-7 top-7 z-20 rounded border border-solid border-black p-1"
         onClick={() => setTheoryRouter("menu")}
       >
         <TiArrowBack className="text-4xl" />
@@ -71,7 +71,10 @@ const PreGameMenu: FC<PreGameMenuProps> = ({ setTheoryRouter, name }) => {
           <button className="mx-5 my-2 w-32 rounded border border-solid border-black p-2">
             Učení
           </button>
-          <button className="mx-5 my-2 w-32 rounded border border-solid border-black p-2">
+          <button
+            onClick={() => setTheoryRouter("quiz")}
+            className="mx-5 my-2 w-32 rounded border border-solid border-black p-2"
+          >
             Kvíz
           </button>
           <button className="mx-5 my-2 w-32 rounded border border-solid border-black p-2">

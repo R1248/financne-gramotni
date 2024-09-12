@@ -29,7 +29,6 @@ export const productsRouter = createTRPCRouter({
         volatility: z.number(),
         standingOrdersSent: z.number(),
         standingOrdersRec: z.number(),
-        sendingAccountId: z.string(),
       }),
     ).mutation(async ({ ctx, input }) => {
       return ctx.db.product.create({
@@ -46,10 +45,19 @@ export const productsRouter = createTRPCRouter({
           standingOrdersSent: input.standingOrdersSent,
           standingOrdersRec: input.standingOrdersRec,
           userId: ctx.session.user.id,
-          sendingAccountId: input.sendingAccountId,
         },
       });
     }),
+
+  deleteProduct: protectedProcedure
+  .input(z.object({productId: z.string()}))
+  .mutation(async ({ctx, input}) => {
+    return ctx.db.product.delete({
+      where: {
+        id: input.productId,
+      },
+    });
+  }),
 
   editStandingOrder: protectedProcedure
     .input(

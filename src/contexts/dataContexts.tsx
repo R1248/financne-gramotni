@@ -1,6 +1,6 @@
 import { createContext, type ReactNode } from "react";
 import { api } from "../utils/api";
-import { Product, type User } from "@prisma/client";
+import { type Product, type User } from "@prisma/client";
 
 const UserDataContext = createContext({} as User);
 

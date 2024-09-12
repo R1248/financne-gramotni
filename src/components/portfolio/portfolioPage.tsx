@@ -1,13 +1,144 @@
 import { useContext, useMemo, useState, type FC } from "react";
 import { TiArrowBack } from "react-icons/ti";
 import { ProductsContext } from "~/contexts/dataContexts";
+import { type Product } from "@prisma/client";
 import { FaRegEdit } from "react-icons/fa";
+import { api } from "~/utils/api";
 
 type PortfolioPageProps = {
   setRouter: (router: string) => void;
 };
 
 const PortfolioPage: FC<PortfolioPageProps> = ({ setRouter }) => {
+  const [theoryRouter, setTheoryRouter] = useState("menu");
+  const [selectedProduct, setSelectedProduct] = useState<Product>();
+
+  return (
+    <div className="relative flex h-auto flex-grow overflow-hidden rounded-2xl bg-white">
+      {
+        {
+          menu: (
+            <PortfolioMenu
+              setRouter={setRouter}
+              setTheoryRouter={setTheoryRouter}
+              setSelectedProduct={setSelectedProduct}
+            />
+          ),
+          productExpand: (
+            <PortfolioProductExpand
+              setTheoryRouter={setTheoryRouter}
+              selectedProduct={selectedProduct}
+            />
+          ),
+        }[theoryRouter]
+      }
+    </div>
+  );
+};
+
+export default PortfolioPage;
+
+type PortfolioProductExpandProps = {
+  setTheoryRouter: (router: string) => void;
+  selectedProduct: Product | undefined;
+};
+
+const PortfolioProductExpand: FC<PortfolioProductExpandProps> = ({
+  setTheoryRouter,
+  selectedProduct,
+}) => {
+  const { mutate: deleteProduct } = api.products.deleteProduct.useMutation();
+  const { mutate: transaction } = api.userData.transaction.useMutation();
+  const { mutate: updateStandingOrder } =
+    api.userData.updateStandingOrder.useMutation();
+
+  const utils = api.useUtils();
+
+  const closeProduct = () => {
+    updateStandingOrder(
+      { amount: -selectedProduct!.standingOrdersRec },
+      {
+        onSuccess: () => {
+          transaction(
+            { sum: selectedProduct!.money },
+            {
+              onSuccess: () => {
+                void utils.userData.getUserData.invalidate().then(() => {
+                  deleteProduct(
+                    { productId: selectedProduct!.id },
+                    {
+                      onSuccess: () => {
+                        void utils.products.getAllProducts.invalidate();
+                        setTheoryRouter("menu");
+                      },
+                    },
+                  );
+                });
+              },
+            },
+          );
+        },
+      },
+    );
+  };
+
+  return (
+    <div className="flex w-full items-center justify-center px-48 py-24">
+      <button
+        className="absolute right-7 top-7 rounded border border-solid border-black p-1"
+        onClick={() => setTheoryRouter("menu")}
+      >
+        <TiArrowBack className="text-4xl" />
+      </button>
+      <div className="relative flex h-full w-full flex-col rounded border border-solid border-black p-5">
+        <h1 className="mb-2 text-xl">
+          {selectedProduct ? selectedProduct.name : ""}
+        </h1>
+        <p>Zřizovatel: {selectedProduct ? selectedProduct.bank : ""}</p>
+        <p>
+          Hodnota vkladu:{" "}
+          {selectedProduct ? selectedProduct.money.toLocaleString() : ""}
+        </p>
+        {selectedProduct?.type === "fund" ||
+        selectedProduct?.type === "pensionSaving" ? (
+          <p>
+            Historická výkonnost:{" "}
+            {selectedProduct
+              ? Math.round(selectedProduct.interest * 1000) / 10
+              : ""}{" "}
+            %
+          </p>
+        ) : (
+          <p>
+            Úroková míra:{" "}
+            {selectedProduct
+              ? Math.round(selectedProduct.interest * 1000) / 10
+              : ""}{" "}
+            %
+          </p>
+        )}
+        <button
+          className="absolute bottom-3 right-3 rounded-md border border-solid border-black px-3 py-2"
+          onClick={() => closeProduct()}
+        >
+          Uzavřít produkt
+        </button>
+      </div>
+    </div>
+  );
+};
+
+type PortfolioMenuProps = {
+  setRouter: (router: string) => void;
+  setTheoryRouter: (router: string) => void;
+  setSelectedProduct: (product: Product) => void;
+};
+
+const PortfolioMenu: FC<PortfolioMenuProps> = ({
+  setRouter,
+  setTheoryRouter,
+  setSelectedProduct,
+}) => {
   const products = useContext(ProductsContext);
 
   const [sortConfig, setSortConfig] = useState<{
@@ -16,7 +147,7 @@ const PortfolioPage: FC<PortfolioPageProps> = ({ setRouter }) => {
   } | null>(null);
 
   const sortedProducts = useMemo(() => {
-    let sortableProducts = [...products];
+    const sortableProducts = [...products];
     if (sortConfig !== null) {
       sortableProducts.sort((a, b) => {
         const aValue = a[sortConfig.key];
@@ -53,9 +184,8 @@ const PortfolioPage: FC<PortfolioPageProps> = ({ setRouter }) => {
     if (!sortConfig || sortConfig.key !== key) return null;
     return sortConfig.direction === "ascending" ? "▲" : "▼";
   };
-
   return (
-    <div className="relative flex h-auto flex-grow overflow-hidden rounded-2xl bg-white">
+    <>
       <button
         className="absolute right-7 top-7 rounded border border-solid border-black p-1"
         onClick={() => setRouter("home")}
@@ -119,7 +249,13 @@ const PortfolioPage: FC<PortfolioPageProps> = ({ setRouter }) => {
                   {product.money.toLocaleString()} Kč
                 </td>
                 <td className="border border-gray-200 px-4 py-2">
-                  <button className="flex w-full justify-center text-center">
+                  <button
+                    className="flex w-full justify-center text-center"
+                    onClick={() => {
+                      setTheoryRouter("productExpand");
+                      setSelectedProduct(product);
+                    }}
+                  >
                     <FaRegEdit className="text-2xl" />
                   </button>
                 </td>
@@ -128,8 +264,6 @@ const PortfolioPage: FC<PortfolioPageProps> = ({ setRouter }) => {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
-
-export default PortfolioPage;

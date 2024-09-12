@@ -9,10 +9,7 @@ import {
   SoldiusBankProducts,
 } from "../../bankingProducts";
 import { api } from "~/utils/api";
-import {
-  CurrentAccountsContext,
-  UserDataContext,
-} from "~/contexts/dataContexts";
+import { UserDataContext } from "~/contexts/dataContexts";
 import lockImage from "../../../public/lock.png";
 
 type ProductComponentProps = {
@@ -70,11 +67,6 @@ export const ProductsMenu: FC<ProductsMenuProps> = ({
       </button>
       <div className="px-auto mt-24 flex w-full">
         <ProductCard
-          name="Běžný účet"
-          setBankPageRouter={setBankPageRouter}
-          disabled={false}
-        />
-        <ProductCard
           name="Spořící účet"
           setBankPageRouter={setBankPageRouter}
           disabled={userData.productsScore < 1}
@@ -84,13 +76,13 @@ export const ProductsMenu: FC<ProductsMenuProps> = ({
           setBankPageRouter={setBankPageRouter}
           disabled={userData.productsScore < 2}
         />
-      </div>
-      <div className="flex w-full">
         <ProductCard
           name="Penzijní spoření"
           setBankPageRouter={setBankPageRouter}
           disabled={userData.productsScore < 3}
         />
+      </div>
+      <div className="flex w-full">
         <ProductCard
           name="Termínované vklady"
           setBankPageRouter={setBankPageRouter}
@@ -394,28 +386,21 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
 
   const userData = useContext(UserDataContext);
   const [selectedProduct, setSelectedProduct] = useState(buildingSavings[0]);
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(100);
 
   const { mutate: createBuildingSaving } =
     api.products.createProduct.useMutation();
-  const { mutate: editStandingOrder } =
-    api.products.editStandingOrder.useMutation();
-  const currentAccounts = useContext(CurrentAccountsContext);
-
-  const [currentAccountId, setCurrentAccountId] = useState(
-    currentAccounts[0]?.id,
-  );
+  const { mutate: updateStandingOrder } =
+    api.userData.updateStandingOrder.useMutation();
 
   const utils = api.useUtils();
-
-  console.log(currentAccounts);
 
   const createBuildingSavingHandler = () => {
     const data = {
       name: selectedProduct!.name,
       type: "buildingSaving",
       interest: selectedProduct!.interest,
-      money: 3 * money,
+      money: 0,
       bank: bank,
       duration: 72,
       description: selectedProduct!.description,
@@ -423,9 +408,15 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
       volatility: 0,
       standingOrdersSent: 0,
       standingOrdersRec: money,
-      sendingAccountId: currentAccountId!,
     };
-    editStandingOrder({ amount: money, productId: currentAccountId! });
+    updateStandingOrder(
+      { amount: money },
+      {
+        onSuccess: () => {
+          void utils.userData.getUserData.invalidate();
+        },
+      },
+    );
     createBuildingSaving(data, {
       onSuccess: () => {
         void utils.products.getAllProducts.invalidate();
@@ -454,26 +445,7 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
             max={10000}
             heading={"Nastavte průběžný vklad"}
           />
-          <div className="thisOne mt-4">
-            <label className="mb-2 block">
-              Vyberte účet, z kterého chcete provádět vklady:
-            </label>
-            <select
-              className="rounded border border-solid border-black p-1"
-              value={currentAccountId}
-              onChange={(e) => setCurrentAccountId(e.target.value)}
-            >
-              {currentAccounts?.map((account) => (
-                <option
-                  key={account.id}
-                  value={account.id}
-                  onClick={() => setCurrentAccountId(account.id)}
-                >
-                  {account.name} {account.bank}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <button
             className="absolute bottom-5 right-5 rounded border border-solid border-black px-4 py-1"
             onClick={createBuildingSavingHandler}
@@ -511,26 +483,7 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
             max={10000}
             heading="Nastavte průběžný vklad"
           />
-          <div className="thisOne mt-4">
-            <label className="mb-2 block">
-              Vyberte účet, z kterého chcete provádět vklady:
-            </label>
-            <select
-              className="rounded border border-solid border-black p-1"
-              value={currentAccountId}
-              onChange={(e) => setCurrentAccountId(e.target.value)}
-            >
-              {currentAccounts?.map((account) => (
-                <option
-                  key={account.id}
-                  value={account.id}
-                  onClick={() => setCurrentAccountId(account.id)}
-                >
-                  {account.name} {account.bank}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <button
             className="absolute bottom-5 right-5 rounded border border-solid border-black px-4 py-1"
             onClick={createBuildingSavingHandler}
@@ -565,17 +518,12 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
 
   const userData = useContext(UserDataContext);
   const [selectedProduct, setSelectedProduct] = useState(pensionSavings[0]);
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(100);
 
   const { mutate: createPensionSaving } =
     api.products.createProduct.useMutation();
-  const { mutate: editStandingOrder } =
-    api.products.editStandingOrder.useMutation();
-  const currentAccounts = useContext(CurrentAccountsContext);
-
-  const [currentAccountId, setCurrentAccountId] = useState(
-    currentAccounts[0]?.id,
-  );
+  const { mutate: updateStandingOrder } =
+    api.userData.updateStandingOrder.useMutation();
 
   const utils = api.useUtils();
 
@@ -584,7 +532,7 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
       name: selectedProduct!.name,
       type: "pensionSaving",
       interest: selectedProduct!.interest,
-      money: 3 * money,
+      money: 0,
       bank: bank,
       duration: 0,
       description: selectedProduct!.description,
@@ -592,9 +540,8 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
       volatility: selectedProduct!.volatility,
       standingOrdersSent: 0,
       standingOrdersRec: money,
-      sendingAccountId: currentAccountId!,
     };
-    editStandingOrder({ amount: money, productId: currentAccountId! });
+    updateStandingOrder({ amount: money });
     createPensionSaving(data, {
       onSuccess: () => {
         void utils.products.getAllProducts.invalidate();
@@ -623,26 +570,7 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
             max={5000}
             heading={"Nastavte průběžný vklad"}
           />
-          <div className="thisOne mt-4">
-            <label className="mb-2 block">
-              Vyberte účet, z kterého chcete provádět vklady:
-            </label>
-            <select
-              className="rounded border border-solid border-black p-1"
-              value={currentAccountId}
-              onChange={(e) => setCurrentAccountId(e.target.value)}
-            >
-              {currentAccounts?.map((account) => (
-                <option
-                  key={account.id}
-                  value={account.id}
-                  onClick={() => setCurrentAccountId(account.id)}
-                >
-                  {account.name} {account.bank}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <button
             className="absolute bottom-5 right-5 rounded border border-solid border-black px-4 py-1"
             onClick={createPensionSavingHandler}
@@ -680,26 +608,7 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
             max={5000}
             heading="Nastavte základní vklad"
           />
-          <div className="thisOne mt-4">
-            <label className="mb-2 block">
-              Vyberte účet, z kterého chcete provádět vklady:
-            </label>
-            <select
-              className="rounded border border-solid border-black p-1"
-              value={currentAccountId}
-              onChange={(e) => setCurrentAccountId(e.target.value)}
-            >
-              {currentAccounts?.map((account) => (
-                <option
-                  key={account.id}
-                  value={account.id}
-                  onClick={() => setCurrentAccountId(account.id)}
-                >
-                  {account.name} {account.bank}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <button
             className="absolute bottom-5 right-5 rounded border border-solid border-black px-4 py-1"
             onClick={createPensionSavingHandler}
@@ -733,17 +642,12 @@ export const TermDepositPage: FC<ProductPageProps> = ({
   }
 
   const userData = useContext(UserDataContext);
-  const currentAccounts = useContext(CurrentAccountsContext);
   const [selectedProduct, setSelectedProduct] = useState(termDeposits[0]);
   const [money, setMoney] = useState(termDeposits[0]!.minimumDeposit);
 
   const { mutate: createTermDeposit } =
     api.products.createProduct.useMutation();
-  const { mutate: currentAccountTransaction } =
-    api.products.currentAccountTransaction.useMutation();
-  const [currentAccountId, setCurrentAccountId] = useState(
-    currentAccounts[0]?.id,
-  );
+  const { mutate: transaction } = api.userData.transaction.useMutation();
 
   const utils = api.useUtils();
 
@@ -760,14 +664,20 @@ export const TermDepositPage: FC<ProductPageProps> = ({
       volatility: 0,
       standingOrdersSent: 0,
       standingOrdersRec: 0,
-      sendingAccountId: currentAccountId!,
     };
+    transaction(
+      { sum: -money },
+      {
+        onSuccess: () => {
+          void utils.userData.getUserData.invalidate();
+        },
+      },
+    );
     createTermDeposit(data, {
       onSuccess: () => {
         void utils.products.getAllProducts.invalidate();
       },
     });
-    currentAccountTransaction({ amount: -money, productId: currentAccountId! });
   };
 
   return (
@@ -811,26 +721,6 @@ export const TermDepositPage: FC<ProductPageProps> = ({
           max={30000000}
           heading={"Nastavte základní vklad"}
         />
-        <div className="mt-4">
-          <label className="mb-2 block">
-            Vyberte účet, z kterého chcete provést vklad:
-          </label>
-          <select
-            className="rounded border border-solid border-black p-1"
-            value={currentAccountId}
-            onChange={(e) => setCurrentAccountId(e.target.value)}
-          >
-            {currentAccounts?.map((account) => (
-              <option
-                key={account.id}
-                value={account.id}
-                onClick={() => setCurrentAccountId(account.id)}
-              >
-                {account.name} {account.bank}
-              </option>
-            ))}
-          </select>
-        </div>
         <button
           className="absolute bottom-5 right-5 rounded border border-solid border-black px-4 py-1"
           onClick={createTermDepositHandler}
@@ -865,42 +755,40 @@ export const FundPage: FC<ProductPageProps> = ({ setBankPageRouter, bank }) => {
   const [standingMoney, setStandingMoney] = useState(0);
 
   const { mutate: createFund } = api.products.createProduct.useMutation();
-  const { mutate: currentAccountTransaction } =
-    api.products.currentAccountTransaction.useMutation();
-  const { mutate: editStandingOrder } =
-    api.products.editStandingOrder.useMutation();
-  const currentAccounts = useContext(CurrentAccountsContext);
-  const [currentAccountId, setCurrentAccountId] = useState(
-    currentAccounts[0]?.id,
-  );
+  const { mutate: transaction } = api.userData.transaction.useMutation();
+  const { mutate: updateStandingOrder } =
+    api.userData.updateStandingOrder.useMutation();
 
   const utils = api.useUtils();
 
   const createTermDepositHandler = () => {
     const data = {
       name: selectedProduct!.name,
-      type: "termDeposit",
+      type: "fund",
       interest: selectedProduct!.interest,
       money: money,
       bank: bank,
       duration: 0,
       description: selectedProduct!.description,
       ageCreated: userData.age,
-      volatility: 0,
+      volatility: selectedProduct!.volatility,
       standingOrdersSent: 0,
-      standingOrdersRec: 0,
-      sendingAccountId: currentAccountId!,
+      standingOrdersRec: standingMoney,
     };
     createFund(data, {
       onSuccess: () => {
         void utils.products.getAllProducts.invalidate();
       },
     });
-    editStandingOrder({
-      amount: standingMoney,
-      productId: currentAccountId!,
-    });
-    currentAccountTransaction({ amount: -money, productId: currentAccountId! });
+    updateStandingOrder({ amount: standingMoney });
+    transaction(
+      { sum: -money },
+      {
+        onSuccess: () => {
+          void utils.userData.getUserData.invalidate();
+        },
+      },
+    );
   };
 
   return (
@@ -947,26 +835,6 @@ export const FundPage: FC<ProductPageProps> = ({ setBankPageRouter, bank }) => {
           max={10000}
           heading={"Nastavte průběžný vklad"}
         />
-        <div className="mt-4">
-          <label className="mb-2 block">
-            Vyberte účet, z kterého chcete provést vklady:
-          </label>
-          <select
-            className="rounded border border-solid border-black p-1"
-            value={currentAccountId}
-            onChange={(e) => setCurrentAccountId(e.target.value)}
-          >
-            {currentAccounts?.map((account) => (
-              <option
-                key={account.id}
-                value={account.id}
-                onClick={() => setCurrentAccountId(account.id)}
-              >
-                {account.name} {account.bank}
-              </option>
-            ))}
-          </select>
-        </div>
         <button
           className="absolute bottom-5 right-5 rounded border border-solid border-black px-4 py-1"
           onClick={createTermDepositHandler}

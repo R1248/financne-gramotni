@@ -39,4 +39,17 @@ export const userDataRouter = createTRPCRouter({
       },
     });
   }),
+
+  updateStandingOrder: protectedProcedure
+  .input(z.object({ amount: z.number()}))
+  .mutation(async ({ctx, input}) => {
+    return ctx.db.user.update({
+      where: {
+        id: ctx.session.user.id,
+      },
+      data: {
+        standingOrdersSent: { increment: input.amount },
+      },
+    });
+  }),
 });

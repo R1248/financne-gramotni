@@ -2,6 +2,7 @@ import { type FC, useState } from "react";
 import { TiArrowBack } from "react-icons/ti";
 import TheoryMenu from "./theoryMenu";
 import PreGameMenu from "./preGameMenu";
+import { Quiz } from "./theoryGames";
 
 type TheoryPageProps = {
   setRouter: (router: string) => void;
@@ -9,7 +10,7 @@ type TheoryPageProps = {
 
 const TheoryPage: FC<TheoryPageProps> = ({ setRouter }) => {
   const [theoryRouter, setTheoryRouter] = useState("menu");
-  const [preGame, setPreGame] = useState("");
+  const [game, setGame] = useState("");
 
   return (
     <div className="relative flex h-auto flex-grow overflow-hidden rounded-2xl bg-white">
@@ -24,12 +25,13 @@ const TheoryPage: FC<TheoryPageProps> = ({ setRouter }) => {
           menu: (
             <TheoryMenu
               setTheoryRouter={setTheoryRouter}
-              setPreGame={setPreGame}
+              setPreGame={setGame}
             />
           ),
           preGameMenu: (
-            <PreGameMenu setTheoryRouter={setTheoryRouter} name={preGame} />
+            <PreGameMenu setTheoryRouter={setTheoryRouter} name={game} />
           ),
+          quiz: <Quiz setTheoryRouter={setTheoryRouter} name={game} />,
         }[theoryRouter]
       }
     </div>

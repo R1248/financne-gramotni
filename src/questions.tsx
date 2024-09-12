@@ -281,7 +281,7 @@ export const Questions = {
       answer: "od 15 let",
     },
   ],
-  buildigSaving: [
+  buildingSaving: [
     {
       question:
         "Překoná zhodnocení na stavebním spoření zpravidla inflaci (bez státní podpory)?",
@@ -391,7 +391,7 @@ export const Questions = {
         "Aby podpořil banky",
         "Aby podpořil nemovitostní fondy",
       ],
-      answer: "Aby podpořil mladé lidi ve vlastnictví nemovitosti",
+      answer: "Aby podpořil mladé lidi ve vlastnictví nemovitosti a spoření",
     },
     {
       question: "Stát snižuje příspěvek na stavební spoření, protože:",
