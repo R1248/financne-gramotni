@@ -9,8 +9,8 @@ import {
   SoldiusBankProducts,
 } from "../../bankingProducts";
 import { api } from "~/utils/api";
-import { UserDataContext } from "~/contexts/dataContexts";
 import lockImage from "../../../public/lock.png";
+import { CharacterContext } from "~/contexts/charactersContext";
 
 type ProductComponentProps = {
   name: string;
@@ -55,7 +55,7 @@ export const ProductsMenu: FC<ProductsMenuProps> = ({
   setBanksRouter,
   setBankPageRouter,
 }) => {
-  const userData = useContext(UserDataContext);
+  const character = useContext(CharacterContext);
 
   return (
     <div className="relative w-full pl-[72px]">
@@ -69,29 +69,29 @@ export const ProductsMenu: FC<ProductsMenuProps> = ({
         <ProductCard
           name="Spořící účet"
           setBankPageRouter={setBankPageRouter}
-          disabled={userData.productsScore < 1}
+          disabled={character.productsScore < 1}
         />
         <ProductCard
           name="Stavební spoření"
           setBankPageRouter={setBankPageRouter}
-          disabled={userData.productsScore < 2}
+          disabled={character.productsScore < 2}
         />
         <ProductCard
           name="Penzijní spoření"
           setBankPageRouter={setBankPageRouter}
-          disabled={userData.productsScore < 3}
+          disabled={character.productsScore < 3}
         />
       </div>
       <div className="flex w-full">
         <ProductCard
           name="Termínované vklady"
           setBankPageRouter={setBankPageRouter}
-          disabled={userData.productsScore < 4}
+          disabled={character.productsScore < 4}
         />
         <ProductCard
           name="Investiční fondy"
           setBankPageRouter={setBankPageRouter}
-          disabled={userData.productsScore < 5}
+          disabled={character.productsScore < 5}
         />
       </div>
     </div>
@@ -153,7 +153,7 @@ export const CurrentAccountPage: FC<ProductPageProps> = ({
   setBankPageRouter,
   bank,
 }) => {
-  const userData = useContext(UserDataContext);
+  const character = useContext(CharacterContext);
   let currentAccount;
   switch (bank) {
     case "Prosperita Credit":
@@ -174,7 +174,7 @@ export const CurrentAccountPage: FC<ProductPageProps> = ({
 
   const { mutate: createCurrentAccount } =
     api.products.createProduct.useMutation();
-  const { mutate: changeMoney } = api.userData.transaction.useMutation();
+  const { mutate: changeMoney } = api.characters.transaction.useMutation();
 
   const utils = api.useUtils();
 
@@ -186,11 +186,12 @@ export const CurrentAccountPage: FC<ProductPageProps> = ({
       type: "currentAccount",
       interest: currentAccount.interest,
       description: currentAccount.description,
-      ageCreated: userData.age,
+      ageCreated: character.age,
       volatility: 0,
       standingOrdersSent: 0,
       standingOrdersRec: 0,
       sendingAccountId: "",
+      characterId: character.id,
     };
     createCurrentAccount(data, {
       onSuccess: () => {
@@ -222,7 +223,7 @@ export const CurrentAccountPage: FC<ProductPageProps> = ({
         <CashSlider
           onValueChange={setMoney}
           min={0}
-          max={userData.money}
+          max={character.money}
           heading="Nastavte základní vklad"
         />
         <button
@@ -255,29 +256,30 @@ export const SavingAccountPage: FC<ProductPageProps> = ({
       savingAccounts = SoldiusBankProducts.savingAccounts;
       break;
   }
-  const userData = useContext(UserDataContext);
+  const character = useContext(CharacterContext);
   const [selectedProduct, setSelectedProduct] = useState(savingAccounts[0]);
   const [money, setMoney] = useState(0);
 
   const { mutate: createSavingAccount } =
     api.products.createProduct.useMutation();
-  const { mutate: changeMoney } = api.userData.transaction.useMutation();
+  const { mutate: changeMoney } = api.characters.transaction.useMutation();
 
   const utils = api.useUtils();
 
   const createSavingAccountHandler = () => {
     const data = {
-      money,
-      bank,
+      characterId: character.id,
       name: selectedProduct!.name,
       type: "savingAccount",
       interest: selectedProduct!.interest,
       description: selectedProduct!.description,
-      ageCreated: userData.age,
+      ageCreated: character.age,
       volatility: 0,
       standingOrdersSent: 0,
       standingOrdersRec: 0,
       sendingAccountId: "",
+      money,
+      bank,
     };
     createSavingAccount(data, {
       onSuccess: () => {
@@ -312,7 +314,7 @@ export const SavingAccountPage: FC<ProductPageProps> = ({
           <CashSlider
             onValueChange={setMoney}
             min={0}
-            max={userData.money}
+            max={character.money}
             heading={"Nastavte základní vklad"}
           />
           <button
@@ -349,7 +351,7 @@ export const SavingAccountPage: FC<ProductPageProps> = ({
           <CashSlider
             onValueChange={setMoney}
             min={0}
-            max={userData.money}
+            max={character.money}
             heading={"Nastavte základní vklad"}
           />
           <button
@@ -384,27 +386,28 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
       break;
   }
 
-  const userData = useContext(UserDataContext);
+  const character = useContext(CharacterContext);
   const [selectedProduct, setSelectedProduct] = useState(buildingSavings[0]);
   const [money, setMoney] = useState(100);
 
   const { mutate: createBuildingSaving } =
     api.products.createProduct.useMutation();
   const { mutate: updateStandingOrder } =
-    api.userData.updateStandingOrder.useMutation();
+    api.characters.updateStandingOrder.useMutation();
 
   const utils = api.useUtils();
 
   const createBuildingSavingHandler = () => {
     const data = {
+      characterId: character.id,
       name: selectedProduct!.name,
       type: "buildingSaving",
       interest: selectedProduct!.interest,
       money: 0,
-      bank: bank,
+      bank,
       duration: 72,
       description: selectedProduct!.description,
-      ageCreated: userData.age,
+      ageCreated: character.age,
       volatility: 0,
       standingOrdersSent: 0,
       standingOrdersRec: money,
@@ -516,27 +519,28 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
       break;
   }
 
-  const userData = useContext(UserDataContext);
+  const character = useContext(CharacterContext);
   const [selectedProduct, setSelectedProduct] = useState(pensionSavings[0]);
   const [money, setMoney] = useState(100);
 
   const { mutate: createPensionSaving } =
     api.products.createProduct.useMutation();
   const { mutate: updateStandingOrder } =
-    api.userData.updateStandingOrder.useMutation();
+    api.characters.updateStandingOrder.useMutation();
 
   const utils = api.useUtils();
 
   const createPensionSavingHandler = () => {
     const data = {
+      characterId: character.id,
       name: selectedProduct!.name,
       type: "pensionSaving",
       interest: selectedProduct!.interest,
       money: 0,
-      bank: bank,
+      bank,
       duration: 0,
       description: selectedProduct!.description,
-      ageCreated: userData.age,
+      ageCreated: character.age,
       volatility: selectedProduct!.volatility,
       standingOrdersSent: 0,
       standingOrdersRec: money,
@@ -641,26 +645,27 @@ export const TermDepositPage: FC<ProductPageProps> = ({
       break;
   }
 
-  const userData = useContext(UserDataContext);
+  const character = useContext(CharacterContext);
   const [selectedProduct, setSelectedProduct] = useState(termDeposits[0]);
   const [money, setMoney] = useState(termDeposits[0]!.minimumDeposit);
 
   const { mutate: createTermDeposit } =
     api.products.createProduct.useMutation();
-  const { mutate: transaction } = api.userData.transaction.useMutation();
+  const { mutate: transaction } = api.characters.transaction.useMutation();
 
   const utils = api.useUtils();
 
   const createTermDepositHandler = () => {
     const data = {
+      characterId: character.id,
       name: selectedProduct!.name,
       type: "termDeposit",
       interest: selectedProduct!.interest,
-      money: money,
-      bank: bank,
+      money,
+      bank,
       duration: selectedProduct!.duration,
       description: selectedProduct!.description,
-      ageCreated: userData.age,
+      ageCreated: character.age,
       volatility: 0,
       standingOrdersSent: 0,
       standingOrdersRec: 0,
@@ -749,28 +754,29 @@ export const FundPage: FC<ProductPageProps> = ({ setBankPageRouter, bank }) => {
       break;
   }
 
-  const userData = useContext(UserDataContext);
+  const character = useContext(CharacterContext);
   const [selectedProduct, setSelectedProduct] = useState(funds[0]);
   const [money, setMoney] = useState(0);
   const [standingMoney, setStandingMoney] = useState(0);
 
   const { mutate: createFund } = api.products.createProduct.useMutation();
-  const { mutate: transaction } = api.userData.transaction.useMutation();
+  const { mutate: transaction } = api.characters.transaction.useMutation();
   const { mutate: updateStandingOrder } =
-    api.userData.updateStandingOrder.useMutation();
+    api.characters.updateStandingOrder.useMutation();
 
   const utils = api.useUtils();
 
   const createTermDepositHandler = () => {
     const data = {
+      characterId: character.id,
       name: selectedProduct!.name,
       type: "fund",
       interest: selectedProduct!.interest,
-      money: money,
-      bank: bank,
+      money,
+      bank,
       duration: 0,
       description: selectedProduct!.description,
-      ageCreated: userData.age,
+      ageCreated: character.age,
       volatility: selectedProduct!.volatility,
       standingOrdersSent: 0,
       standingOrdersRec: standingMoney,

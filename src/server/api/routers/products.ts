@@ -6,11 +6,13 @@ import {
 } from "~/server/api/trpc";
 
 export const productsRouter = createTRPCRouter({
-  getAllProducts: protectedProcedure.query(({ctx}) => {
+  getAllProducts: protectedProcedure
+  .input(z.object({characterId: z.string()}))
+  .query(({ctx, input}) => {
     return ctx.db.product.findMany(
         {
             where: {
-                userId: ctx.session.user.id,
+                characterId: input.characterId,
             },
         }
     );
@@ -18,6 +20,7 @@ export const productsRouter = createTRPCRouter({
 
   createProduct: protectedProcedure.input(
       z.object({
+        characterId: z.string(),
         name: z.string(),
         type: z.string(),
         money: z.number(),
@@ -44,7 +47,7 @@ export const productsRouter = createTRPCRouter({
           volatility: input.volatility,
           standingOrdersSent: input.standingOrdersSent,
           standingOrdersRec: input.standingOrdersRec,
-          userId: ctx.session.user.id,
+          characterId: input.characterId,
         },
       });
     }),
@@ -71,13 +74,13 @@ export const productsRouter = createTRPCRouter({
       const product = await ctx.db.product.findUnique({
         where: { id: input.productId },
       });
-  
+
       if (!product) {
         throw new Error("Product not found");
       }
-  
+
       // Update the product's standingOrdersSent field
-      const updatedProduct = await ctx.db.product.update({
+      return ctx.db.product.update({
         where: { id: input.productId },
         data: {
           standingOrdersSent: {
@@ -85,20 +88,7 @@ export const productsRouter = createTRPCRouter({
           },
         },
       });
-  
-      return updatedProduct;
     }),
-
-  getAllCurrentAccounts: protectedProcedure.query(({ctx}) => {
-    return ctx.db.product.findMany(
-        {
-            where: {
-                userId: ctx.session.user.id,
-                type: 'currentAccount',
-            },
-        }
-    );
-  }),
 
   transaction: protectedProcedure.input(
     z.object({
@@ -115,16 +105,13 @@ export const productsRouter = createTRPCRouter({
     }
 
     // Update the product's money field
-    const updatedProduct = await ctx.db.product.update({
+    return ctx.db.product.update({
       where: { id: input.productId },
       data: {
         money:
-          input.amount, 
-
+          input.amount,
       },
     });
-
-    return updatedProduct;
     }),
 
   currentAccountTransaction: protectedProcedure.input(
@@ -143,7 +130,7 @@ export const productsRouter = createTRPCRouter({
     }
 
     // Update the product's money field
-    const updatedProduct = await ctx.db.product.update({
+    return ctx.db.product.update({
       where: { id: input.productId },
       data: {
         money: {
@@ -151,8 +138,6 @@ export const productsRouter = createTRPCRouter({
         },
       },
     });
-
-    return updatedProduct;
   }),
 
   closeProduct: protectedProcedure.input(

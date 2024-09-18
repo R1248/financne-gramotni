@@ -1,14 +1,14 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import { useState } from "react";
+import CharactersMenu from "~/components/charactersMenu";
 import EntryPage from "~/components/entryPage";
-import Router from "~/components/router";
-import {
-  CurrentAccountsProvider,
-  ProductsProvider,
-  UserDataProvider,
-} from "~/contexts/dataContexts";
+import GameRouter from "~/components/gameRouter";
+import { CharactersProvider } from "~/contexts/charactersContext";
 
 export default function Home() {
+  const [router, setRouter] = useState("characters");
+  const [selectedCharacterId, setSelectedCharacterId] = useState("");
   const { data: sessionData } = useSession();
   return (
     <>
@@ -19,13 +19,24 @@ export default function Home() {
       </Head>
       <main className="min-w-screen flex h-full min-h-screen flex-col justify-stretch bg-[#264474] px-10 pb-5">
         {sessionData ? (
-          <UserDataProvider>
-            <ProductsProvider>
-              <CurrentAccountsProvider>
-                <Router />
-              </CurrentAccountsProvider>
-            </ProductsProvider>
-          </UserDataProvider>
+          <CharactersProvider>
+            {
+              {
+                characters: (
+                  <CharactersMenu
+                    setRouter={setRouter}
+                    setSelectedCharacterId={setSelectedCharacterId}
+                  />
+                ),
+                game: (
+                  <GameRouter
+                    setRouter={setRouter}
+                    selectedCharacterId={selectedCharacterId}
+                  />
+                ),
+              }[router]
+            }
+          </CharactersProvider>
         ) : (
           <EntryPage />
         )}

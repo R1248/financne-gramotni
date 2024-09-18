@@ -14,42 +14,4 @@ export const userDataRouter = createTRPCRouter({
       },
     });
   }),
-
-  transaction: protectedProcedure
-  .input(z.object({sum: z.number()}))
-  .mutation(async ({ctx, input}) => {
-    return ctx.db.user.update({
-      where: {
-        id: ctx.session.user.id,
-      },
-      data: {
-        money: { increment: input.sum },
-      },
-    });
-  }),
-
-  changeAge: protectedProcedure
-  .mutation(async ({ctx}) => {
-    return ctx.db.user.update({
-      where: {
-        id: ctx.session.user.id,
-      },
-      data: {
-        age: { increment: 0.25 },
-      },
-    });
-  }),
-
-  updateStandingOrder: protectedProcedure
-  .input(z.object({ amount: z.number()}))
-  .mutation(async ({ctx, input}) => {
-    return ctx.db.user.update({
-      where: {
-        id: ctx.session.user.id,
-      },
-      data: {
-        standingOrdersSent: { increment: input.amount },
-      },
-    });
-  }),
 });

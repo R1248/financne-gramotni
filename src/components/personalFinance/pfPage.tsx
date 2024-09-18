@@ -2,7 +2,7 @@ import { type FC, useContext, useState } from "react";
 import { TiArrowBack } from "react-icons/ti";
 import Image from "next/image";
 import creditCard from "../../../public/card.png";
-import { UserDataContext } from "~/contexts/dataContexts";
+import { CharacterContext } from "~/contexts/charactersContext";
 import house from "../../../public/house.png";
 import car from "../../../public/car.png";
 import vacation from "../../../public/vacation.png";
@@ -68,7 +68,7 @@ const Menu: FC<MenuProps> = ({ setPersonalFinanceRouter }) => {
   const [entertainmentExpense, setEntertainmentExpense] = useState(100);
   const [clothesExpense, setClothesExpense] = useState(100);
 
-  const userData = useContext(UserDataContext);
+  const character = useContext(CharacterContext);
 
   return (
     <div className="flex h-full w-full flex-col">
@@ -90,7 +90,7 @@ const Menu: FC<MenuProps> = ({ setPersonalFinanceRouter }) => {
 
             {/* Back Side - Black Rectangle with Number */}
             <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-black text-3xl font-bold text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-              {userData.money} Kč
+              {character.money} Kč
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ const Menu: FC<MenuProps> = ({ setPersonalFinanceRouter }) => {
               max={500}
               step={100}
               value={foodExpense}
-              onChange={(e) => setFoodExpense(parseInt(e.target.value))}
+              onChange={(e) => setFoodExpense(parseInt(e.target.value, 10))}
               list="sums"
               className="w-48"
             />
@@ -128,7 +128,7 @@ const Menu: FC<MenuProps> = ({ setPersonalFinanceRouter }) => {
               step={100}
               value={entertainmentExpense}
               onChange={(e) =>
-                setEntertainmentExpense(parseInt(e.target.value))
+                setEntertainmentExpense(parseInt(e.target.value, 10))
               }
               list="sums"
               className="w-48"
@@ -147,7 +147,7 @@ const Menu: FC<MenuProps> = ({ setPersonalFinanceRouter }) => {
               max={500}
               step={100}
               value={clothesExpense}
-              onChange={(e) => setClothesExpense(parseInt(e.target.value))}
+              onChange={(e) => setClothesExpense(parseInt(e.target.value, 10))}
               list="sums"
               className="w-48"
             />

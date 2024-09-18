@@ -1,9 +1,10 @@
 import { type FC } from "react";
 import sciteLogo from "../../public/scite.ico";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 const Headbar: FC = () => {
+  const { data: sessionData } = useSession();
   return (
     <div className="h-18 mb-2 mt-4 flex max-h-16 w-full">
       <Image src={sciteLogo} alt="SCITE finance" height={64} />
@@ -15,14 +16,16 @@ const Headbar: FC = () => {
           VAŠE CESTA K FINANČNÍ SVOBODĚ
         </p>
       </div>
-      <div className="ml-auto">
-        <button
-          className="ml-auto flex h-full flex-row items-center justify-center rounded bg-white p-2 text-center text-lg hover:bg-gray-200"
-          onClick={() => void signOut()}
-        >
-          <p className="text-lg">Odhlásit</p>
-        </button>
-      </div>
+      {sessionData ? (
+        <div className="ml-auto">
+          <button
+            className="ml-auto flex h-full flex-row items-center justify-center rounded bg-white p-2 text-center text-lg hover:bg-gray-200"
+            onClick={() => void signOut()}
+          >
+            <p className="text-lg">Odhlásit</p>
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -1,20 +1,22 @@
 import { type FC, useContext, useEffect, useState } from "react";
-import { ProductsContext, UserDataContext } from "~/contexts/dataContexts";
+import { ProductsContext } from "~/contexts/productsContext";
+import { CharacterContext } from "~/contexts/charactersContext";
 import { api } from "~/utils/api";
 import Portfolio from "~/components/portfolio/portfolio";
 import { FcOpenedFolder } from "react-icons/fc";
+import { IoIosMore } from "react-icons/io";
 
 type InfoSidebarProps = {
   setRouter: (router: string) => void;
 };
 
 const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
-  const userData = useContext(UserDataContext);
-  const { mutate: changeAge } = api.userData.changeAge.useMutation();
+  const character = useContext(CharacterContext);
+  const { mutate: changeAge } = api.characters.changeAge.useMutation();
   const { mutate: transaction } = api.products.transaction.useMutation();
-  const { mutate: userTransaction } = api.userData.transaction.useMutation();
+  const { mutate: userTransaction } = api.characters.transaction.useMutation();
   const { mutate: updateStandingOrder } =
-    api.userData.updateStandingOrder.useMutation();
+    api.characters.updateStandingOrder.useMutation();
   const { mutate: deleteProduct } = api.products.deleteProduct.useMutation();
   const products = useContext(ProductsContext);
 
@@ -22,7 +24,7 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    const quarter = userData.age % 1;
+    const quarter = character.age % 1;
 
     if (quarter === 0) {
       setShowAll(true); // Temporarily show all divs
@@ -37,7 +39,7 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
     } else if (quarter === 0.75) {
       setFilledDivs(3); // Fill 3 divs
     }
-  }, [userData.age]);
+  }, [character.age]);
 
   let freeMoney = 0;
   let buildingSavings = 0;
@@ -69,7 +71,7 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
   });
 
   const allMoney =
-    userData.money +
+    character.money +
     freeMoney +
     buildingSavings +
     termDeposits +
@@ -84,7 +86,7 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
       },
     });
     userTransaction({
-      sum: -3 * userData.standingOrdersSent,
+      sum: -3 * character.standingOrdersSent,
     });
     const randomShock =
       Math.sqrt(-2.0 * Math.log(Math.random())) *
@@ -113,27 +115,26 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
           product.money * Math.pow(i, 3) +
           product.standingOrdersRec * i * ((Math.pow(i, 3) - 1) / (i - 1)) -
           (product.standingOrdersSent * i * (Math.pow(i, 3) - 1)) / (i - 1);
-        if (userData.age % 1 === 0.75) {
+        if (character.age % 1 === 0.75) {
           amount += governmentSupport;
         }
       }
       amount = Math.round(amount);
       transaction(
         {
-          amount: amount,
+          amount,
           productId: product.id,
         },
         {
           onSuccess: () => {
             void utils.products.getAllProducts.invalidate();
-            console.log("Age valuation completed");
           },
         },
       );
       if (product.duration) {
         if (
           product.ageCreated + product.duration / 12 - 0.25 ===
-          userData.age
+          character.age
         ) {
           userTransaction(
             {
@@ -165,7 +166,7 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
 
   return (
     <div className="mr-3 flex w-96 min-w-[24rem] flex-col rounded-2xl bg-white">
-      <h1 className="my-3 ml-3 text-3xl">{userData.name}</h1>
+      <h1 className="my-3 ml-3 text-3xl">{character.name}</h1>
       <div className="mx-3 mb-3 flex flex-col border border-solid border-black p-3">
         <div className="mb-3 flex h-12 flex-col border border-solid border-black">
           <div className="flex flex-grow items-center">
@@ -176,14 +177,14 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
             <div
               className="h-full bg-yellow-500"
               style={{
-                width: `${(100 * (userData.money + freeMoney)) / allMoney}%`,
+                width: `${(100 * (character.money + freeMoney)) / allMoney}%`,
               }}
             ></div>
             <div
               className="h-full bg-blue-700"
               style={{
                 width: `${
-                  100 - (100 * (userData.money + freeMoney)) / allMoney
+                  100 - (100 * (character.money + freeMoney)) / allMoney
                 }%`,
               }}
             ></div>
@@ -192,7 +193,7 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
         <div className="mb-3 flex h-12 flex-col border border-solid border-black">
           <div className="flex flex-grow items-center">
             <p className="ml-2 text-2xl">Věk:</p>
-            <p className="ml-auto mr-2 text-2xl">{userData.age}</p>
+            <p className="ml-auto mr-2 text-2xl">{character.age}</p>
             <button
               className="flex h-full w-10 justify-center border-l border-solid border-black pt-3 text-3xl leading-3"
               onClick={incrementAge}
@@ -227,6 +228,12 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
           <div className="flex flex-grow items-center">
             <p className="ml-2 text-2xl">Pozice:</p>
             <p className="ml-auto mr-2 text-2xl">Finanční poradce</p>
+            <button
+              className="flex h-full w-10 justify-center border-l border-solid border-black pt-3 text-3xl leading-3"
+              onClick={() => setRouter("workOpportunities")}
+            >
+              <IoIosMore className="mt-[-4px] text-2xl" />
+            </button>
           </div>
           <div className="h-2 w-full border-t border-solid border-black">
             <div className="h-full w-1/3 bg-gradient-to-r from-blue-400 to-blue-700"></div>
@@ -238,7 +245,7 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
           <h1 className="text-2xl">Portfolio</h1>
         </div>
         <Portfolio
-          freeMoney={freeMoney + userData.money}
+          freeMoney={freeMoney + character.money}
           termDeposits={termDeposits}
           buildingSavings={buildingSavings}
           pensionSaving={pensionSaving}
