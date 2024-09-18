@@ -42,7 +42,9 @@ const CharacterProvider = ({
     data: character,
     isLoading,
     isError,
-  } = api.characters.getSelectedCharacter.useQuery({ id: characterId });
+  } = api.characters.getSelectedCharacter.useQuery({
+    characterId: characterId,
+  });
 
   if (isLoading) {
     return <div>Loading...</div>;

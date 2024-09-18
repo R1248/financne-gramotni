@@ -199,10 +199,10 @@ export const CurrentAccountPage: FC<ProductPageProps> = ({
       },
     });
     changeMoney(
-      { sum: -money },
+      { sum: -money, characterId: character.id },
       {
         onSuccess: () => {
-          void utils.userData.getUserData.invalidate();
+          void utils.characters.getSelectedCharacter.invalidate();
         },
       },
     );
@@ -287,10 +287,10 @@ export const SavingAccountPage: FC<ProductPageProps> = ({
       },
     });
     changeMoney(
-      { sum: -money },
+      { sum: -money, characterId: character.id },
       {
         onSuccess: () => {
-          void utils.userData.getUserData.invalidate();
+          void utils.characters.getSelectedCharacter.invalidate();
         },
       },
     );
@@ -413,10 +413,10 @@ export const BuildingSavingPage: FC<ProductPageProps> = ({
       standingOrdersRec: money,
     };
     updateStandingOrder(
-      { amount: money },
+      { amount: money, characterId: character.id },
       {
         onSuccess: () => {
-          void utils.userData.getUserData.invalidate();
+          void utils.characters.getSelectedCharacter.invalidate();
         },
       },
     );
@@ -545,7 +545,7 @@ export const PensionSavingPage: FC<ProductPageProps> = ({
       standingOrdersSent: 0,
       standingOrdersRec: money,
     };
-    updateStandingOrder({ amount: money });
+    updateStandingOrder({ amount: money, characterId: character.id });
     createPensionSaving(data, {
       onSuccess: () => {
         void utils.products.getAllProducts.invalidate();
@@ -671,10 +671,10 @@ export const TermDepositPage: FC<ProductPageProps> = ({
       standingOrdersRec: 0,
     };
     transaction(
-      { sum: -money },
+      { sum: -money, characterId: character.id },
       {
         onSuccess: () => {
-          void utils.userData.getUserData.invalidate();
+          void utils.characters.getSelectedCharacter.invalidate();
         },
       },
     );
@@ -786,12 +786,12 @@ export const FundPage: FC<ProductPageProps> = ({ setBankPageRouter, bank }) => {
         void utils.products.getAllProducts.invalidate();
       },
     });
-    updateStandingOrder({ amount: standingMoney });
+    updateStandingOrder({ amount: standingMoney, characterId: character.id });
     transaction(
-      { sum: -money },
+      { sum: -money, characterId: character.id },
       {
         onSuccess: () => {
-          void utils.userData.getUserData.invalidate();
+          void utils.characters.getSelectedCharacter.invalidate();
         },
       },
     );

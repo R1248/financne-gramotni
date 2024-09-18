@@ -6,43 +6,42 @@ import {
 } from "~/server/api/trpc";
 
 export const charactersRouter = createTRPCRouter({
-    getAllCharacters: protectedProcedure.query(({ctx}) => {
-        return ctx.db.character.findMany(
-            {
-                where: {
-                    userId: ctx.session.user.id,
-                },
-            }
-        );
-    }),
+  getAllCharacters: protectedProcedure.query(async ({ ctx }) => {
+    // Assuming the `userId` is still needed to filter characters
+    return ctx.db.character.findMany({
+      where: {
+        userId: ctx.session.user.id,
+      },
+    });
+  }),
 
-    getSelectedCharacter: protectedProcedure
-    .input(z.object({ id: z.string() }))
-    .query(async ({ctx, input}) => {
+  getSelectedCharacter: protectedProcedure
+    .input(z.object({ characterId: z.string() }))
+    .query(async ({ ctx, input }) => {
       return ctx.db.character.findFirst({
         where: {
-          id: input.id,
+          id: input.characterId,
         },
       });
     }),
 
-    createCharacter: protectedProcedure
+  createCharacter: protectedProcedure
     .input(z.object({ name: z.string() }))
-    .mutation(async ({ctx, input}) => {
+    .mutation(async ({ ctx, input }) => {
       return ctx.db.character.create({
         data: {
           name: input.name,
-          userId: ctx.session.user.id,
+          userId: ctx.session.user.id, // Assuming userId is still required
         },
       });
     }),
 
-    transaction: protectedProcedure
-    .input(z.object({sum: z.number()}))
-    .mutation(async ({ctx, input}) => {
+  transaction: protectedProcedure
+    .input(z.object({ characterId: z.string(), sum: z.number() }))
+    .mutation(async ({ ctx, input }) => {
       return ctx.db.character.update({
         where: {
-          id: ctx.session.user.id,
+          id: input.characterId,
         },
         data: {
           money: { increment: input.sum },
@@ -50,11 +49,12 @@ export const charactersRouter = createTRPCRouter({
       });
     }),
 
-    changeAge: protectedProcedure
-    .mutation(async ({ctx}) => {
+  changeAge: protectedProcedure
+    .input(z.object({ characterId: z.string() }))
+    .mutation(async ({ ctx, input }) => {
       return ctx.db.character.update({
         where: {
-          id: ctx.session.user.id,
+          id: input.characterId,
         },
         data: {
           age: { increment: 0.25 },
@@ -62,12 +62,12 @@ export const charactersRouter = createTRPCRouter({
       });
     }),
 
-    updateStandingOrder: protectedProcedure
-    .input(z.object({ amount: z.number()}))
-    .mutation(async ({ctx, input}) => {
+  updateStandingOrder: protectedProcedure
+    .input(z.object({ characterId: z.string(), amount: z.number() }))
+    .mutation(async ({ ctx, input }) => {
       return ctx.db.character.update({
         where: {
-          id: ctx.session.user.id,
+          id: input.characterId,
         },
         data: {
           standingOrdersSent: { increment: input.amount },

@@ -12,11 +12,13 @@ import { ProductsProvider } from "~/contexts/productsContext";
 import { CharacterProvider } from "~/contexts/charactersContext";
 
 type GameRouterProps = {
+  router: string;
   setRouter: (router: string) => void;
   selectedCharacterId: string;
 };
 
 const GameRouter: FC<GameRouterProps> = ({
+  router,
   setRouter,
   selectedCharacterId,
 }) => {
@@ -24,7 +26,7 @@ const GameRouter: FC<GameRouterProps> = ({
   return (
     <ProductsProvider characterId={selectedCharacterId}>
       <CharacterProvider characterId={selectedCharacterId}>
-        <Headbar />
+        <Headbar router={router} setRouter={setRouter} />
         <hr className="w-full bg-white" />
         <div className="my-3 flex w-full flex-grow">
           <InfoSidebar setRouter={setRouter} />

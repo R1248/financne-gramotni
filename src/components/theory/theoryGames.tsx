@@ -1,5 +1,6 @@
-import { type FC, useState } from "react";
+import { type FC, useContext, useState } from "react";
 import { TiArrowBack } from "react-icons/ti";
+import { CharacterContext } from "~/contexts/charactersContext";
 import { Questions } from "~/questions";
 import { api } from "~/utils/api";
 
@@ -15,8 +16,10 @@ export const Quiz: FC<QuizProps> = ({ setTheoryRouter, name }) => {
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [resultScreen, setResultScreen] = useState(false);
-  const { mutate: transaction } = api.userData.transaction.useMutation();
+  const { mutate: transaction } = api.characters.transaction.useMutation();
   const utils = api.useUtils();
+
+  const characterId = useContext(CharacterContext).id;
 
   let questions: {
     question: string;
@@ -75,10 +78,10 @@ export const Quiz: FC<QuizProps> = ({ setTheoryRouter, name }) => {
         setSelectedOption(null);
       } else {
         transaction(
-          { sum: score },
+          { sum: score, characterId },
           {
             onSuccess: () => {
-              void utils.userData.getUserData.invalidate();
+              void utils.characters.getSelectedCharacter.invalidate();
             },
           },
         );

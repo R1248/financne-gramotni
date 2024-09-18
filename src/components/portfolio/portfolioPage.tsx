@@ -4,6 +4,7 @@ import { ProductsContext } from "~/contexts/productsContext";
 import { type Product } from "@prisma/client";
 import { FaRegEdit } from "react-icons/fa";
 import { api } from "~/utils/api";
+import { CharacterContext } from "~/contexts/charactersContext";
 
 type PortfolioPageProps = {
   setRouter: (router: string) => void;
@@ -52,28 +53,32 @@ const PortfolioProductExpand: FC<PortfolioProductExpandProps> = ({
   const { mutate: updateStandingOrder } =
     api.characters.updateStandingOrder.useMutation();
 
+  const characterId = useContext(CharacterContext).id;
+
   const utils = api.useUtils();
 
   const closeProduct = () => {
     updateStandingOrder(
-      { amount: -selectedProduct!.standingOrdersRec },
+      { amount: -selectedProduct!.standingOrdersRec, characterId },
       {
         onSuccess: () => {
           transaction(
-            { sum: selectedProduct!.money },
+            { sum: selectedProduct!.money, characterId },
             {
               onSuccess: () => {
-                void utils.userData.getUserData.invalidate().then(() => {
-                  deleteProduct(
-                    { productId: selectedProduct!.id },
-                    {
-                      onSuccess: () => {
-                        void utils.products.getAllProducts.invalidate();
-                        setTheoryRouter("menu");
+                void utils.characters.getSelectedCharacter
+                  .invalidate()
+                  .then(() => {
+                    deleteProduct(
+                      { productId: selectedProduct!.id },
+                      {
+                        onSuccess: () => {
+                          void utils.products.getAllProducts.invalidate();
+                          setTheoryRouter("menu");
+                        },
                       },
-                    },
-                  );
-                });
+                    );
+                  });
               },
             },
           );

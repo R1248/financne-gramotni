@@ -1,10 +1,14 @@
 import { type FC } from "react";
 import sciteLogo from "../../public/scite.ico";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 
-const Headbar: FC = () => {
-  const { data: sessionData } = useSession();
+type HeadbarProps = {
+  router: string;
+  setRouter: (router: string) => void;
+};
+
+const Headbar: FC<HeadbarProps> = ({ router, setRouter }) => {
   return (
     <div className="h-18 mb-2 mt-4 flex max-h-16 w-full">
       <Image src={sciteLogo} alt="SCITE finance" height={64} />
@@ -16,16 +20,22 @@ const Headbar: FC = () => {
           VAŠE CESTA K FINANČNÍ SVOBODĚ
         </p>
       </div>
-      {sessionData ? (
-        <div className="ml-auto">
+      <div className="ml-auto flex flex-row">
+        {router === "game" && (
           <button
-            className="ml-auto flex h-full flex-row items-center justify-center rounded bg-white p-2 text-center text-lg hover:bg-gray-200"
-            onClick={() => void signOut()}
+            className="mr-2 flex h-full flex-row items-center justify-center rounded bg-white p-2 text-center text-lg"
+            onClick={() => setRouter("characters")}
           >
-            <p className="text-lg">Odhlásit</p>
+            Postavy
           </button>
-        </div>
-      ) : null}
+        )}
+        <button
+          className="ml-auto flex h-full flex-row items-center justify-center rounded bg-white p-2 text-center text-lg hover:bg-gray-200"
+          onClick={() => void signOut()}
+        >
+          <p className="text-lg">Odhlásit</p>
+        </button>
+      </div>
     </div>
   );
 };

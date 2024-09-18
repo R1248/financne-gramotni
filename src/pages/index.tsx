@@ -24,12 +24,14 @@ export default function Home() {
               {
                 characters: (
                   <CharactersMenu
+                    router={router}
                     setRouter={setRouter}
                     setSelectedCharacterId={setSelectedCharacterId}
                   />
                 ),
                 game: (
                   <GameRouter
+                    router={router}
                     setRouter={setRouter}
                     selectedCharacterId={selectedCharacterId}
                   />

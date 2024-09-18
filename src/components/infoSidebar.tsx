@@ -19,6 +19,7 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
     api.characters.updateStandingOrder.useMutation();
   const { mutate: deleteProduct } = api.products.deleteProduct.useMutation();
   const products = useContext(ProductsContext);
+  const characterId = character.id;
 
   const [filledDivs, setFilledDivs] = useState<number>(0);
   const [showAll, setShowAll] = useState(false);
@@ -80,13 +81,17 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
 
   const utils = api.useUtils();
   const incrementAge = () => {
-    changeAge(void 0, {
-      onSuccess: () => {
-        void utils.userData.getUserData.invalidate();
+    changeAge(
+      { characterId },
+      {
+        onSuccess: () => {
+          void utils.characters.getSelectedCharacter.invalidate();
+        },
       },
-    });
+    );
     userTransaction({
       sum: -3 * character.standingOrdersSent,
+      characterId,
     });
     const randomShock =
       Math.sqrt(-2.0 * Math.log(Math.random())) *
@@ -139,15 +144,17 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
           userTransaction(
             {
               sum: amount,
+              characterId,
             },
             {
               onSuccess: () => {
-                void utils.userData.getUserData.invalidate();
+                void utils.characters.getSelectedCharacter.invalidate();
               },
             },
           );
           updateStandingOrder({
             amount: -product.standingOrdersRec,
+            characterId,
           });
           deleteProduct(
             {

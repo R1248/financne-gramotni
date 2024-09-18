@@ -4,11 +4,13 @@ import { ChracatersContext } from "~/contexts/charactersContext";
 import { api } from "~/utils/api";
 
 type CharactersMenuProps = {
+  router: string;
   setRouter: (router: string) => void;
   setSelectedCharacterId: (characterId: string) => void;
 };
 
 const CharactersMenu: FC<CharactersMenuProps> = ({
+  router,
   setRouter,
   setSelectedCharacterId,
 }) => {
@@ -18,11 +20,26 @@ const CharactersMenu: FC<CharactersMenuProps> = ({
   const { mutate: createCharacter } =
     api.characters.createCharacter.useMutation();
 
-  const handleCreateCharacter = async () => {
+  const utils = api.useUtils();
+
+  const handleCreateCharacter = () => {
     createCharacter(
       { name: newCharacterName },
       {
-        onSuccess: () => {
+        onSuccess: (newCharacter) => {
+          // Assume `newCharacter` contains the new character's details including ID
+          const createdCharacterId = newCharacter.id;
+
+          // Invalidate the characters cache
+          void utils.characters.getAllCharacters.invalidate();
+          void utils.characters.getSelectedCharacter.invalidate({
+            characterId: createdCharacterId,
+          });
+
+          // Set the selected character ID to the newly created character
+          setSelectedCharacterId(createdCharacterId);
+
+          // Close the modal and navigate to the game
           setIsModalOpen(false);
           setRouter("game");
         },
@@ -32,7 +49,7 @@ const CharactersMenu: FC<CharactersMenuProps> = ({
 
   return (
     <>
-      <Headbar />
+      <Headbar router={router} setRouter={setRouter} />
       <hr className="w-full bg-white" />
 
       <div className="my-3 flex w-full flex-grow">
@@ -42,7 +59,10 @@ const CharactersMenu: FC<CharactersMenuProps> = ({
             <button
               key={character.id}
               className="cursor-pointer rounded-lg bg-gray-200 p-4 hover:bg-gray-300"
-              onClick={() => setSelectedCharacterId(character.id)}
+              onClick={() => {
+                setSelectedCharacterId(character.id);
+                setRouter("game");
+              }}
             >
               {character.name}
             </button>
