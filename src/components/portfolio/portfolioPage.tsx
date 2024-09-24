@@ -11,7 +11,7 @@ type PortfolioPageProps = {
 };
 
 const PortfolioPage: FC<PortfolioPageProps> = ({ setRouter }) => {
-  const [theoryRouter, setTheoryRouter] = useState("menu");
+  const [portfolioRouter, setPortfolioRouter] = useState("menu");
   const [selectedProduct, setSelectedProduct] = useState<Product>();
 
   return (
@@ -21,17 +21,17 @@ const PortfolioPage: FC<PortfolioPageProps> = ({ setRouter }) => {
           menu: (
             <PortfolioMenu
               setRouter={setRouter}
-              setTheoryRouter={setTheoryRouter}
+              setPortfolioRouter={setPortfolioRouter}
               setSelectedProduct={setSelectedProduct}
             />
           ),
           productExpand: (
             <PortfolioProductExpand
-              setTheoryRouter={setTheoryRouter}
+              setPortfolioRouter={setPortfolioRouter}
               selectedProduct={selectedProduct}
             />
           ),
-        }[theoryRouter]
+        }[portfolioRouter]
       }
     </div>
   );
@@ -40,12 +40,12 @@ const PortfolioPage: FC<PortfolioPageProps> = ({ setRouter }) => {
 export default PortfolioPage;
 
 type PortfolioProductExpandProps = {
-  setTheoryRouter: (router: string) => void;
+  setPortfolioRouter: (router: string) => void;
   selectedProduct: Product | undefined;
 };
 
 const PortfolioProductExpand: FC<PortfolioProductExpandProps> = ({
-  setTheoryRouter,
+  setPortfolioRouter,
   selectedProduct,
 }) => {
   const { mutate: deleteProduct } = api.products.deleteProduct.useMutation();
@@ -74,7 +74,7 @@ const PortfolioProductExpand: FC<PortfolioProductExpandProps> = ({
                       {
                         onSuccess: () => {
                           void utils.products.getAllProducts.invalidate();
-                          setTheoryRouter("menu");
+                          setPortfolioRouter("menu");
                         },
                       },
                     );
@@ -91,7 +91,7 @@ const PortfolioProductExpand: FC<PortfolioProductExpandProps> = ({
     <div className="flex w-full items-center justify-center px-48 py-24">
       <button
         className="absolute right-7 top-7 rounded border border-solid border-black p-1"
-        onClick={() => setTheoryRouter("menu")}
+        onClick={() => setPortfolioRouter("menu")}
       >
         <TiArrowBack className="text-4xl" />
       </button>
@@ -135,13 +135,13 @@ const PortfolioProductExpand: FC<PortfolioProductExpandProps> = ({
 
 type PortfolioMenuProps = {
   setRouter: (router: string) => void;
-  setTheoryRouter: (router: string) => void;
+  setPortfolioRouter: (router: string) => void;
   setSelectedProduct: (product: Product) => void;
 };
 
 const PortfolioMenu: FC<PortfolioMenuProps> = ({
   setRouter,
-  setTheoryRouter,
+  setPortfolioRouter,
   setSelectedProduct,
 }) => {
   const products = useContext(ProductsContext);
@@ -198,7 +198,11 @@ const PortfolioMenu: FC<PortfolioMenuProps> = ({
         <TiArrowBack className="text-4xl" />
       </button>
       <div className="absolute left-7 top-7">
-        <h1 className="text-3xl">Přehled investic</h1>
+        {
+          //add icons and possibility to switch between different types of products
+        }
+        <button>bankovní produkty</button>
+        <button>nemovitosti a fyzický majetek</button>
       </div>
       <div className="mx-10 mt-24 w-full">
         <table className="min-w-full border-collapse border border-gray-200 bg-white text-sm">
@@ -257,7 +261,7 @@ const PortfolioMenu: FC<PortfolioMenuProps> = ({
                   <button
                     className="flex w-full justify-center text-center"
                     onClick={() => {
-                      setTheoryRouter("productExpand");
+                      setPortfolioRouter("productExpand");
                       setSelectedProduct(product);
                     }}
                   >

@@ -140,7 +140,7 @@ export const realEstateOffers = [
     localityBonus: 9,
     energyEfficiency: "A",
     description:
-      "Novostaavba bytu v Brně-Králově Poli v pátém patře bytového domu s výhledem na park a dobrou dostupností MHD.",
+      "Novostaavba bytu v Brně-Králově Poli v pátém patře bytového domu s výhledem na park",
   },
   {
     locality: "Brno - střed",

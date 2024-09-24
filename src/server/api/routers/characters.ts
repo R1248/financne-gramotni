@@ -26,11 +26,12 @@ export const charactersRouter = createTRPCRouter({
     }),
 
   createCharacter: protectedProcedure
-    .input(z.object({ name: z.string() }))
+    .input(z.object({ name: z.string(), residence: z.string() }))
     .mutation(async ({ ctx, input }) => {
       return ctx.db.character.create({
         data: {
           name: input.name,
+          residence: input.residence,
           userId: ctx.session.user.id, // Assuming userId is still required
         },
       });

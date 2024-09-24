@@ -3,6 +3,44 @@ import Headbar from "./headbar";
 import { ChracatersContext } from "~/contexts/charactersContext";
 import { api } from "~/utils/api";
 
+const largestCities = [
+  "Praha",
+  "Brno",
+  "Ostrava",
+  "Plzeň",
+  "Liberec",
+  "Olomouc",
+  "České Budějovice",
+  "Hradec Králové",
+  "Pardubice",
+  "Ústí nad Labem",
+  "Zlín",
+  "Havířov",
+  "Kladno",
+  "Most",
+  "Opava",
+  "Jihlava",
+  "Frýdek-Místek",
+  "Teplice",
+  "Karviná",
+  "Karlovy Vary",
+  "Chomutov",
+  "Děčín",
+  "Mladá Boleslav",
+  "Jablonec nad Nisou",
+  "Prostějov",
+  "Přerov",
+  "Česká Lípa",
+  "Třebíč",
+  "Tábor",
+  "Třinec",
+  "Znojmo",
+  "Kolín",
+  "Příbram",
+  "Cheb",
+  "Písek",
+];
+
 type CharactersMenuProps = {
   router: string;
   setRouter: (router: string) => void;
@@ -24,7 +62,10 @@ const CharactersMenu: FC<CharactersMenuProps> = ({
 
   const handleCreateCharacter = () => {
     createCharacter(
-      { name: newCharacterName },
+      {
+        name: newCharacterName,
+        residence: largestCities[Math.floor(Math.random() * 35)]!,
+      },
       {
         onSuccess: (newCharacter) => {
           // Assume `newCharacter` contains the new character's details including ID
@@ -47,34 +88,85 @@ const CharactersMenu: FC<CharactersMenuProps> = ({
     );
   };
 
+  const [startIndex, setStartIndex] = useState(0);
+  const visibleCharacters = 5; // Maximum number of characters visible at once
+
+  const handlePrevCharacter = () => {
+    if (startIndex > 0) {
+      setStartIndex((prev) => prev - 1);
+    }
+  };
+
+  const handleNextCharacter = () => {
+    if (startIndex + visibleCharacters < characters.length) {
+      setStartIndex((prev) => prev + 1);
+    }
+  };
+
   return (
     <>
       <Headbar router={router} setRouter={setRouter} />
       <hr className="w-full bg-white" />
 
       <div className="my-3 flex w-full flex-grow">
-        <div className="relative flex h-auto flex-grow space-y-4 overflow-hidden rounded-2xl bg-white p-4">
+        <div className="relative flex h-auto flex-grow overflow-hidden rounded-2xl bg-white p-20">
           {/* Map through characters */}
-          {characters?.map((character) => (
-            <button
-              key={character.id}
-              className="cursor-pointer rounded-lg bg-gray-200 p-4 hover:bg-gray-300"
-              onClick={() => {
-                setSelectedCharacterId(character.id);
-                setRouter("game");
-              }}
-            >
-              {character.name}
-            </button>
-          ))}
+          <div className="relative flex w-full flex-col items-center">
+            <h2 className="mb-2 mt-8 text-center text-2xl font-bold">
+              Characters
+            </h2>
 
-          {/* Button to create new character */}
-          <button
-            className="cursor-pointer rounded-lg bg-blue-500 p-4 text-white hover:bg-blue-600"
-            onClick={() => setIsModalOpen(true)}
-          >
-            Create New Character
-          </button>
+            {/* Character List with Scrolling */}
+            <div className="flex items-center justify-center">
+              {/* Left Arrow */}
+              <button
+                className={`text-4xl ${startIndex === 0 ? "text-gray-300" : "cursor-pointer"}`}
+                onClick={handlePrevCharacter}
+              >
+                ←
+              </button>
+
+              {/* Scrollable Character List */}
+              <div className="flex flex-row space-x-4 overflow-hidden">
+                {/* Create New Character Button */}
+                <button
+                  className="h-64 w-48 cursor-pointer rounded-lg bg-blue-500 p-4 text-white hover:bg-blue-600"
+                  onClick={() => setIsModalOpen(true)}
+                  style={{ flexShrink: 0 }}
+                >
+                  Create New Character
+                </button>
+
+                {/* Map through characters, limit to visibleCharacters */}
+                {characters
+                  .slice(startIndex, startIndex + visibleCharacters)
+                  .map((character) => (
+                    <button
+                      key={character.id}
+                      className="h-64 w-48 cursor-pointer rounded-lg bg-gray-200 p-4 hover:bg-gray-300"
+                      onClick={() => {
+                        setSelectedCharacterId(character.id);
+                        setRouter("game");
+                      }}
+                    >
+                      {character.name}
+                    </button>
+                  ))}
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                className={`text-4xl ${
+                  startIndex + visibleCharacters >= characters.length
+                    ? "text-gray-300"
+                    : "cursor-pointer"
+                }`}
+                onClick={handleNextCharacter}
+              >
+                →
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 

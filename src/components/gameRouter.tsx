@@ -29,7 +29,7 @@ const GameRouter: FC<GameRouterProps> = ({
         <Headbar router={router} setRouter={setRouter} />
         <hr className="w-full bg-white" />
         <div className="my-3 flex w-full flex-grow">
-          <InfoSidebar setRouter={setRouter} />
+          <InfoSidebar setRouter={setGameRouter} />
           {
             {
               home: <HomePage setRouter={setGameRouter} />,
