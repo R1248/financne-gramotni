@@ -10,6 +10,7 @@ import PFPage from "./personalFinance/pfPage";
 import WorkOpportunities from "./personalFinance/workOpportunities";
 import { ProductsProvider } from "~/contexts/productsContext";
 import { CharacterProvider } from "~/contexts/charactersContext";
+import { PropertyProvider } from "~/contexts/propertyContext";
 
 type GameRouterProps = {
   router: string;
@@ -25,27 +26,29 @@ const GameRouter: FC<GameRouterProps> = ({
   const [gameRouter, setGameRouter] = useState("home");
   return (
     <ProductsProvider characterId={selectedCharacterId}>
-      <CharacterProvider characterId={selectedCharacterId}>
-        <Headbar router={router} setRouter={setRouter} />
-        <hr className="w-full bg-white" />
-        <div className="my-3 flex w-full flex-grow">
-          <InfoSidebar setRouter={setGameRouter} />
-          {
+      <PropertyProvider characterId={selectedCharacterId}>
+        <CharacterProvider characterId={selectedCharacterId}>
+          <Headbar router={router} setRouter={setRouter} />
+          <hr className="w-full bg-white" />
+          <div className="my-3 flex w-full flex-grow">
+            <InfoSidebar setRouter={setGameRouter} />
             {
-              home: <HomePage setRouter={setGameRouter} />,
-              personalFinance: <PFPage setRouter={setGameRouter} />,
-              banks: <Banks setRouter={setGameRouter} />,
-              portfolio: <PortfolioPage setRouter={setGameRouter} />,
-              theory: <TheoryPage setRouter={setGameRouter} />,
-              markets: <FMMenu setRouter={setGameRouter} />,
-              workOpportunities: (
-                <WorkOpportunities setRouter={setGameRouter} />
-              ),
-            }[gameRouter]
-          }
-        </div>
-        <hr className="mt-auto w-full bg-white" />
-      </CharacterProvider>
+              {
+                home: <HomePage setRouter={setGameRouter} />,
+                personalFinance: <PFPage setRouter={setGameRouter} />,
+                banks: <Banks setRouter={setGameRouter} />,
+                portfolio: <PortfolioPage setRouter={setGameRouter} />,
+                theory: <TheoryPage setRouter={setGameRouter} />,
+                markets: <FMMenu setRouter={setGameRouter} />,
+                workOpportunities: (
+                  <WorkOpportunities setRouter={setGameRouter} />
+                ),
+              }[gameRouter]
+            }
+          </div>
+          <hr className="mt-auto w-full bg-white" />
+        </CharacterProvider>
+      </PropertyProvider>
     </ProductsProvider>
   );
 };

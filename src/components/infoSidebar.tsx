@@ -5,20 +5,27 @@ import { api } from "~/utils/api";
 import Portfolio from "~/components/portfolio/portfolio";
 import { FcOpenedFolder } from "react-icons/fc";
 import { IoIosMore } from "react-icons/io";
+import { PropertyContext } from "~/contexts/propertyContext";
+import { citiesMeterPrice } from "./personalFinance/offers";
 
 type InfoSidebarProps = {
   setRouter: (router: string) => void;
 };
 
 const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
-  const character = useContext(CharacterContext);
   const { mutate: changeAge } = api.characters.changeAge.useMutation();
   const { mutate: transaction } = api.products.transaction.useMutation();
   const { mutate: userTransaction } = api.characters.transaction.useMutation();
   const { mutate: updateStandingOrder } =
     api.characters.updateStandingOrder.useMutation();
   const { mutate: deleteProduct } = api.products.deleteProduct.useMutation();
+  const { mutate: deleteProperty } = api.property.deleteProperty.useMutation();
   const products = useContext(ProductsContext);
+  const character = useContext(CharacterContext);
+  const properties = useContext(PropertyContext);
+  const propertiesForSale = properties.filter(
+    (property) => property.isForSale === true,
+  );
   const characterId = character.id;
 
   const [filledDivs, setFilledDivs] = useState<number>(0);
@@ -167,6 +174,47 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
             },
           );
         }
+      }
+    });
+    console.log(propertiesForSale);
+    propertiesForSale.map((property) => {
+      //function that will have a chance to sell property. The chance is based on the price and intrinsic value of the property
+      const cityMeterPrice = citiesMeterPrice.find(
+        (c) => c.city === property.city,
+      )!.price;
+      const intrinsicValue =
+        (property.area *
+          cityMeterPrice *
+          (1 + property.energyEfficiency / 1000) +
+          (property.balconyArea * cityMeterPrice) / 4) *
+          (0.0618 * Math.log(property.floor + 1) + 0.953) +
+        property.parkingPlaces * 4 * cityMeterPrice;
+      const priceDifference =
+        (property.sellsFor! - intrinsicValue) / intrinsicValue;
+      const probability = -0.33 * Math.atan(20 * priceDifference + 0.048) + 0.5;
+      console.log(priceDifference, intrinsicValue, probability);
+      if (Math.random() < probability) {
+        userTransaction(
+          {
+            sum: property.sellsFor!,
+            characterId,
+          },
+          {
+            onSuccess: () => {
+              void utils.characters.getSelectedCharacter.invalidate();
+            },
+          },
+        );
+        deleteProperty(
+          {
+            propertyId: property.id,
+          },
+          {
+            onSuccess: () => {
+              void utils.property.getAllProperties.invalidate();
+            },
+          },
+        );
       }
     });
   };

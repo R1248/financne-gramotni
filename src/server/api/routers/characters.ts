@@ -75,4 +75,17 @@ export const charactersRouter = createTRPCRouter({
         },
       });
     }),
+
+    changeResidence: protectedProcedure
+    .input(z.object({ characterId: z.string(), residence: z.string() }))
+    .mutation(async ({ ctx, input }) => {
+      return ctx.db.character.update({
+        where: {
+          id: input.characterId,
+        },
+        data: {
+          residence: input.residence,
+        },
+      });
+    }),
 });

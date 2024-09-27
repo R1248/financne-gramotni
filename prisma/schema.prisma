@@ -92,16 +92,20 @@ model Character {
     userId             String
 }
 
+//update parking, cellar, balcony
 model Property {
     id               String    @id @default(cuid())
     name             String
     rooms            Int
     area             Int
     floor            Int
-    gardenArea       Int?
+    gardenArea       Int
+    balconyArea      Int
+    parkingPlaces    Int
+    city             String
     type             String
     localityBonus    Int
-    energyEfficiency String
+    energyEfficiency Int
     playerLivesHere  Boolean
     isForSale        Boolean   @default(false)
     sellsFor         Int?
