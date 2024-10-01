@@ -191,7 +191,8 @@ const InfoSidebar: FC<InfoSidebarProps> = ({ setRouter }) => {
         property.parkingPlaces * 4 * cityMeterPrice;
       const priceDifference =
         (property.sellsFor! - intrinsicValue) / intrinsicValue;
-      const probability = -0.33 * Math.atan(20 * priceDifference + 0.048) + 0.5;
+      //const probability = -0.33 * Math.atan(20 * priceDifference + 0.048) + 0.5;
+      const probability = 1 / (1 + Math.exp(15 * priceDifference));
       console.log(priceDifference, intrinsicValue, probability);
       if (Math.random() < probability) {
         userTransaction(

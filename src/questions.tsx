@@ -834,7 +834,7 @@ export const Questions = {
         "Termínovaný vklad, protože má vyšší úrok",
         "Termínovaný vklad, protože má nižší riziko",
       ],
-      answer: "Termínovaný vklad, protože má zpravidla vyšší úrok",
+      answer: "Termínovaný vklad, protože má vyšší úrok",
     },
     {
       question: "Mohu zpravidla spořit na termínovaný vklad i v cizí měně?",
@@ -890,7 +890,7 @@ export const Questions = {
     },
     {
       question: "Jaká je likvidita penzijního spoření?",
-      options: ["Okamžitá", "Vysoká", "Střední", "Nízka"],
+      options: ["Okamžitá", "Vysoká", "Střední", "Nízká"],
       answer: "Nízká",
     },
     {
@@ -1206,12 +1206,11 @@ export const Questions = {
       question: "V čem spočívá podstata fondů kolektivního investování?",
       options: [
         "Investoři (členové fondu) se schází a radí se o tom, kam investovat",
-        "Sdružení peněz od investorů a investování je do různých aktiv",
+        "Sdružuje peníze od investorů a investuje je do různých aktiv",
         "Cílem fondu je shromažďovat peníze od investorů a půjčovat je jiným investorům",
         "Cílem fondu je shromažďovat peníze od investorů a zajišťovat jim úrok",
       ],
-      answer:
-        "Fond kolektivního investování sdružuje peníze od investorů a investuje je do různých aktiv",
+      answer: "Sdružuje peníze od investorů a investuje je do různých aktiv",
     },
     {
       question: "Jaké z následujících tvrzení o vstupních poplatcích neplatí?",
@@ -1944,23 +1943,23 @@ export const Questions = {
       question:
         "Mirek má na výběr mezi jednoduchým úročením 10% a 11% na 30 let. Jak velký procentuální rozdíl ve zisku bude?",
       options: [
-        "Druhá možnost je o 9 % výhodnější, než první",
+        "Druhá možnost je o 9 % výhodnější než první",
         "Druhá možnost je o 10 % výhodnější než první",
-        "Druhá možnost je o 22 % výhodnější, než první",
-        "Druhá možnost je o 31 % výdhonější, než první",
+        "Druhá možnost je o 22 % výhodnější než první",
+        "Druhá možnost je o 31 % výdhonější než první",
       ],
-      answer: "Druhá možnost je o 10 % výhodnější, než první",
+      answer: "Druhá možnost je o 10 % výhodnější než první",
     },
     {
       question:
         "Mirek má na výběr mezi složeným úročením 10% a 11% na 30 let. Jak velký procentuální rozdíl ve zisku bude?",
       options: [
-        "Druhá možnost je o 9 % výhodnější, než první",
+        "Druhá možnost je o 9 % výhodnější než první",
         "Druhá možnost je o 10 % výhodnější než první",
-        "Druhá možnost je o 22 % výhodnější, než první",
-        "Druhá možnost je o 31 % výhodnější, než první",
+        "Druhá možnost je o 22 % výhodnější než první",
+        "Druhá možnost je o 31 % výhodnější než první",
       ],
-      answer: "Druhá možnost je o 31 % výhodnější, než první",
+      answer: "Druhá možnost je o 31 % výhodnější než první",
     },
     {
       question:
@@ -2069,7 +2068,7 @@ export const Questions = {
         "Hodnota peněz nezávisí na inflaci",
         "Hodnota peněz je vždy stejná",
       ],
-      answer: "Hodnota peněz se snižuje úměrně inflaci",
+      answer: "Hodnota peněz se snižuje s inflací",
     },
     {
       question:
@@ -2118,12 +2117,12 @@ export const Questions = {
     {
       question: "Jaký je rozdíl mezi spořením a investováním?",
       options: [
-        "Při investic vystavuji peníze riziku ztráty, u spoření ne",
+        "Při investici vystavuji peníze riziku ztráty, u spoření ne",
         "Spoření a investování mají stejný význam",
         "Investování je jen pro bohaté, spoření pro běžné lidi",
         "Spoření je více ovlivněno krizemi finančního trhu",
       ],
-      answer: "Při investic vystavuji peníze riziku ztráty, u spoření ne",
+      answer: "Při investici vystavuji peníze riziku ztráty, u spoření ne",
     },
     {
       question: "Dosahuje zhodnocení spořících produktů inflace?",
@@ -2444,7 +2443,7 @@ export const Questions = {
     {
       question: "Na co se dlouhodobá rezerva zpravidla používá?",
       options: [
-        "Odkládání penězŠ s vysokou likviditou pro případ velkých nečekaných nákladů",
+        "Odkládání peněz s vysokou likviditou pro případ velkých nečekaných nákladů",
         "Na koupi nového auta, rekonstrukci domácnosti či jiné středně rozsáhlé platby",
         "Na velké projekty jako koupě nemovitosti a k zajištění životního standardu v penzi",
         "Na odkládání přebytečných finančních prostředků s vyšší likviditou na penzi",
@@ -2517,7 +2516,7 @@ export const Questions = {
         "Tržní instituce, kde se obchoduje s cennými papíry, komoditami a dalšími finančními nástroji",
       ],
       answer:
-        "Organizované trhy, kde se obchoduje s cennými papíry, komoditami a dalšími finančními nástroji",
+        "Tržní instituce, kde se obchoduje s cennými papíry, komoditami a dalšími finančními nástroji",
     },
     {
       question: "Proč existují burzy?",
