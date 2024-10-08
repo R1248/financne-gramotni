@@ -1,25 +1,76 @@
-import { type FC } from "react";
+import { useContext, type FC } from "react";
 import { TiArrowBack } from "react-icons/ti";
+import seedrandom from "seedrandom";
 import { cities } from "~/cities";
+import { CharacterContext } from "~/contexts/charactersContext";
+import { companies } from "~/laborMarket";
 
 type WorkOpportunitiesProps = {
   setRouter: (router: string) => void;
 };
 
+type JobOpportunity = {
+  position: string;
+  salary: number;
+  education: string;
+  city: string;
+  company: string;
+};
+
 const WorkOpportunities: FC<WorkOpportunitiesProps> = ({ setRouter }) => {
+  const character = useContext(CharacterContext);
+  const seed = `${character.id}-${character.age}`;
+  const rng = seedrandom(seed);
+  const reachableCities = findCitiesWithinDistance(
+    cities,
+    character.residence,
+    60,
+  );
+  function findJobOpportunitiesInCities(selectedCities: string[]) {
+    const availableJobs: JobOpportunity[] = [];
+
+    companies.map((company) => {
+      company.jobOpportunities.forEach((job) => {
+        job.cities.map(
+          (city) =>
+            selectedCities.includes(city) &&
+            rng() < 0.05 &&
+            availableJobs.push({
+              position: job.position,
+              salary: job.salary,
+              education: job.education,
+              company: company.name,
+              city, // Each object has a single city now
+            }),
+        );
+      });
+    });
+
+    return availableJobs;
+  }
+  const workOpportunitiesInCites =
+    findJobOpportunitiesInCities(reachableCities);
   return (
-    <div className="relative flex h-auto flex-grow overflow-hidden rounded-2xl bg-white">
+    <div className="relative flex h-auto flex-grow flex-col overflow-hidden rounded-2xl bg-white p-20">
       <button
         className="absolute right-7 top-7 z-10 rounded border border-solid border-black p-1"
         onClick={() => setRouter("home")}
       >
         <TiArrowBack className="text-4xl" />
       </button>
-      {findCitiesWithinDistance(cities, "Praha", 100).map((city, i) => (
-        <div key={i} className="flex h-12 w-full flex-row">
-          <p className="ml-2 text-2xl">{city}</p>
-        </div>
-      ))}
+      <div className="h-96 w-auto overflow-scroll">
+        {workOpportunitiesInCites.map((job, index) => (
+          <div
+            key={index}
+            className="flex flex-row border-b border-solid border-gray-300 p-4"
+          >
+            <h2 className="text-xl font-bold">{job.position}</h2>
+            <p className="text-lg">Salary: {job.salary}</p>
+            <p className="text-lg">Company: {job.company}</p>
+            <p className="text-lg">City: {job.city}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

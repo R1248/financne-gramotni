@@ -973,10 +973,10 @@ export const companies = [
       },
     ],
   },
-  { name: "Vireon Labs", field: "IT" },
+  /*{ name: "Vireon Labs", field: "IT" },
   { name: "CodeX", field: "IT" },
   { name: "CyberNest", field: "IT" },
-  { name: "Econometrica", field: "IT" },
+  { name: "Econometrica", field: "IT" },*/
 ];
 
 export const FinanceWorkOpportunities = [
