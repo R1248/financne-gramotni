@@ -1,6 +1,6 @@
 import { useState, type FC } from "react";
 import InfoSidebar from "./infoSidebar";
-import HomePage from "./homePage";
+import HomePage from "./homePageComponent";
 import Headbar from "./headbar";
 import Banks from "./bankProducts/banks";
 import PortfolioPage from "./portfolio/portfolioPage";
