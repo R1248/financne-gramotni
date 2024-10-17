@@ -2,7 +2,7 @@ import { signIn } from "next-auth/react";
 import { type FC } from "react";
 import Image from "next/image";
 import logo from "../../public/logo.svg";
-import phone from "../../public/phone4.svg";
+import phone from "../../public/phone.svg";
 
 const EntryPage: FC = () => {
   return (
@@ -31,7 +31,7 @@ const EntryPage: FC = () => {
           </div>
           <div className="w-[65rem]">
             <Image
-              width={800}
+              width={750}
               src={phone as string}
               alt={"phone"}
               className="mt-[-8rem]"
