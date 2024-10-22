@@ -18,7 +18,7 @@ const EntryPage: FC = () => {
           />
           <button
             className="mt-1 h-10 w-full max-w-[200px] rounded-xl bg-white px-5 text-center text-base font-bold text-black md:h-12 md:text-lg"
-            disabled={true}
+            disabled={false}
             onClick={() => void signIn()}
           >
             Spustit aplikaci
@@ -50,6 +50,27 @@ const EntryPage: FC = () => {
         </div>
 
         {/* Spacer */}
+        <div className="h-52 w-full md:h-32"></div>
+      </div>
+      <div className="flex w-full flex-col items-center justify-center">
+        <div className="flex w-full max-w-[1320px] flex-row bg-white pt-10">
+          <div className="md:w-1/2">placeholder</div>
+          <div className="w-1/2 pl-10 text-left">
+            <h1 className="text-4xl font-semibold">
+              Interaktinvě, prakticky, srozumitelně
+            </h1>
+            <p className="mt-3">
+              Software a podpůrné digitální materiály pro snazší výuku finanční
+              gramotnosti
+            </p>
+            <p className="mt-3">
+              Vzdělávací aplikace na podporu finanční gramotnosti jednotlivců
+            </p>
+            <p className="mt-3">
+              Finance nás baví - přednášíme a děláme workshopy pro střední školy
+            </p>
+          </div>
+        </div>
         <div className="h-52 w-full md:h-32"></div>
       </div>
     </div>
